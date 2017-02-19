@@ -75,7 +75,7 @@
 
 
 
-/* !istanbul instrument in package db-lite */
+/* istanbul instrument in package db */
 /*jslint
     bitwise: true,
     browser: true,
@@ -2072,7 +2072,7 @@
 
 /* script-begin /assets.utility2.lib.istanbul.js */
 ///usr/bin/env node
-/* !istanbul instrument in package istanbul-lite */
+/* istanbul instrument in package istanbul */
 /*jslint
     bitwise: true,
     browser: true,
@@ -2266,18 +2266,9 @@
             }
             if (local.modeJs === 'node' && process.env.npm_package_homepage) {
                 file = file
-                    .replace(
-                        '{{env.npm_package_homepage}}',
-                        process.env.npm_package_homepage
-                    )
-                    .replace(
-                        '{{env.npm_package_name}}',
-                        process.env.npm_package_name
-                    )
-                    .replace(
-                        '{{env.npm_package_version}}',
-                        process.env.npm_package_version
-                    );
+                    .replace('{{env.npm_package_homepage}}', process.env.npm_package_homepage)
+                    .replace('{{env.npm_package_nameAlias}}', process.env.npm_package_nameAlias)
+                    .replace('{{env.npm_package_version}}', process.env.npm_package_version);
             } else {
                 file = file.replace((/<h1 [\S\s]*<\/h1>/), '<h1>&nbsp;</h1>');
             }
@@ -2292,14 +2283,14 @@
         local.instrumentInPackage = function (code, file) {
         /*
          * this function will instrument the code
-         * only if the macro /\* istanbul instrument in package $npm_package_name *\/
+         * only if the macro /\* istanbul instrument in package $npm_package_nameAlias *\/
          * exists in the code
          */
             return process.env.npm_config_mode_coverage &&
                 code.indexOf('/* istanbul ignore all */\n') < 0 && (
                     process.env.npm_config_mode_coverage === 'all' ||
                     code.indexOf('/* istanbul instrument in package ' +
-                            process.env.npm_package_name + ' */\n') >= 0 ||
+                            process.env.npm_package_nameAlias + ' */\n') >= 0 ||
                     code.indexOf('/* istanbul instrument in package ' +
                             process.env.npm_config_mode_coverage + ' */\n') >= 0
                 )
@@ -4235,7 +4226,7 @@ local['head.txt'] = '\
 <body>\n\
 <div class="header {{reportClass}}">\n\
     <h1 style="font-weight: bold;">\n\
-        <a href="{{env.npm_package_homepage}}">{{env.npm_package_name}} v{{env.npm_package_version}}</a>\n\
+        <a href="{{env.npm_package_homepage}}">{{env.npm_package_nameAlias}} v{{env.npm_package_version}}</a>\n\
     </h1>\n\
     <h1>Code coverage report for <span class="entity">{{entity}}</span></h1>\n\
     <h2>\n\
@@ -4538,13 +4529,14 @@ local.templateCoverageBadgeSvg =
             // transparently adds coverage information to a node command
             case 'cover':
                 try {
-                    process.env.npm_package_name = process.env.npm_package_name || JSON.parse(
-                        local._fs.readFileSync('package.json', 'utf8')
-                    ).name;
+                    process.env.npm_package_nameAlias = process.env.npm_package_nameAlias ||
+                        JSON.parse(local._fs.readFileSync('package.json', 'utf8')).nameAlias ||
+                        JSON.parse(local._fs.readFileSync('package.json', 'utf8')).name;
                 } catch (ignore) {
                 }
                 process.env.npm_config_mode_coverage = process.env.npm_config_mode_coverage ||
-                    process.env.npm_package_name || 'all';
+                    process.env.npm_package_nameAlias ||
+                    'all';
                 // add coverage hook to require
                 local._moduleExtensionsJs = local.module._extensions['.js'];
                 local.module._extensions['.js'] = function (module, file) {
@@ -4671,7 +4663,7 @@ local.templateCoverageBadgeSvg =
 
 /* script-begin /assets.utility2.lib.jslint.js */
 ///usr/bin/env node
-/* !istanbul instrument in package jslint-lite */
+/* istanbul instrument in package jslint */
 /*jslint
     bitwise: true,
     browser: true,
@@ -7712,7 +7704,7 @@ sjcl.misc.scrypt.blockxor = function(S, Si, D, Di, len) {
 
 /* script-begin /assets.utility2.lib.uglifyjs.js */
 ///usr/bin/env node
-/* !istanbul instrument in package uglifyjs-lite */
+/* istanbul instrument in package uglifyjs */
 /*jslint
     bitwise: true,
     browser: true,
@@ -12282,6 +12274,10 @@ vendor\\)\\(\\b\\|[_s]\\)\
                     "require('" + local.env.npm_package_name + "')",
                     'global.utility2_moduleExports'
                 )
+                .replace(
+                    "require('" + local.env.npm_package_nameOriginal + "')",
+                    'global.utility2_moduleExports'
+                )
                 // uncomment utility2-comment
                 .replace((/<!-- utility2-comment\b([\S\s]+?)\butility2-comment -->/g), '$1');
             // jslint script
@@ -13595,9 +13591,7 @@ instruction\n\
             'lib.swgg.js',
             'lib.uglifyjs.js',
             'lib.utility2.js',
-            'lib.utility2.sh',
-            '/assets.apiDoc.template.html',
-            '/assets.testReport.template.html'
+            'lib.utility2.sh'
         ].forEach(function (key) {
             switch (key) {
             case 'lib.db.js':
@@ -13605,68 +13599,58 @@ instruction\n\
             case 'lib.istanbul.js':
             case 'lib.jslint.js':
             case 'lib.sjcl.js':
-            case 'lib.swgg.js':
             case 'lib.uglifyjs.js':
-                local.assetsDict['/assets.utility2.' + key] = local.istanbulInstrumentInPackage(
+                local.assetsDict['/assets.utility2.' + key] =
                     local.tryCatchReadFile(__dirname + '/' + key, 'utf8')
-                        .replace((/^#!/), '//')
-                        .replace(
-                            (/(\bistanbul instrument in package .*-lite\b)/),
-                            '!$1'
-                        ),
-                    __dirname + '/' + key
-                );
+                        .replace((/^#!/), '//');
                 break;
+            case 'lib.swgg.js':
             case 'lib.utility2.js':
-                local.assetsDict['/assets.utility2.js'] = local.istanbulInstrumentInPackage(
-                    local.tryCatchReadFile(__dirname + '/' + key, 'utf8')
-                        .replace((/^#!/), '//'),
-                    __dirname + '/' + key
-                );
+                key = key.replace('lib.', '');
+                local.assetsDict['/assets.' + key] =
+                    local.tryCatchReadFile(__dirname + '/lib.' + key, 'utf8')
+                        .replace((/^#!/), '//');
                 break;
             case 'lib.utility2.sh':
                 local.jslintAndPrintConditional(
                     local.tryCatchReadFile(__dirname + '/' + key, 'utf8')
-                        .replace((/^#!/), '//'),
-                    __dirname + '/' + key
+                        .replace((/^ *?#!! .*$/gm), ''),
+                    __dirname + '/' + key + '.html'
                 );
-                break;
-            case '/assets.apiDoc.template.html':
-            case '/assets.testReport.template.html':
-                local.jslintAndPrintConditional(local.assetsDict[key], key);
                 break;
             }
         });
         local.assetsDict['/assets.utility2.rollup.js'] = [
             '/assets.utility2.rollup.begin.js',
-            '/assets.utility2.lib.db.js',
-            '/assets.utility2.lib.github_crud.js',
-            '/assets.utility2.lib.istanbul.js',
-            '/assets.utility2.lib.jslint.js',
-            '/assets.utility2.lib.sjcl.js',
-            '/assets.utility2.lib.uglifyjs.js',
-            '/assets.utility2.js',
-            '/assets.swgg.js',
+            'lib.db.js',
+            'lib.github_crud.js',
+            'lib.istanbul.js',
+            'lib.jslint.js',
+            'lib.sjcl.js',
+            'lib.uglifyjs.js',
+            'lib.utility2.js',
+            'lib.swgg.js',
             '/assets.utility2.rollup.end.js'
         ].map(function (key) {
             var script;
             switch (key) {
-            case '/assets.swgg.js':
-                script = local.tryCatchReadFile(local.__dirname + '/lib.swgg.js', 'utf8');
-                return '/* script-begin ' + key + ' */\n' +
-                    script.trim() +
-                    '\n/* script-end ' + key + ' */\n';
-            }
-            switch (local.path.extname(key)) {
-            case '.js':
+            case '/assets.utility2.rollup.begin.js':
+            case '/assets.utility2.rollup.end.js':
                 script = local.assetsDict[key];
                 break;
-            default:
-                script = local.assetsDict['/assets.utility2.rollup.content.js'].replace(
-                    '/* utility2.rollup.js content */',
-                    'local.assetsDict[' + JSON.stringify(key) + '] = ' +
-                        JSON.stringify(local.assetsDict[key])
-                );
+            case 'lib.db.js':
+            case 'lib.github_crud.js':
+            case 'lib.istanbul.js':
+            case 'lib.jslint.js':
+            case 'lib.sjcl.js':
+            case 'lib.uglifyjs.js':
+                key = '/assets.utility2.' + key;
+                script = local.assetsDict[key];
+                break;
+            case 'lib.swgg.js':
+            case 'lib.utility2.js':
+                key = '/assets.' + key.replace('lib.', '');
+                script = local.assetsDict[key];
                 break;
             }
             return '/* script-begin ' + key + ' */\n' +
@@ -13759,7 +13743,7 @@ instruction\n\
     if (typeof global === 'object' &&
             global.utility2_rollup &&
             global.process &&
-            global.process.env.npm_package_name === 'swgg') {
+            global.process.env.npm_package_nameAlias === 'swgg') {
         return;
     }
 

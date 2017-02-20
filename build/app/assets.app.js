@@ -14263,7 +14263,7 @@ border: 0;\n\
     <button class="td3">Explore</button>\n\
 </form2>\n\
     </div>\n\
-    <div id="ajaxProgressDiv2" style="margin-top: 1rem;">fetching resource list; Please wait.</div>\n\
+    <div id="ajaxProgressDiv2" style="margin-top: 1rem; text-align: center;">fetching resource list; Please wait.</div>\n\
     <script src="assets.swgg.rollup.js"></script>\n\
     <script>window.swgg.uiEventListenerDict[".onEventUiReload"]();</script>\n\
 </body>\n\

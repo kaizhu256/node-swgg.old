@@ -1,0 +1,3821 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-swgg/lib.swgg.ui.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/kaizhu256/node-swgg">swgg v2017.1.12</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-swgg/lib.swgg.ui.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">100% <small>(384 / 384)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">100% <small>(180 / 180)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">100% <small>(82 / 82)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">100% <small>(384 / 384)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">node-swgg/</a> &#187; lib.swgg.ui.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+991
+992
+993
+994
+995
+996
+997
+998
+999
+1000
+1001
+1002
+1003
+1004
+1005
+1006
+1007
+1008
+1009
+1010
+1011
+1012
+1013
+1014
+1015
+1016
+1017
+1018
+1019
+1020
+1021
+1022
+1023
+1024
+1025
+1026
+1027
+1028
+1029
+1030
+1031
+1032
+1033
+1034
+1035
+1036
+1037
+1038
+1039
+1040
+1041
+1042
+1043
+1044
+1045
+1046
+1047
+1048
+1049
+1050
+1051
+1052
+1053
+1054
+1055
+1056
+1057
+1058
+1059
+1060
+1061
+1062
+1063
+1064
+1065
+1066
+1067
+1068
+1069
+1070
+1071
+1072
+1073
+1074
+1075
+1076
+1077
+1078
+1079
+1080
+1081
+1082
+1083
+1084
+1085
+1086
+1087
+1088
+1089
+1090
+1091
+1092
+1093
+1094
+1095
+1096
+1097
+1098
+1099
+1100
+1101
+1102
+1103
+1104
+1105
+1106
+1107
+1108
+1109
+1110
+1111
+1112
+1113
+1114
+1115
+1116
+1117
+1118
+1119
+1120
+1121
+1122
+1123
+1124
+1125
+1126
+1127
+1128
+1129
+1130
+1131
+1132
+1133
+1134
+1135
+1136
+1137
+1138
+1139
+1140
+1141
+1142
+1143
+1144
+1145
+1146
+1147
+1148
+1149
+1150
+1151
+1152
+1153
+1154
+1155
+1156
+1157
+1158
+1159
+1160
+1161
+1162
+1163
+1164
+1165
+1166
+1167
+1168
+1169
+1170
+1171
+1172
+1173
+1174
+1175
+1176
+1177
+1178
+1179
+1180
+1181
+1182
+1183
+1184
+1185
+1186
+1187
+1188
+1189
+1190
+1191
+1192
+1193
+1194
+1195
+1196
+1197
+1198
+1199
+1200</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">169</span>
+<span class="cline-any cline-yes">2889</span>
+<span class="cline-any cline-yes">2720</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">169</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">246</span>
+<span class="cline-any cline-yes">171</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2789</span>
+<span class="cline-any cline-yes">1345</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-yes">1444</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">400</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">164</span>
+<span class="cline-any cline-yes">164</span>
+<span class="cline-any cline-yes">164</span>
+<span class="cline-any cline-yes">164</span>
+<span class="cline-any cline-yes">164</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">214</span>
+<span class="cline-any cline-yes">214</span>
+<span class="cline-any cline-yes">2994</span>
+<span class="cline-any cline-yes">2994</span>
+<span class="cline-any cline-yes">2994</span>
+<span class="cline-any cline-yes">472</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2994</span>
+<span class="cline-any cline-yes">992</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2994</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">214</span>
+<span class="cline-any cline-yes">214</span>
+<span class="cline-any cline-yes">214</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">214</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">62</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">332</span>
+<span class="cline-any cline-yes">1805</span>
+<span class="cline-any cline-yes">1474</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">331</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">185</span>
+<span class="cline-any cline-yes">185</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">331</span>
+<span class="cline-any cline-yes">331</span>
+<span class="cline-any cline-yes">331</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">644</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">284</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">234</span>
+<span class="cline-any cline-yes">234</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">234</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">161</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">153</span>
+<span class="cline-any cline-yes">153</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">147</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">33</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">64</span>
+<span class="cline-any cline-yes">64</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">199</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">234</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">387</span>
+<span class="cline-any cline-yes">387</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">137</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">135</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-yes">142</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">138</span>
+<span class="cline-any cline-yes">138</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">138</span>
+<span class="cline-any cline-yes">138</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">138</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-yes">104</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">104</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">267</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">249</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-yes">48</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">230</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">206</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">295</span>
+<span class="cline-any cline-yes">295</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">295</span>
+<span class="cline-any cline-yes">295</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">295</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">788</span>
+<span class="cline-any cline-yes">788</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">788</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-yes">22</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-yes">211</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-yes">27</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">258</span>
+<span class="cline-any cline-yes">46</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-yes">114</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">271</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">138</span>
+<span class="cline-any cline-yes">138</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">411</span>
+<span class="cline-any cline-yes">411</span>
+<span class="cline-any cline-yes">411</span>
+<span class="cline-any cline-yes">411</span>
+<span class="cline-any cline-yes">411</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">85</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">107</span>
+<span class="cline-any cline-yes">107</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">69</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">107</span>
+<span class="cline-any cline-yes">107</span>
+<span class="cline-any cline-yes">107</span>
+<span class="cline-any cline-yes">107</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">100</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* istanbul instrument in package swgg */
+/*jslint
+    bitwise: true,
+    browser: true,
+    maxerr: 8,
+    maxlen: 96,
+    node: true,
+    nomen: true,
+    regexp: true,
+    stupid: true
+*/
+(function () {
+    'use strict';
+    var local;
+&nbsp;
+&nbsp;
+&nbsp;
+    // run shared js-env code - pre-init
+    (function () {
+        // init local
+        local = {};
+        // init modeJs
+        local.modeJs = (function () {
+            try {
+                return typeof navigator.userAgent === 'string' &amp;&amp;
+                    typeof document.querySelector('body') === 'object' &amp;&amp;
+                    typeof XMLHttpRequest.prototype.open === 'function' &amp;&amp;
+                    'browser';
+            } catch (errorCaughtBrowser) {
+                return module.exports &amp;&amp;
+                    typeof process.versions.node === 'string' &amp;&amp;
+                    typeof require('http').createServer === 'function' &amp;&amp;
+                    'node';
+            }
+        }());
+        // init global
+        local.global = local.modeJs === 'browser'
+            ? window
+            : global;
+        // init utility2_rollup
+        local = local.global.utility2_rollup || (local.modeJs === 'browser'
+            ? window.swgg
+            : require('./lib.swgg.js'));
+/* jslint-ignore-begin */
+local.templateUiDatatable = '\
+&lt;div class="pagination tr"&gt;\n\
+    {{#each pageList}}\n\
+    &lt;button\n\
+        class="onEventDatatableReload"\n\
+        data-page-number={{pageNumber}}\n\
+        data-resource-name="{{name}}"\n\
+        {{#if disabled}}disabled{{/if disabled}}\n\
+    &gt;{{valueEncoded htmlSafe}}&lt;/button&gt;\n\
+    {{/each pageList}}\n\
+&lt;/div&gt;\n\
+&lt;table class="borderBottom borderTop"&gt;\n\
+    &lt;thead&gt;\n\
+        &lt;tr&gt;\n\
+            &lt;th\n\
+                class="cursorPointer"\n\
+                style="padding-left: {{iiPadding}}rem; padding-right: {{iiPadding}}rem;"\n\
+            &gt;&lt;button class="onEventDatatableSelectedRemove"&gt;remove&lt;/button&gt;&lt;/th&gt;\n\
+            {{#each propDefList}}\n\
+            &lt;th class="cursorPointer"&gt;\n\
+                &lt;div&gt;{{name}}&lt;/div&gt;\n\
+                &lt;div class="color777"&gt;\n\
+                    {{type2}}{{#if format2}}&lt;br&gt;({{format2}}){{/if format2}}\n\
+                &lt;/div&gt;\n\
+                &lt;div class="sortAsc"&gt;+&lt;/div&gt;\n\
+                &lt;div class="sortDsc"&gt;-&lt;/div&gt;\n\
+            &lt;/th&gt;\n\
+            {{/each propDefList}}\n\
+            &lt;th\n\
+                class="cursorPointer"\n\
+                style="padding-left: {{iiPadding}}rem; padding-right: {{iiPadding}}rem;"\n\
+            &gt;&lt;button class="onEventDatatableSelectedRemove"&gt;remove&lt;/button&gt;&lt;/th&gt;\n\
+        &lt;/tr&gt;\n\
+    &lt;/thead&gt;\n\
+    &lt;tbody&gt;\n\
+        {{#each dbRowList}}\n\
+        &lt;tr data-id="{{id jsonStringify encodeURIComponent}}"&gt;\n\
+            &lt;td class="cursorPointer eventDelegateClick onEventDatatableTrSelect"&gt;\n\
+                &lt;span class="tr"&gt;\n\
+                    &lt;input type="checkbox"&gt;\n\
+                    &lt;span class="flex1"&gt;{{ii}}&lt;/span&gt;\n\
+                &lt;/span&gt;\n\
+            &lt;/td&gt;\n\
+            {{#each colList}}\n\
+            &lt;td&gt;{{valueEncoded htmlSafe}}&lt;/td&gt;\n\
+            {{/each colList}}\n\
+            &lt;td class="cursorPointer eventDelegateClick onEventDatatableTrSelect"&gt;\n\
+                &lt;span class="tr"&gt;\n\
+                    &lt;input type="checkbox"&gt;\n\
+                    &lt;span class="flex1"&gt;{{ii}}&lt;/span&gt;\n\
+                &lt;/span&gt;\n\
+        &lt;/tr&gt;\n\
+        {{/each dbRowList}}\n\
+    &lt;tfoot&gt;\n\
+        &lt;tr&gt;\n\
+            &lt;th\n\
+                class="cursorPointer"\n\
+                style="padding-left: {{iiPadding}}rem; padding-right: {{iiPadding}}rem;"\n\
+            &gt;&lt;button class="onEventDatatableSelectedRemove"&gt;remove&lt;/button&gt;&lt;/th&gt;\n\
+            {{#each propDefList}}\n\
+            &lt;th class="cursorPointer"&gt;\n\
+                &lt;div&gt;{{name}}&lt;/div&gt;\n\
+                &lt;div class="color777"&gt;\n\
+                    {{type2}}{{#if format2}}&lt;br&gt;({{format2}}){{/if format2}}\n\
+                &lt;/div&gt;\n\
+                &lt;div class="sortAsc"&gt;+&lt;/div&gt;\n\
+                &lt;div class="sortDsc"&gt;-&lt;/div&gt;\n\
+            &lt;/th&gt;\n\
+            {{/each propDefList}}\n\
+            &lt;th\n\
+                class="cursorPointer"\n\
+                style="padding-left: {{iiPadding}}rem; padding-right: {{iiPadding}}rem;"\n\
+            &gt;&lt;button class="onEventDatatableSelectedRemove"&gt;remove&lt;/button&gt;&lt;/th&gt;\n\
+        &lt;/tr&gt;\n\
+    &lt;/tfoot&gt;\n\
+&lt;/table&gt;\n\
+&lt;div class="pagination tr"&gt;\n\
+    {{#each pageList}}\n\
+    &lt;button\n\
+        class="onEventDatatableReload"\n\
+        data-page-number={{pageNumber}}\n\
+        data-resource-name="{{name}}"\n\
+        {{#if disabled}}disabled{{/if disabled}}\n\
+    &gt;{{valueEncoded htmlSafe}}&lt;/button&gt;\n\
+    {{/each pageList}}\n\
+&lt;/div&gt;\n\
+';
+&nbsp;
+&nbsp;
+&nbsp;
+// https://github.com/swagger-api/swagger-ui/blob/v2.1.3/src/main/template/main.handlebars
+local.templateUiMain = '\
+&lt;div class="eventDelegateClick modal onEventModalHide" style="display: none; opacity: 0;"&gt;\n\
+    &lt;form class="datatable eventDelegateClick"&gt;&lt;/form&gt;\n\
+&lt;/div&gt;\n\
+&lt;div class="eventDelegateClick popup" style="display: none;"&gt;&lt;/div&gt;\n\
+&lt;form2 class="eventDelegateSubmit header onEventUiReload tr"&gt;\n\
+    &lt;a class="td1" href="http://swagger.io" target="_blank"&gt;swagger&lt;/a&gt;\n\
+    &lt;input\n\
+        class="flex1 td2"\n\
+        placeholder="http://petstore.swagger.io/v2/swagger.json"\n\
+        type="text"\n\
+        value="{{url}}"\n\
+    &gt;\n\
+&lt;/form2&gt;\n\
+&lt;div class="info reset"&gt;\n\
+    {{#if info}}\n\
+    &lt;div class="fontWeightBold"&gt;{{info.title htmlSafe}}&lt;/div&gt;\n\
+    {{#if info.description}}\n\
+    &lt;div&gt;{{info.description htmlSafe}}&lt;/div&gt;\n\
+    {{/if info.description}}\n\
+    &lt;ul&gt;\n\
+        {{#if externalDocs}}\n\
+        &lt;li class="marginTop05"&gt;\n\
+            {{#if externalDocs.description}}\n\
+            &lt;p&gt;{{externalDocs.description htmlSafe}}&lt;/p&gt;\n\
+            {{/if externalDocs.description}}\n\
+            &lt;a href="{{externalDocs.url}}" target="_blank"&gt;{{externalDocs.url}}&lt;/a&gt;\n\
+        &lt;/li&gt;\n\
+        {{/if externalDocs}}\n\
+        {{#if info.termsOfService}}\n\
+        &lt;li class="marginTop05"&gt;\n\
+            &lt;a target="_blank" href="{{info.termsOfService}}"&gt;Terms of service&lt;/a&gt;\n\
+        &lt;/li&gt;\n\
+        {{/if info.termsOfService}}\n\
+        {{#if info.contact.name}}\n\
+        &lt;li class="marginTop05"&gt;Created by {{info.contact.name htmlSafe}}&lt;/li&gt;\n\
+        {{/if info.contact.name}}\n\
+        {{#if info.contact.url}}\n\
+        &lt;li class="marginTop05"&gt;\n\
+            See more at &lt;a href="{{info.contact.url}}"&gt;{{info.contact.url}}&lt;/a&gt;\n\
+        &lt;/li&gt;\n\
+        {{/if info.contact.url}}\n\
+        {{#if info.contact.email}}\n\
+        &lt;li class="marginTop05"&gt;\n\
+            &lt;a\n\
+                target="_parent"\n\
+                href="mailto:{{info.contact.email}}?subject={{info.title htmlSafe}}"\n\
+            &gt;Contact the developer&lt;/a&gt;\n\
+        &lt;/li&gt;\n\
+        {{/if info.contact.email}}\n\
+        {{#if info.license}}\n\
+        &lt;li class="marginTop05"&gt;\n\
+            &lt;a target="_blank" href="{{info.license.url}}"&gt;{{info.license.name}}&lt;/a&gt;\n\
+        &lt;/li&gt;\n\
+        {{/if info.license}}\n\
+    &lt;/ul&gt;\n\
+    {{/if info}}\n\
+&lt;/div&gt;\n\
+&lt;div class="reset resourceList"&gt;&lt;/div&gt;\n\
+&lt;div class="color777 footer reset"&gt;\n\
+    &lt;div&gt;\n\
+        [ &lt;span&gt;base url&lt;/span&gt;: {{basePath}}, &lt;span&gt;api version&lt;/span&gt;: {{info.version}} ]\n\
+    &lt;/div&gt;\n\
+&lt;/div&gt;\n\
+';
+&nbsp;
+&nbsp;
+&nbsp;
+// https://github.com/swagger-api/swagger-ui/blob/v2.1.3/src/main/template/operation.handlebars
+local.templateUiOperation = '\
+&lt;div\n\
+    class="eventDelegateClick eventDelegateSubmit marginTop05 operation {{_method}}"\n\
+    data-_key-operation-id="{{_keyOperationId}}"\n\
+    id="{{id}}"\n\
+&gt;\n\
+    &lt;div class="cursorPointer eventDelegateClick onEventOperationDisplayShow header tr"&gt;\n\
+        &lt;span class="td1"&gt;{{_method}}&lt;/span&gt;\n\
+        &lt;span\n\
+            class="td2 {{#if deprecated}}fontLineThrough{{/if deprecated}}"\n\
+        &gt;{{_path}}&lt;/span&gt;\n\
+        &lt;span class="td3"&gt;{{operationId}}&lt;/span&gt;\n\
+        &lt;span class="td4"&gt;{{summary htmlSafe}}&lt;/span&gt;\n\
+    &lt;/div&gt;\n\
+    &lt;form accept-charset="UTF-8" class="content" style="display: none;"&gt;\n\
+        {{#if deprecated}}\n\
+        &lt;h4 class="label marginTop10"&gt;Warning: Deprecated&lt;/h4&gt;\n\
+        {{/if deprecated}}\n\
+        {{#if description}}\n\
+        &lt;h4 class="label marginTop10"&gt;Description&lt;/h4&gt;\n\
+        &lt;div&gt;{{description htmlSafe}}&lt;/div&gt;\n\
+        {{/if description}}\n\
+        {{#if parameters.length}}\n\
+        &lt;h4 class="label marginTop10"&gt;Parameters&lt;/h4&gt;\n\
+        &lt;div class="marginTop05 paramDef tr"&gt;\n\
+            &lt;span class="color777 td1"&gt;Name and Description&lt;/span&gt;\n\
+            &lt;span class="color777 td2"&gt;Data Type&lt;/span&gt;\n\
+            &lt;span class="color777 td3"&gt;Value&lt;/span&gt;\n\
+            &lt;span class="color777 td4"&gt;Schema&lt;/span&gt;\n\
+        &lt;/div&gt;\n\
+        {{#each parameters}}\n\
+        &lt;div class="borderTop paramDef tr" id="{{id}}" name="{{name}}"&gt;&lt;/div&gt;\n\
+        {{/each parameters}}\n\
+        {{/if parameters.length}}\n\
+        &lt;h4 class="label marginTop10"&gt;Response Messages&lt;/h4&gt;\n\
+        &lt;div class="marginTop05 responseList tr"&gt;\n\
+            &lt;span class="color777 td1"&gt;HTTP Status Code&lt;/span&gt;\n\
+            &lt;span class="color777 td2"&gt;Reason&lt;/span&gt;\n\
+        &lt;/div&gt;\n\
+        {{#each responseList}}\n\
+        &lt;div class="borderTop responseList tr"&gt;\n\
+            &lt;span class="td1"&gt;{{key}}&lt;/span&gt;\n\
+            {{#if value.description}}\n\
+            &lt;span class="td2"&gt;{{value.description htmlSafe}}&lt;/span&gt;\n\
+            {{/if value.description}}\n\
+        &lt;/div&gt;\n\
+        {{/each responseList}}\n\
+        &lt;button class="marginTop10 onEventOperationAjax"&gt;Try it out!&lt;/button&gt;\n\
+        &lt;div class="marginTop05 responseAjax"&gt;&lt;/div&gt;\n\
+    &lt;/form&gt;\n\
+&lt;/div&gt;\n\
+';
+&nbsp;
+&nbsp;
+&nbsp;
+// https://github.com/swagger-api/swagger-ui/blob/v2.1.3/src/main/template/param.handlebars
+local.templateUiParam = '\
+&lt;span class="td1 {{#if required}}fontWeightBold{{/if required}}"&gt;\n\
+    {{name}}\n\
+    {{#if description}}\n\
+    &lt;br&gt;&lt;span class="color777"&gt;{{description htmlSafe}}&lt;/span&gt;\n\
+    {{/if description}}\n\
+&lt;/span&gt;\n\
+&lt;span class="td2"&gt;{{type2}}{{#if format2}}&lt;br&gt;({{format2}}){{/if format2}}&lt;/span&gt;\n\
+&lt;span class="td3"&gt;\n\
+    {{#if isTextarea}}\n\
+    &lt;textarea\n\
+        class="input"\n\
+        data-value-encoded="{{valueEncoded encodeURIComponent}}"\n\
+        placeholder="{{placeholder}}"&gt;&lt;/textarea&gt;\n\
+    {{/if isTextarea}}\n\
+    {{#if isFile}}\n\
+    &lt;input class="input" type="file"&gt;\n\
+    {{/if isFile}}\n\
+    {{#if isSelect}}\n\
+    &lt;select class="input" {{#if isSelectMultiple}}multiple{{/if isSelectMultiple}}&gt;\n\
+        {{#each selectOptionList}}\n\
+        &lt;option\n\
+            data-value-decoded="{{valueDecoded jsonStringify encodeURIComponent}}"\n\
+            id={{id}}\n\
+            {{selected}}\n\
+        &gt;{{valueEncoded htmlSafe}}&lt;/option&gt;\n\
+        {{/each selectOptionList}}\n\
+    &lt;/select&gt;\n\
+    {{/if isSelect}}\n\
+    {{#if isInputText}}\n\
+    &lt;input\n\
+        class="input"\n\
+        data-value-encoded="{{valueEncoded encodeURIComponent}}"\n\
+        placeholder="{{placeholder}}"\n\
+        type="text"\n\
+    &gt;\n\
+    {{/if isInputText}}\n\
+&lt;/span&gt;\n\
+&lt;span class="td4"&gt;{{#if schemaText}}&lt;pre&gt;{{schemaText}}&lt;/pre&gt;{{/if schemaText}}&lt;/span&gt;\n\
+';
+&nbsp;
+&nbsp;
+&nbsp;
+// https://github.com/swagger-api/swagger-ui/blob/v2.1.3/src/main/template/resource.handlebars
+local.templateUiResource = '\
+&lt;div\n\
+    class="borderBottomBold resource eventDelegateClick"\n\
+    data-name="{{name}}"\n\
+    id="{{id}}"&gt;\n\
+    &lt;div class="fontWeightBold header tr"&gt;\n\
+        &lt;a class="color777 flex1 onEventResourceDisplayAction td1" href="#"&gt;{{name}} :\n\
+        {{#if description}}\n\
+        {{description htmlSafe}}\n\
+        {{/if description}}\n\
+        &lt;/a&gt;\n\
+        &lt;a class="color777 onEventResourceDisplayAction td2" href="#"&gt;Show&lt;/a&gt;\n\
+        &lt;a\n\
+            class="color777 onEventResourceDisplayAction td3"\n\
+            href="#"\n\
+        &gt;Expand / Collapse Operations&lt;/a&gt;\n\
+        &lt;a\n\
+            class="color777 onEventDatatableReload td4"\n\
+            data-resource-name="{{name}}"\n\
+            href="#"\n\
+        &gt;Datatable&lt;/a&gt;\n\
+    &lt;/div&gt;\n\
+    &lt;div class="operationList" style="display: none;"&gt;&lt;/div&gt;\n\
+&lt;/div&gt;\n\
+';
+&nbsp;
+&nbsp;
+&nbsp;
+local.templateUiResponseAjax = '\
+&lt;h4 class="label marginTop10"&gt;Curl Request&lt;/h4&gt;\n\
+{{#if errorValidate}}\n\
+&lt;pre&gt;n/a&lt;/pre&gt;\n\
+{{#unless errorValidate}}\n\
+&lt;pre&gt;{{curl htmlSafe}}&lt;/pre&gt;\n\
+{{/if errorValidate}}\n\
+&lt;h4 class="label marginTop10"&gt;Response Code&lt;/h4&gt;\n\
+&lt;pre&gt;{{statusCode}}&lt;/pre&gt;\n\
+&lt;h4 class="label marginTop10"&gt;Response Headers&lt;/h4&gt;\n\
+{{#if errorValidate}}\n\
+&lt;pre&gt;n/a&lt;/pre&gt;\n\
+{{#unless errorValidate}}\n\
+&lt;pre&gt;{{responseHeaders htmlSafe}}&lt;/pre&gt;\n\
+{{/if errorValidate}}\n\
+&lt;h4 class="label marginTop10"&gt;Response Body&lt;/h4&gt;\n\
+{{responseBody}}\n\
+';
+/* jslint-ignore-end */
+    }());
+&nbsp;
+&nbsp;
+&nbsp;
+    // run shared js-env code - function
+    (function () {
+        local.uiAnimateFadeIn = function (element) {
+        /*
+         * this function will fadeIn the element
+         */
+            element.classList.add('swggAnimateFade');
+            element.style.display = '';
+            setTimeout(function () {
+                element.style.opacity = '';
+            }, 20);
+            setTimeout(function () {
+                element.classList.remove('swggAnimateFade');
+            }, 500);
+        };
+&nbsp;
+        local.uiAnimateFadeOut = function (element) {
+        /*
+         * this function will fadeOut the element
+         */
+            element.classList.add('swggAnimateFade');
+            element.style.opacity = '0';
+            setTimeout(function () {
+                element.style.display = 'none';
+                element.classList.remove('swggAnimateFade');
+            }, 500);
+        };
+&nbsp;
+        local.uiAnimateScrollTo = function (element) {
+        /*
+         * this function will scrollTo the element
+         */
+            var ii, timerInterval;
+            ii = 0;
+            timerInterval = setInterval(function () {
+                ii += 0.025;
+                local.global.scrollTo(0, document.body.scrollTop +
+                    Math.min(ii, 1) * (element.offsetTop - document.body.scrollTop) +
+                    -5);
+            }, 25);
+            setTimeout(function () {
+                clearInterval(timerInterval);
+            }, 1000);
+        };
+&nbsp;
+        local.uiAnimateShake = function (element) {
+        /*
+         * this function will shake the dom-element
+         */
+            element.classList.add('swggAnimateShake');
+            setTimeout(function () {
+                element.classList.remove('swggAnimateShake');
+            }, 500);
+        };
+&nbsp;
+        local.uiAnimateSlideAccordian = function (element, elementList) {
+        /*
+         * this function will slideDown the element,
+         * but slideUp all other elements in elementList
+         */
+            // hide elements in elementList
+            elementList.forEach(function (element2) {
+                if (element2 !== element) {
+                    local.uiAnimateSlideUp(element2);
+                }
+            });
+            // show element
+            local.uiAnimateSlideDown(element);
+        };
+&nbsp;
+        local.uiAnimateSlideDown = function (element) {
+        /*
+         * this function will slideDown the dom-element
+         */
+            if (element.style.display !== 'none') {
+                return;
+            }
+            element.style.maxHeight = 0;
+            element.classList.add('swggAnimateSlide');
+            element.style.display = '';
+            setTimeout(function () {
+                element.style.maxHeight = 2 * local.global.innerHeight + 'px';
+            }, 20);
+            setTimeout(function () {
+                element.style.maxHeight = '';
+                element.classList.remove('swggAnimateSlide');
+            }, 500);
+        };
+&nbsp;
+        local.uiAnimateSlideUp = function (element) {
+        /*
+         * this function will slideUp the dom-element
+         */
+            if (element.style.display === 'none') {
+                return;
+            }
+            element.style.maxHeight = 2 * local.global.innerHeight + 'px';
+            element.classList.add('swggAnimateSlide');
+            setTimeout(function () {
+                element.style.maxHeight = '0px';
+            }, 20);
+            setTimeout(function () {
+                element.style.display = 'none';
+            }, 500);
+            setTimeout(function () {
+                element.style.maxHeight = '';
+                element.classList.remove('swggAnimateSlide');
+            }, 500);
+        };
+&nbsp;
+        local.uiDatatableRender = function (options) {
+        /*
+         * this function will render the datatable
+         */
+            var tmp;
+            local.uiState.datatable = options;
+            options.schema = local.schemaNormalizeAndCopy(options.schema);
+            options.propDefList = Object.keys(options.schema.properties)
+                .sort(function (aa, bb) {
+                    return aa === options._idAlias
+                        ? -1
+                        : bb === options._idAlias
+                        ? 1
+                        : aa &lt; bb
+                        ? -1
+                        : 1;
+                })
+                .map(function (propDef) {
+                    tmp = propDef;
+                    propDef = options.schema.properties[tmp];
+                    propDef.name = tmp;
+                    local.uiParamRender(propDef);
+                    return propDef;
+                });
+            options.iiPadding = 0;
+            options.dbRowList = options.responseJson.data.map(function (dbRow, ii) {
+                dbRow = { paramDict: dbRow };
+                dbRow.colList = options.propDefList.map(function (propDef) {
+                    propDef = local.jsonCopy(propDef);
+                    propDef.valueEncoded = dbRow.paramDict[propDef.name];
+                    if (propDef.valueEncoded === undefined) {
+                        propDef.valueEncoded = '';
+                    }
+                    if (typeof propDef.valueEncoded !== 'string') {
+                        propDef.valueEncoded = JSON.stringify(propDef.valueEncoded);
+                    }
+                    return propDef;
+                });
+                dbRow.id = dbRow.paramDict[options._idAlias];
+                dbRow.ii = options.querySkip + ii + 1;
+                options.iiPadding = Math.max(
+                    0.375 * String(dbRow.ii).length,
+                    options.iiPadding
+                );
+                return dbRow;
+            });
+            // init pagination
+            options.pageCurrent = Math.floor(options.querySkip / options.queryLimit);
+            options.pageTotal = Math.ceil(
+                options.responseJson.meta.paginationCountTotal / options.queryLimit
+            );
+            options.pageMin = Math.max(
+                Math.min(options.pageCurrent - 3, options.pageTotal - 7),
+                0
+            );
+            options.pageMax = Math.min(options.pageMin + 7, options.pageTotal);
+            options.pageList = [];
+            // add first page
+            options.pageList.push({
+                disabled: options.pageCurrent === 0,
+                pageNumber: 0,
+                valueEncoded: 'first page'
+            });
+            for (tmp = options.pageMin; tmp &lt; options.pageMax; tmp += 1) {
+                options.pageList.push({
+                    disabled: tmp === options.pageCurrent,
+                    pageNumber: tmp,
+                    valueEncoded: tmp + 1
+                });
+            }
+            // add last page
+            options.pageList.push({
+                disabled: options.pageCurrent === options.pageTotal - 1,
+                pageNumber: options.pageTotal - 1,
+                valueEncoded: 'last page'
+            });
+            options.pageCurrentIsFirst = options.pageCurrent === 0;
+            options.pageCurrentIsLast = options.pageCurrent + 1 === options.pageTotal;
+            // templateRender datatable
+            document.querySelector('.swggUiContainer .datatable').innerHTML =
+                local.templateRender(local.templateUiDatatable, options);
+            // init event-handling
+            local.uiEventInit(document.querySelector('.swggUiContainer .datatable'));
+            // show modal
+            if (document.querySelector('.swggUiContainer &gt; .modal').style.display !== 'none') {
+                return;
+            }
+            document.body.style.overflow = 'hidden';
+            local.uiAnimateFadeIn(document.querySelector('.swggUiContainer &gt; .modal'));
+        };
+&nbsp;
+        local.uiEventDelegate = function (event) {
+            Object.keys(local.uiEventListenerDict).sort().some(function (key) {
+                if (!(event.currentTarget.matches(key) || event.target.matches(key))) {
+                    return;
+                }
+                switch (event.target.tagName) {
+                case 'A':
+                case 'BUTTON':
+                case 'FORM':
+                    event.preventDefault();
+                    break;
+                }
+                event.stopPropagation();
+                local.uiEventListenerDict[key](event);
+                return true;
+            });
+        };
+&nbsp;
+        local.uiEventInit = function (element) {
+        /*
+         * this function will init event-handling for the dom-element
+         */
+            ['Click', 'Submit'].forEach(function (eventType) {
+                Array.from(
+                    element.querySelectorAll('.eventDelegate' + eventType)
+                ).forEach(function (element) {
+                    element.addEventListener(eventType.toLowerCase(), local.uiEventDelegate);
+                });
+            });
+        };
+&nbsp;
+        local.uiEventListenerDict['.onEventDatatableReload'] = function (event) {
+        /*
+         * this function will show the modal
+         */
+            var options;
+            options = {};
+            if (event) {
+                options.name = event.target.dataset.resourceName;
+                options.pageNumber = event.target.dataset.pageNumber;
+            } else {
+                options.name = local.uiState.datatable.name;
+                options.pageNumber = local.uiState.datatable.pageNumber;
+                options.queryLimit = local.uiState.datatable.queryLimit;
+                options.querySort = local.uiState.datatable.querySort;
+                options.queryWhere = local.uiState.datatable.queryWhere;
+            }
+            local.objectSetDefault(
+                options,
+                local.jsonCopy(local.uiState['x-swgg-datatableDict'][options.name])
+            );
+            options._idAlias = local.apiDict[options.crudRemoveOneById]._idAlias;
+            options._idField = local.apiDict[options.crudRemoveOneById]._idField;
+            local.objectSetDefault(options, { pageNumber: 0, queryLimit: 20 });
+            options.querySkip = options.pageNumber * options.queryLimit;
+            options.paramDict = {
+                _queryLimit: options.queryLimit,
+                _querySkip: options.querySkip,
+                _querySort: options.querySort,
+                _queryWhere: options.queryWhere
+            };
+            // request data
+            local.apiDict[options.crudGetManyByQuery]._ajax(options, function (error, options) {
+                // validate no error occurred
+                local.assert(!error, error);
+                local.uiDatatableRender(options);
+                // emit event uiDatatableRendered
+                document.dispatchEvent(new local.global.Event('uiDatatableRendered', {
+                    bubbles: true,
+                    cancelable: true
+                }));
+            });
+        };
+&nbsp;
+        local.uiEventListenerDict['.onEventDatatableSelectedRemove'] = function () {
+            var onParallel;
+            onParallel = local.onParallel(local.uiEventListenerDict['.onEventDatatableReload']);
+            onParallel.counter += 1;
+            Array.from(
+                document.querySelectorAll('.swggUiContainer .datatable tr.selected')
+            ).forEach(function (element) {
+                onParallel.counter += 1;
+                // remove data
+                local.apiDict[
+                    local.uiState.datatable.crudRemoveOneById
+                ]._ajax(local.objectLiteralize({
+                    paramDict: { '$[]': [
+                        local.uiState.datatable._idField,
+                        JSON.parse(decodeURIComponent(element.dataset.id))
+                    ] }
+                }), onParallel);
+            });
+            onParallel();
+        };
+&nbsp;
+        local.uiEventListenerDict['.onEventDatatableTrSelect'] = function (event) {
+            if (event.target.tagName !== 'INPUT') {
+                event.currentTarget.querySelector('input').checked =
+                    !event.currentTarget.querySelector('input').checked;
+            }
+            Array.from(
+                event.currentTarget.closest('tr').querySelectorAll('input')
+            ).forEach(function (element) {
+                element.checked = event.currentTarget.querySelector('input').checked;
+            });
+            if (event.currentTarget.querySelector('input').checked) {
+                event.currentTarget.closest('tr').classList.add('selected');
+            } else {
+                event.currentTarget.closest('tr').classList.remove('selected');
+            }
+        };
+&nbsp;
+        local.uiEventListenerDict['.onEventModalHide'] = function (event) {
+        /*
+         * this function will hide the modal
+         */
+            if (event &amp;&amp; !event.target.classList.contains('onEventModalHide')) {
+                return;
+            }
+            if (document.querySelector('.swggUiContainer &gt; .modal').style.display === 'none') {
+                return;
+            }
+            document.body.style.overflow = '';
+            // hide modeal
+            local.uiAnimateFadeOut(document.querySelector('.swggUiContainer &gt; .modal'));
+        };
+&nbsp;
+        local.uiEventListenerDict['.onEventOperationAjax'] = function (event) {
+        /*
+         * this function will return submit the operation to the backend
+         */
+            var options, tmp;
+            options = {};
+            local.onNext(options, function (error, data) {
+                switch (options.modeNext) {
+                case 1:
+                    options.api = local.apiDict[event.currentTarget.dataset._keyOperationId];
+                    options.domOperationContent = event.target.closest('.operation &gt; .content');
+                    options.headers = {};
+                    options.paramDict = {};
+                    options.api.parameters.forEach(function (paramDef) {
+                        local.tryCatchOnError(function () {
+                            tmp = options.domOperationContent.querySelector(
+                                '.paramDef[name=' + paramDef.name + '] &gt; .td3'
+                            ).children[0];
+                            switch (tmp.tagName) {
+                            case 'INPUT':
+                                // parse file
+                                if (tmp.type === 'file') {
+                                    tmp = tmp.files &amp;&amp; tmp.files[0];
+                                    break;
+                                }
+                                tmp = tmp.value;
+                                if (!tmp) {
+                                    return;
+                                }
+                                // parse string
+                                if (paramDef.type !== 'string') {
+                                    tmp = JSON.parse(tmp);
+                                }
+                                break;
+                            case 'SELECT':
+                                tmp = Array.from(tmp.options)
+                                    .filter(function (element) {
+                                        return element.selected;
+                                    })
+                                    .map(function (element) {
+                                        return JSON.parse(decodeURIComponent(
+                                            element.dataset.valueDecoded
+                                        ));
+                                    });
+                                if (!tmp.length || tmp[0] === '$swggUndefined') {
+                                    return;
+                                }
+                                if (paramDef.type !== 'array') {
+                                    tmp = tmp[0];
+                                }
+                                break;
+                            case 'TEXTAREA':
+                                tmp = tmp.value;
+                                if (!tmp) {
+                                    return;
+                                }
+                                // parse schema
+                                if (paramDef.in === 'body') {
+                                    tmp = JSON.parse(tmp);
+                                    break;
+                                }
+                                // parse array
+                                tmp = tmp.split('\n').map(function (element) {
+                                    return paramDef.items.type === 'string'
+                                        ? element
+                                        : JSON.parse(element);
+                                });
+                                break;
+                            }
+                            options.paramDict[paramDef.name] = tmp;
+                        }, function (error) {
+                            options.errorValidate = error;
+                            options.errorValidate.options = { key: paramDef.name };
+                            options.onNext(error);
+                        });
+                    });
+                    options.api._ajax(options, options.onNext);
+                    break;
+                default:
+                    // remove previous error
+                    Array.from(
+                        options.domOperationContent.querySelectorAll('.paramDef .input')
+                    ).forEach(function (element) {
+                        element.classList.remove('error');
+                    });
+                    if (options.errorValidate) {
+                        // shake input on Error
+                        Array.from(options.domOperationContent.querySelectorAll(
+                            '.paramDef[name=' + options.errorValidate.options.key + '] .input'
+                        )).forEach(function (element) {
+                            element.classList.add('error');
+                            local.uiAnimateShake(element.closest('span'));
+                        });
+                        data = {
+                            errorValidate: options.errorValidate,
+                            responseText: error.message,
+                            statusCode: 400
+                        };
+                    }
+                    // init responseHeaders
+                    data.responseHeaders = {};
+                    (
+                        (data.getAllResponseHeaders &amp;&amp; data.getAllResponseHeaders()) || ''
+                    ).replace(
+                        (/.+/g),
+                        function (item) {
+                            item = item.split(':');
+                            data.responseHeaders[item[0].trim().toLowerCase()] =
+                                item.slice(1).join(':').trim();
+                        }
+                    );
+                    // init contentType
+                    data.contentType =
+                        String(data.responseHeaders['content-type']).split(';')[0];
+                    // init responseBody
+                    switch (data.contentType.split('/')[0]) {
+                    case 'audio':
+                    case 'video':
+                        data.responseBody = '&lt;' + data.contentType.split('/')[0] +
+                            ' controls&gt;&lt;source src="data:' + data.contentType + ';base64,' +
+                            local.bufferToBase64(data.response) +
+                            '" type="' + data.contentType + '"&gt;&lt;/' +
+                            data.contentType.split('/')[0] + '&gt;';
+                        break;
+                    case 'image':
+                        data.responseBody = '&lt;img src="data:' + data.contentType + ';base64,' +
+                            local.bufferToBase64(data.response) + '"&gt;';
+                        break;
+                    default:
+                        data.responseBody = '&lt;pre&gt;' + local.stringHtmlSafe(
+                            data.responseJson
+                                ? JSON.stringify(data.responseJson, null, 4)
+                                : data.responseText
+                        ) + '&lt;/pre&gt;';
+                    }
+                    // init curl
+                    local.tryCatchOnError(function () {
+                        options.data = JSON.stringify(JSON.parse(options.data), null, 4);
+                    }, local.nop);
+                    data.curl = 'curl \\\n' +
+                        '--request ' + options.api._method.toUpperCase() + ' \\\n' +
+                        Object.keys(options.headers).map(function (key) {
+                            return "--header '" + key + ': ' + options.headers[key] + "' \\\n";
+                        }).join('') + '--data-binary ' + (typeof options.data === 'string'
+                            ? "'" + options.data.replace(/'/g, "'\"'\"'") + "'"
+                            : '&lt;blob&gt;') + ' \\\n"' + options.url + '"';
+                    data.responseHeaders = data.getAllResponseHeaders &amp;&amp;
+                        data.getAllResponseHeaders().trim();
+                    // templateRender response
+                    options.domOperationContent.querySelector(
+                        '.responseAjax'
+                    ).innerHTML = local.templateRender(local.templateUiResponseAjax, data);
+                    break;
+                }
+            });
+            options.modeNext = 0;
+            options.onNext();
+        };
+&nbsp;
+        local.uiEventListenerDict['.onEventOperationDisplayShow'] = function (event) {
+        /*
+         * this function will toggle the display of the operation
+         */
+            var tmp;
+            location.hash = '!/' + event.target.closest('.resource').id + '/' +
+                event.target.closest('.operation').id;
+            tmp = event.target.closest('.operation').querySelector('.operation &gt; .content');
+            tmp.closest('.resource').classList.remove('expanded');
+            // show the operation, but hide all other operations
+            local.uiAnimateSlideAccordian(
+                tmp,
+                Array.from(
+                    tmp.closest('.operationList').querySelectorAll('.operation &gt; .content')
+                )
+            );
+        };
+&nbsp;
+        local.uiEventListenerDict['.onEventResourceDisplayAction'] = function (event) {
+        /*
+         * this function will toggle the display of the resource
+         */
+            location.hash = '!/' + event.currentTarget.id;
+            event.target.className.split(' ').some(function (className) {
+                switch (className) {
+                // show the resource, but hide all other resources
+                case 'td1':
+                case 'td2':
+                case 'td3':
+                    local.uiAnimateSlideAccordian(
+                        event.currentTarget.querySelector('.operationList'),
+                        Array.from(document.querySelectorAll('.swggUiContainer .operationList'))
+                    );
+                    break;
+                }
+                switch (className) {
+                case 'td1':
+                case 'td2':
+                    return true;
+                case 'td3':
+                    // collapse all operations in the resource
+                    if (event.currentTarget.classList.contains('expanded')) {
+                        event.currentTarget.classList.remove('expanded');
+                        Array.from(
+                            event.currentTarget.querySelectorAll('.operation &gt; .content')
+                        ).forEach(function (element) {
+                            local.uiAnimateSlideUp(element);
+                        });
+                    // expand all operations in the resource
+                    } else {
+                        event.currentTarget.classList.add('expanded');
+                        Array.from(
+                            event.currentTarget.querySelectorAll('.operation &gt; .content')
+                        ).forEach(function (element) {
+                            local.uiAnimateSlideDown(element);
+                        });
+                    }
+                    return true;
+                }
+            });
+        };
+&nbsp;
+        local.uiEventListenerDict['.onEventUiReload'] = function () {
+        /*
+         * this function will reload the ui
+         */
+            // reset ui
+            Array.from(
+                document.querySelectorAll('.swggUiContainer &gt; .reset')
+            ).forEach(function (element) {
+                element.remove();
+            });
+            // normalize url
+            document.querySelector('.swggUiContainer &gt; .header &gt; .td2').value =
+                local.urlParse(
+                    document.querySelector('.swggUiContainer &gt; .header &gt; .td2').value
+                        .replace((/^\//), '')
+                ).href;
+            local.ajax({
+                url: document.querySelector('.swggUiContainer &gt; .header &gt; .td2').value
+            }, function (error, xhr) {
+                // validate no error occurred
+                local.assert(!error, error);
+                // reset state
+                local.apiDict = local.swaggerJson = null;
+                local.apiDictUpdate(JSON.parse(xhr.responseText));
+                local.uiRender();
+            });
+        };
+&nbsp;
+        local.uiParamRender = function (paramDef) {
+        /*
+         * this function will render the param
+         */
+            paramDef.placeholder = paramDef.required
+                ? '(required)'
+                : '';
+            // init input - file
+            if (paramDef.type === 'file') {
+                paramDef.isFile = true;
+            // init input - textarea
+            } else if (paramDef.in === 'body') {
+                paramDef.isTextarea = true;
+            // init input - select
+            } else if (paramDef.enum || paramDef.type === 'boolean') {
+                paramDef.enumDefault = [];
+                if (paramDef.default !== undefined) {
+                    paramDef.enumDefault = paramDef.type === 'array'
+                        ? paramDef.default
+                        : [paramDef.default];
+                }
+                paramDef.isSelect = true;
+                paramDef.isSelectMultiple = paramDef.type === 'array';
+                paramDef.selectOptionList = (paramDef.type === 'boolean'
+                    ? [false, true]
+                    : paramDef.enum).map(function (element) {
+                    paramDef.hasDefault |= paramDef.enumDefault.indexOf(element) &gt;= 0;
+                    return {
+                        id: local.idDomElementCreate('swgg_id_' + paramDef.name),
+                        selected: paramDef.enumDefault.indexOf(element) &gt;= 0
+                            ? 'selected'
+                            : '',
+                        type: (paramDef.items &amp;&amp; paramDef.items.type) || paramDef.type,
+                        valueDecoded: element,
+                        valueEncoded: typeof element === 'string'
+                            ? element
+                            : JSON.stringify(element)
+                    };
+                });
+                // init 'undefined' value
+                if (!(paramDef.hasDefault ||
+                        paramDef.isSelectMultiple ||
+                        paramDef.required)) {
+                    paramDef.selectOptionList.unshift({
+                        id: local.idDomElementCreate('swgg_id_' + paramDef.name),
+                        selected: 'selected',
+                        type: paramDef.type,
+                        valueDecoded: '$swggUndefined',
+                        valueEncoded: '&lt;none&gt;'
+                    });
+                }
+            // init input - textarea
+            } else if (paramDef.type === 'array') {
+                paramDef.isTextarea = true;
+                paramDef.placeholder = 'provide multiple values in new lines' +
+                    (paramDef.required
+                        ? ' (at least one required)'
+                        : '');
+            // init input - text
+            } else {
+                paramDef.isInputText = true;
+            }
+            // init format2 / type2
+            [
+                paramDef,
+                paramDef.schema
+            ].some(function (element) {
+                local.tryCatchOnError(function () {
+                    paramDef.format2 = paramDef.format2 || element.format;
+                }, local.nop);
+                local.tryCatchOnError(function () {
+                    paramDef.type2 = paramDef.type2 || element.type;
+                }, local.nop);
+                return paramDef.type2;
+            });
+            paramDef.type2 = paramDef.type2 || 'object';
+            // init schema2
+            [
+                paramDef.items,
+                paramDef.schema,
+                paramDef.schema &amp;&amp; paramDef.schema.items
+            ].some(function (element) {
+                local.tryCatchOnError(function () {
+                    paramDef.schema2 = paramDef.schema2 ||
+                        local.schemaNormalizeAndCopy(element).properties;
+                }, local.nop);
+                return paramDef.schema2;
+            });
+            if (paramDef.schema2) {
+                paramDef.schemaText = JSON.stringify(paramDef.type2 === 'array'
+                    ? [paramDef.schema2]
+                    : paramDef.schema2, null, 4);
+            }
+            // init valueEncoded
+            paramDef.valueEncoded = paramDef.default;
+            if (paramDef.valueEncoded === undefined) {
+                paramDef.valueEncoded = local.dbFieldRandomCreate({
+                    modeNotRandom: true,
+                    propDef: paramDef
+                });
+            }
+            // init valueEncoded for array
+            if (paramDef.valueEncoded &amp;&amp; paramDef.type2 === 'array' &amp;&amp; paramDef.in !== 'body') {
+                paramDef.valueEncoded = paramDef.valueEncoded.map(function (element) {
+                    return typeof element === 'string'
+                        ? element
+                        : JSON.stringify(element);
+                }).join('\n');
+            }
+            // init valueEncoded for schema
+            if (paramDef.in === 'body' &amp;&amp; paramDef.schema2) {
+                paramDef.valueEncoded = local.dbRowRandomCreate({
+                    modeNotRandom: true,
+                    override: function () {
+                        var override = {};
+                        // preserve default value
+                        Object.keys(paramDef.schema2).forEach(function (key) {
+                            if (paramDef.schema2[key].default !== undefined) {
+                                override[key] = paramDef.schema2[key].default;
+                            }
+                        });
+                        return override;
+                    },
+                    properties: paramDef.schema2
+                });
+                if (paramDef.type2 === 'array') {
+                    paramDef.valueEncoded = [paramDef.valueEncoded];
+                }
+                paramDef.valueEncoded = JSON.stringify(paramDef.valueEncoded, null, 4);
+            }
+            if (typeof paramDef.valueEncoded !== 'string') {
+                paramDef.valueEncoded = JSON.stringify(paramDef.valueEncoded) || '';
+            }
+            // templateRender paramDef
+            paramDef.uiFragment = local.domFragmentRender(
+                local.templateRender(local.templateUiParam, paramDef)
+            );
+        };
+&nbsp;
+        local.uiRender = function () {
+        /*
+         * this function will render swagger-ui
+         */
+            var resource, self;
+            // reset state
+            local.idDomElementDict = {};
+            self = local.uiState = local.jsonCopy(local.swaggerJson);
+            // init url
+            self.url = document.querySelector('.swggUiContainer &gt; .header &gt; .td2').value;
+            // templateRender main
+            self.uiFragment = local.domFragmentRender(local.templateUiMain, self);
+            local.objectSetDefault(self, {
+                resourceDict: {},
+                operationDict: {},
+                paramDefDict: {},
+                tagDict: {}
+            });
+            // init tagDict
+            self.tags.forEach(function (tag) {
+                self.tagDict[tag.name] = tag;
+            });
+            // init operationDict
+            Object.keys(local.apiDict).sort().forEach(function (operation) {
+                // init operation
+                operation = local.jsonCopy(local.apiDict[operation]);
+                if (!operation.tags[0] || self.operationDict[operation._keyOperationId]) {
+                    return;
+                }
+                self.operationDict[operation._keyOperationId] = operation;
+                // init resource
+                resource = self.resourceDict[operation.tags[0]];
+                if (!resource &amp;&amp; self.tagDict[operation.tags[0]]) {
+                    resource = self.resourceDict[operation.tags[0]] =
+                        self.tagDict[operation.tags[0]];
+                    local.objectSetDefault(resource, {
+                        description: 'no description available',
+                        id: local.idDomElementCreate('swgg_id_' + operation.tags[0]),
+                        name: operation.tags[0],
+                        operationListInnerHtml: ''
+                    });
+                }
+            });
+            // init resourceDict
+            Object.keys(self.resourceDict).sort().forEach(function (key) {
+                // templateRender resource
+                self.uiFragment.querySelector('.resourceList').appendChild(
+                    local.domFragmentRender(local.templateUiResource, self.resourceDict[key])
+                );
+            });
+            Object.keys(self.operationDict).sort(function (aa, bb) {
+                aa = self.operationDict[aa];
+                aa = aa._path + ' ' + aa._method;
+                bb = self.operationDict[bb];
+                bb = bb._path + ' ' + bb._method;
+                return aa &lt; bb
+                    ? -1
+                    : 1;
+            }).forEach(function (operation) {
+                operation = self.operationDict[operation];
+                operation.id = local.idDomElementCreate('swgg_id_' + operation.operationId);
+                resource = self.resourceDict[operation.tags[0]];
+                local.objectSetDefault(operation, {
+                    description: '',
+                    responseList: Object.keys(operation.responses).sort().map(function (key) {
+                        return { key: key, value: operation.responses[key] };
+                    }),
+                    summary: 'no summary available'
+                });
+                operation.parameters.forEach(function (element) {
+                    // init element.id
+                    element.id = local.idDomElementCreate('swgg_id_' + element.name);
+                    self.paramDefDict[element.id] = element;
+                });
+                // templateRender operation
+                self.uiFragment.querySelector(
+                    '#' + resource.id + ' .operationList'
+                ).appendChild(local.domFragmentRender(local.templateUiOperation, operation));
+            });
+            Object.keys(self.paramDefDict).forEach(function (paramDef) {
+                paramDef = self.paramDefDict[paramDef];
+                local.uiParamRender(paramDef);
+                self.uiFragment.querySelector('#' + paramDef.id).innerHTML = '';
+                self.uiFragment.querySelector('#' + paramDef.id)
+                    .appendChild(paramDef.uiFragment);
+            });
+            // overwrite swggUiContainer with uiFragment
+            document.querySelector('.swggUiContainer').innerHTML = '';
+            document.querySelector('.swggUiContainer').appendChild(self.uiFragment);
+            // render valueEncoded
+            Array.from(
+                document.querySelectorAll('.swggUiContainer [data-value-encoded]')
+            ).forEach(function (element) {
+                element.value = decodeURIComponent(element.dataset.valueEncoded);
+            });
+            // init event-handling
+            local.uiEventInit(document);
+            // scrollTo location.hash
+            local.uiScrollTo(location.hash);
+        };
+&nbsp;
+        local.uiScrollTo = function (locationHash) {
+        /*
+         * this function will scrollTo locationHash
+         */
+            var operation, resource;
+            // init resource
+            resource = locationHash.split('/')[1];
+            // list operations
+            resource = document.querySelector('.swggUiContainer #' + resource) ||
+                document.querySelector('.swggUiContainer .resource');
+            local.uiAnimateSlideDown(resource.querySelector('.operationList'));
+            // init operation
+            operation = locationHash.split('/')[2];
+            operation = resource.querySelector('#' + operation);
+            // expand operation and scroll to it
+            if (operation) {
+                local.uiAnimateSlideDown(operation.querySelector('.content'));
+                // scroll to operation
+                local.uiAnimateScrollTo(operation);
+            } else {
+                // scroll to resource
+                local.uiAnimateScrollTo(resource);
+            }
+        };
+    }());
+}());
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jan 25 2017 02:19:16 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>

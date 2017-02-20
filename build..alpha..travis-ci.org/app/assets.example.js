@@ -87,9 +87,6 @@
 
 
 
-
-
-
 /*
 example.js
 
@@ -1091,8 +1088,6 @@ border: 0;\n\
 .swggUiContainer .operation.PUT > .header > .td1 {\n\
     background: #70b;\n\
 }\n\
-/*csslint\n\
-*/\n\
 </style>\n\
 </head>\n\
 <body>\n\
@@ -1127,7 +1122,7 @@ border: 0;\n\
     <input class="onchange zeroPixel" type="file" id="dbImportInput1">\n\
     <div class="swggUiContainer">\n\
 <form2 class="header tr">\n\
-    <a class="td1" href="http://swagger.io" target="_blank">swagger</a>\n\
+    <a class="td1" href="https://github.com/kaizhu256/node-swgg" target="_blank">swgg</a>\n\
     <input\n\
         class="flex1 td2"\n\
         type="text"\n\
@@ -1136,6 +1131,7 @@ border: 0;\n\
     <button class="td3">Explore</button>\n\
 </form2>\n\
     </div>\n\
+    <div id="ajaxProgressDiv2" style="margin-top: 1rem; text-align: center;">fetching resource list; Please wait.</div>\n\
 \n\
     {{#if isRollup}}\n\
     <script src="assets.app.js"></script>\n\

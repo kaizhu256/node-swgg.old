@@ -8992,14 +8992,21 @@ shBuild() {(set -e\n\
     # cleanup github-gh-pages dir\n\
     # export BUILD_GITHUB_UPLOAD_PRE_SH="rm -fr build"\n\
     # init github-gh-pages commit-limit\n\
-    export COMMIT_LIMIT=16\n\
-    # if branch is alpha, beta, or master, then run default build\n\
-    if [ "$CI_BRANCH" = alpha ] ||\n\
-        [ "$CI_BRANCH" = beta ] ||\n\
-        [ "$CI_BRANCH" = master ]\n\
-    then\n\
+    export COMMIT_LIMIT=20\n\
+    case "$CI_BRANCH" in\n\
+    alpha)\n\
         shBuildCiDefault\n\
-    fi\n\
+        ;;\n\
+    beta)\n\
+        shBuildCiDefault\n\
+        ;;\n\
+    master)\n\
+        shBuildCiDefault\n\
+        ;;\n\
+    publish.alias)\n\
+        npm run-script publish-alias\n\
+        ;;\n\
+    esac\n\
 )}\n\
 \n\
 shBuildCiTestPost() {(set -e\n\

@@ -8766,6 +8766,7 @@ instruction\n\
 \n\
 \n\
 \n\
+/* istanbul instrument in package jslint */\n\
 /*jslint\n\
     bitwise: true,\n\
     browser: true,\n\
@@ -8815,6 +8816,39 @@ instruction\n\
 \n\
 \n\
 \n\
+    // post-init\n\
+    /* istanbul ignore next */\n\
+    // run browser js-env code - post-init\n\
+    case \'browser\':\n\
+        // log stderr and stdout to #outputTextareaStdout\n\
+        [\'error\', \'log\'].forEach(function (key) {\n\
+            console[\'_\' + key] = console[key];\n\
+            console[key] = function () {\n\
+                console[\'_\' + key].apply(console, arguments);\n\
+                (document.querySelector(\'#outputTextareaStdout\') || { value: \'\' }).value +=\n\
+                    Array.from(arguments).map(function (arg) {\n\
+                        return typeof arg === \'string\'\n\
+                            ? arg\n\
+                            : JSON.stringify(arg, null, 4);\n\
+                    }).join(\' \') + \'\\n\';\n\
+            };\n\
+        });\n\
+        // init event-handling\n\
+        [\'change\', \'click\', \'keyup\'].forEach(function (event) {\n\
+            Array.from(document.querySelectorAll(\'.on\' + event)).forEach(function (element) {\n\
+                element.addEventListener(event, local.testRunBrowser);\n\
+            });\n\
+        });\n\
+        // run tests\n\
+        local.testRunBrowser = function (event) {\n\
+            return event;\n\
+        };\n\
+        local.testRunBrowser();\n\
+        break;\n\
+\n\
+\n\
+\n\
+    /* istanbul ignore next */\n\
     // run node js-env code - post-init\n\
     case \'node\':\n\
         // export local\n\
@@ -10822,6 +10856,10 @@ return Utf8ArrayToStr(bff);
                     options.packageJson.name
                 );
                 template = template.replace(
+                    '/* istanbul instrument in package jslint */',
+                    '/* istanbul instrument in package ' + options.packageJson.nameAlias + ' */'
+                );
+                template = template.replace(
                     (/h1-jslint/g),
                     'h1-' + options.packageJson.nameAlias.replace((/_/g), '-')
                 );
@@ -10882,16 +10920,16 @@ return Utf8ArrayToStr(bff);
                 // customize quickstart-header
                 (/\n```javascript\n\/\*\nexample\.js\n\n[^`]*?\n/),
                 (/\n {8}\$ npm install [^`]*? &&/),
-                (/\n\n\n\n[^`]*?^\/\*jslint\n/m),
-                (/\n {12}: global;\n[^`]*?\n {8}local.global.local = local;\n/),
-                new RegExp('\\n {8}local.global.local = local;\\n[^`]*?' +
-                    '\\n {4}\\/\\/ run node js-env code - post-init\\n'),
+                (/\n {12}: global;\n[^`]*?\n {8}local\.global\.local = local;\n/),
+                (/\n {8}local\.global\.local = local;\n[^`]*?\n {4}\/\/ post-init\n/),
+                (/\n {8}local\.testRunBrowser = function \(event\) \{\n[^`]*?\n {8}\};\n/),
+                (/\n {8}local\.testRunBrowser\(\);\n[^`]*?^ {8}break;\n/m),
                 // customize quickstart-html-style
                 (/\n<\/style>\\n\\\n<style>\\n\\\n[^`]*?\\n\\\n<\/style>\\n\\\n/),
                 // customize quickstart-html-body
                 (/\nutility2-comment -->\\n\\\n\\n\\\n[^`]*?^<!-- utility2-comment\\n\\\n/m),
                 // customize build-script
-                (/\n# internal build-script\n[\S\s]*?^- build.sh\n/m)
+                (/\n# internal build-script\n[\S\s]*?^- build\.sh\n/m)
             ].forEach(function (rgx) {
                 options.readmeFrom.replace(rgx, function (match0) {
                     options.readmeTo = options.readmeTo.replace(rgx, match0);

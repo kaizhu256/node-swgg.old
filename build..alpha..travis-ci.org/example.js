@@ -596,10 +596,31 @@ instruction
 
 
 
+    // post-init
+    /* istanbul ignore next */
     // run browser js-env code - post-init
     case 'browser':
-        /* istanbul ignore next */
-        local.testRun = function (event) {
+        // log stderr and stdout to #outputTextareaStdout
+        ['error', 'log'].forEach(function (key) {
+            console['_' + key] = console[key];
+            console[key] = function () {
+                console['_' + key].apply(console, arguments);
+                (document.querySelector('#outputTextareaStdout') || { value: '' }).value +=
+                    Array.from(arguments).map(function (arg) {
+                        return typeof arg === 'string'
+                            ? arg
+                            : JSON.stringify(arg, null, 4);
+                    }).join(' ') + '\n';
+            };
+        });
+        // init event-handling
+        ['change', 'click', 'keyup'].forEach(function (event) {
+            Array.from(document.querySelectorAll('.on' + event)).forEach(function (element) {
+                element.addEventListener(event, local.testRunBrowser);
+            });
+        });
+        // run tests
+        local.testRunBrowser = function (event) {
             var reader, tmp;
             switch (event && event.currentTarget.id) {
             case 'dbExportButton1':
@@ -644,15 +665,9 @@ instruction
                 break;
             }
         };
-        // init event-handling
-        ['change', 'click'].forEach(function (event) {
-            Array.from(document.querySelectorAll('.on' + event)).forEach(function (element) {
-                element.addEventListener(event, local.testRun);
-            });
-        });
+        local.testRunBrowser();
         // init ui
         local.swgg.uiEventListenerDict['.onEventUiReload']();
-        // run tests
         local.runIfTrue(local.modeTest, function () {
             document.querySelector('#testRunButton1').innerText = 'hide internal test';
         });

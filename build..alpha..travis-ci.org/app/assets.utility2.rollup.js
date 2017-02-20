@@ -8962,8 +8962,10 @@ local.assetsDict['/assets.index.template.html'].replace((/\n/g), '\\n\\\n') +
     },\n\
     "scripts": {\n\
         "build-ci": "utility2 shRun shReadmeBuild",\n\
+        "env": "env",\n\
         "heroku-postbuild": "npm install \'kaizhu256/node-utility2#alpha\' && utility2 shRun shDeployHeroku",\n\
         "postinstall": "if [ -f lib.jslint.npm-scripts.sh ]; then ./lib.jslint.npm-scripts.sh postinstall; fi",\n\
+        "publish-alias": "VERSION=$(npm info $npm_package_name version); for ALIAS in undefined; do utility2 shRun shNpmPublish $ALIAS $VERSION; utility2 shRun shNpmTestPublished $ALIAS || exit $?; done",\n\
         "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",\n\
         "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"\n\
     },\n\
@@ -9002,9 +9004,6 @@ shBuild() {(set -e\n\
         ;;\n\
     master)\n\
         shBuildCiDefault\n\
-        ;;\n\
-    publish.alias)\n\
-        npm run-script publish-alias\n\
         ;;\n\
     esac\n\
 )}\n\
@@ -10888,17 +10887,14 @@ return Utf8ArrayToStr(bff);
                 options.packageJson = JSON.parse(match1);
                 options.packageJson.description = options.readmeFrom.split('\n')[2];
                 local.objectSetDefault(options.packageJson, {
-                    nameAlias: options.packageJson.name
+                    nameAlias: options.packageJson.name,
+                    nameOriginal: options.packageJson.name
                 });
                 options.githubRepo = options.packageJson.repository.url.split('/').slice(-2);
                 options.githubRepo[1] = options.githubRepo[1].replace((/\.git$/), '');
-                local.objectSetDefault(
-                    options.packageJson,
-                    JSON.parse(templateRender(
-                        options.rgx.exec(local.assetsDict['/assets.readme.template.md'])[1]
-                    )),
-                    2
-                );
+                local.objectSetDefault(options.packageJson, JSON.parse(templateRender(
+                    options.rgx.exec(local.assetsDict['/assets.readme.template.md'])[1]
+                )), 2);
                 // avoid npm-installing self
                 delete options.packageJson.devDependencies[options.packageJson.name];
                 // save package.json

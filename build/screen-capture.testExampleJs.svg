@@ -2,7 +2,7 @@
 <rect height="2350" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
-<tspan x="10" y="42">[MODE_BUILD=testExampleJs] - 2017-02-20T18:51:15Z - testing example.js</tspan>
+<tspan x="10" y="42">[MODE_BUILD=testExampleJs] - 2017-02-20T18:54:53Z - testing example.js</tspan>
 <tspan x="10" y="58"></tspan>
 <tspan x="10" y="74">npm install swgg &amp;&amp; PORT=8081 node example.js</tspan>
 <tspan x="10" y="90"></tspan>
@@ -21,25 +21,25 @@
 <tspan x="10" y="298">server listening on http-port 8081</tspan>
 <tspan x="10" y="314">db loaded from tmp/storage.undefined</tspan>
 <tspan x="10" y="330"></tspan>
-<tspan x="10" y="346">[MODE_BUILD=testExampleJs] - 2017-02-20T18:51:30Z - electron.screenCapture - http://127.0.0.1:80\</tspan>
+<tspan x="10" y="346">[MODE_BUILD=testExampleJs] - 2017-02-20T18:55:09Z - electron.screenCapture - http://127.0.0.1:80\</tspan>
 <tspan x="10" y="362">81</tspan>
 <tspan x="10" y="378"></tspan>
 <tspan x="10" y="394"></tspan>
 <tspan x="10" y="410">browserTest - created electron entry-page /home/travis/build/kaizhu256/node-swgg/tmp/electron.15\</tspan>
-<tspan x="10" y="426">a5cdd4ba50.79170e220f3ff.html</tspan>
+<tspan x="10" y="426">a5ce0a0e90.130bb042d1bb5.html</tspan>
 <tspan x="10" y="442"></tspan>
-<tspan x="10" y="458">[2185:0220/185131:ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox! See https:/\</tspan>
+<tspan x="10" y="458">[2186:0220/185509:ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox! See https:/\</tspan>
 <tspan x="10" y="474">/chromium.googlesource.com/chromium/src/+/master/docs/linux_suid_sandbox_development.md for more\</tspan>
 <tspan x="10" y="490"> information on developing with the sandbox on.</tspan>
 <tspan x="10" y="506">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="522">[2185:0220/185131:WARNING:host_discardable_shared_memory_manager.cc(132)] Less than 64MB of free\</tspan>
+<tspan x="10" y="522">[2186:0220/185510:WARNING:host_discardable_shared_memory_manager.cc(132)] Less than 64MB of free\</tspan>
 <tspan x="10" y="538"> space in temporary directory for shared memory files: 53</tspan>
-<tspan x="10" y="554">[2185:0220/185131:ERROR:bus.cc(432)] Failed to connect to the bus: Failed to connect to socket /\</tspan>
+<tspan x="10" y="554">[2186:0220/185510:ERROR:bus.cc(432)] Failed to connect to the bus: Failed to connect to socket /\</tspan>
 <tspan x="10" y="570">var/run/dbus/system_bus_socket: Connection refused</tspan>
 <tspan x="10" y="586">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="602">[2185:0220/185131:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="618">[2185:0220/185131:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="634">[2258:0220/185131:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="602">[2186:0220/185510:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="618">[2186:0220/185510:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="634">[2258:0220/185510:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
 <tspan x="10" y="650">in process gpu-process. </tspan>
 <tspan x="10" y="666">404 GET /assets.swgg.js</tspan>
 <tspan x="10" y="682">Error: 404 Not Found</tspan>
@@ -53,7 +53,7 @@
 <tspan x="10" y="810">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11939:21</tspan>
 <tspan x="10" y="826">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11906:17</tspan>
 <tspan x="10" y="842">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
-<tspan x="10" y="858">[2185:0220/185131:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="858">[2186:0220/185510:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
 <tspan x="10" y="874"></tspan>
 <tspan x="10" y="890">browserTest - opened url http://127.0.0.1:8081</tspan>
 <tspan x="10" y="906"></tspan>
@@ -69,21 +69,21 @@
 <tspan x="10" y="1066">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11939:21</tspan>
 <tspan x="10" y="1082">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11906:17</tspan>
 <tspan x="10" y="1098">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
-<tspan x="10" y="1114">[2185:0220/185132:WARNING:backend_impl.cc(1803)] Destroying invalid entry.</tspan>
-<tspan x="10" y="1130">[2185:0220/185132:WARNING:backend_impl.cc(1564)] Messed up entry found.</tspan>
-<tspan x="10" y="1146">[2185:0220/185132:ERROR:backend_impl.cc(1032)] Critical error found -8</tspan>
-<tspan x="10" y="1162">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1178">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1194">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1210">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1226">[2185:0220/185132:ERROR:entry_impl.cc(1035)] No file for a1010014</tspan>
-<tspan x="10" y="1242">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1258">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1274">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1290">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1306">[2185:0220/185132:ERROR:entry_impl.cc(1035)] No file for a1010011</tspan>
-<tspan x="10" y="1322">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1338">[2185:0220/185132:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1114">[2186:0220/185510:WARNING:backend_impl.cc(1803)] Destroying invalid entry.</tspan>
+<tspan x="10" y="1130">[2186:0220/185510:WARNING:backend_impl.cc(1564)] Messed up entry found.</tspan>
+<tspan x="10" y="1146">[2186:0220/185510:ERROR:backend_impl.cc(1032)] Critical error found -8</tspan>
+<tspan x="10" y="1162">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1178">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1194">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1210">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1226">[2186:0220/185510:ERROR:entry_impl.cc(1035)] No file for a1010014</tspan>
+<tspan x="10" y="1242">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1258">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1274">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1290">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1306">[2186:0220/185510:ERROR:entry_impl.cc(1035)] No file for a1010011</tspan>
+<tspan x="10" y="1322">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1338">[2186:0220/185510:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
 <tspan x="10" y="1354">404 GET /assets.swgg.js</tspan>
 <tspan x="10" y="1370">Error: 404 Not Found</tspan>
 <tspan x="10" y="1386">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
@@ -108,36 +108,36 @@
 <tspan x="10" y="1690">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11939:21</tspan>
 <tspan x="10" y="1706">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11906:17</tspan>
 <tspan x="10" y="1722">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
-<tspan x="10" y="1738">[2185:0220/185132:INFO:CONSOLE(199)] "server listening on http-port undefined", source: file:///\</tspan>
-<tspan x="10" y="1754">home/travis/build/kaizhu256/node-swgg/tmp/electron.15a5cdd4ba50.79170e220f3ff.html (199)</tspan>
-<tspan x="10" y="1770">[2185:0220/185133:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
+<tspan x="10" y="1738">[2186:0220/185510:INFO:CONSOLE(199)] "server listening on http-port undefined", source: file:///\</tspan>
+<tspan x="10" y="1754">home/travis/build/kaizhu256/node-swgg/tmp/electron.15a5ce0a0e90.130bb042d1bb5.html (199)</tspan>
+<tspan x="10" y="1770">[2186:0220/185511:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
 <tspan x="10" y="1786">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
 <tspan x="10" y="1802">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
 <tspan x="10" y="1818">thodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="1834">[2185:0220/185133:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
+<tspan x="10" y="1834">[2186:0220/185511:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
 <tspan x="10" y="1850">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
 <tspan x="10" y="1866">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="1882">[2185:0220/185133:INFO:CONSOLE(199)] "[object Event]", source: file:///home/travis/build/kaizhu2\</tspan>
-<tspan x="10" y="1898">56/node-swgg/tmp/electron.15a5cdd4ba50.79170e220f3ff.html (199)</tspan>
-<tspan x="10" y="1914">[2185:0220/185134:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
+<tspan x="10" y="1882">[2186:0220/185511:INFO:CONSOLE(199)] "[object Event]", source: file:///home/travis/build/kaizhu2\</tspan>
+<tspan x="10" y="1898">56/node-swgg/tmp/electron.15a5ce0a0e90.130bb042d1bb5.html (199)</tspan>
+<tspan x="10" y="1914">[2186:0220/185512:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
 <tspan x="10" y="1930">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
 <tspan x="10" y="1946">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
 <tspan x="10" y="1962">thodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="1978">[2185:0220/185134:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
+<tspan x="10" y="1978">[2186:0220/185512:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
 <tspan x="10" y="1994">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
 <tspan x="10" y="2010">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="2026">[2185:0220/185135:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
+<tspan x="10" y="2026">[2186:0220/185513:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
 <tspan x="10" y="2042">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
 <tspan x="10" y="2058">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
 <tspan x="10" y="2074">thodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="2090">[2185:0220/185135:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
+<tspan x="10" y="2090">[2186:0220/185513:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
 <tspan x="10" y="2106">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
 <tspan x="10" y="2122">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="2138">[2185:0220/185136:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
+<tspan x="10" y="2138">[2186:0220/185514:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
 <tspan x="10" y="2154">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
 <tspan x="10" y="2170">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
 <tspan x="10" y="2186">thodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="2202">[2185:0220/185136:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
+<tspan x="10" y="2202">[2186:0220/185514:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
 <tspan x="10" y="2218">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
 <tspan x="10" y="2234">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
 <tspan x="10" y="2250"></tspan>

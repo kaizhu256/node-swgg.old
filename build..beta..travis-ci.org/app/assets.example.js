@@ -596,12 +596,13 @@ instruction
 
 
 
+    // post-init
+    /* istanbul ignore next */
     // run browser js-env code - post-init
     case 'browser':
-        /* istanbul ignore next */
-        local.testRun = function (event) {
+        local.testRunBrowser = function (event) {
             var reader, tmp;
-            switch (event && event.currentTarget.id) {
+            switch (event.currentTarget.id) {
             case 'dbExportButton1':
                 tmp = window.URL.createObjectURL(new window.Blob([local.db.dbExport()]));
                 document.querySelector('#dbExportA1').href = tmp;
@@ -629,6 +630,13 @@ instruction
             case 'dbResetButton1':
                 local.dbReset();
                 break;
+            case 'default':
+                // init ui
+                local.swgg.uiEventListenerDict['.onEventUiReload']();
+                local.runIfTrue(local.modeTest, function () {
+                    document.querySelector('#testRunButton1').innerText = 'hide internal test';
+                });
+                break;
             case 'testRunButton1':
                 // show tests
                 if (document.querySelector('#testReportDiv1').style.display === 'none') {
@@ -644,18 +652,27 @@ instruction
                 break;
             }
         };
+        // log stderr and stdout to #outputTextareaStdout1
+        ['error', 'log'].forEach(function (key) {
+            console['_' + key] = console[key];
+            console[key] = function () {
+                console['_' + key].apply(console, arguments);
+                (document.querySelector('#outputTextareaStdout1') || { value: '' }).value +=
+                    Array.from(arguments).map(function (arg) {
+                        return typeof arg === 'string'
+                            ? arg
+                            : JSON.stringify(arg, null, 4);
+                    }).join(' ') + '\n';
+            };
+        });
         // init event-handling
-        ['change', 'click'].forEach(function (event) {
+        ['change', 'click', 'keyup'].forEach(function (event) {
             Array.from(document.querySelectorAll('.on' + event)).forEach(function (element) {
-                element.addEventListener(event, local.testRun);
+                element.addEventListener(event, local.testRunBrowser);
             });
         });
-        // init ui
-        local.swgg.uiEventListenerDict['.onEventUiReload']();
         // run tests
-        local.runIfTrue(local.modeTest, function () {
-            document.querySelector('#testRunButton1').innerText = 'hide internal test';
-        });
+        local.testRunBrowser({ currentTarget: { id: 'default' } });
         break;
 
 

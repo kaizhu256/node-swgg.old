@@ -91,7 +91,7 @@ instruction
 
 
 
-/* !istanbul instrument in package db-lite */
+/* istanbul instrument in package db */
 /*jslint
     bitwise: true,
     browser: true,
@@ -2088,7 +2088,7 @@ instruction
 
 /* script-begin /assets.utility2.lib.istanbul.js */
 ///usr/bin/env node
-/* !istanbul instrument in package istanbul-lite */
+/* istanbul instrument in package istanbul */
 /*jslint
     bitwise: true,
     browser: true,
@@ -2282,18 +2282,9 @@ instruction
             }
             if (local.modeJs === 'node' && process.env.npm_package_homepage) {
                 file = file
-                    .replace(
-                        '{{env.npm_package_homepage}}',
-                        process.env.npm_package_homepage
-                    )
-                    .replace(
-                        '{{env.npm_package_name}}',
-                        process.env.npm_package_name
-                    )
-                    .replace(
-                        '{{env.npm_package_version}}',
-                        process.env.npm_package_version
-                    );
+                    .replace('{{env.npm_package_homepage}}', process.env.npm_package_homepage)
+                    .replace('{{env.npm_package_nameAlias}}', process.env.npm_package_nameAlias)
+                    .replace('{{env.npm_package_version}}', process.env.npm_package_version);
             } else {
                 file = file.replace((/<h1 [\S\s]*<\/h1>/), '<h1>&nbsp;</h1>');
             }
@@ -2308,14 +2299,14 @@ instruction
         local.instrumentInPackage = function (code, file) {
         /*
          * this function will instrument the code
-         * only if the macro /\* istanbul instrument in package $npm_package_name *\/
+         * only if the macro /\* istanbul instrument in package $npm_package_nameAlias *\/
          * exists in the code
          */
             return process.env.npm_config_mode_coverage &&
                 code.indexOf('/* istanbul ignore all */\n') < 0 && (
                     process.env.npm_config_mode_coverage === 'all' ||
                     code.indexOf('/* istanbul instrument in package ' +
-                            process.env.npm_package_name + ' */\n') >= 0 ||
+                            process.env.npm_package_nameAlias + ' */\n') >= 0 ||
                     code.indexOf('/* istanbul instrument in package ' +
                             process.env.npm_config_mode_coverage + ' */\n') >= 0
                 )
@@ -4251,7 +4242,7 @@ local['head.txt'] = '\
 <body>\n\
 <div class="header {{reportClass}}">\n\
     <h1 style="font-weight: bold;">\n\
-        <a href="{{env.npm_package_homepage}}">{{env.npm_package_name}} v{{env.npm_package_version}}</a>\n\
+        <a href="{{env.npm_package_homepage}}">{{env.npm_package_nameAlias}} v{{env.npm_package_version}}</a>\n\
     </h1>\n\
     <h1>Code coverage report for <span class="entity">{{entity}}</span></h1>\n\
     <h2>\n\
@@ -4554,13 +4545,14 @@ local.templateCoverageBadgeSvg =
             // transparently adds coverage information to a node command
             case 'cover':
                 try {
-                    process.env.npm_package_name = process.env.npm_package_name || JSON.parse(
-                        local._fs.readFileSync('package.json', 'utf8')
-                    ).name;
+                    process.env.npm_package_nameAlias = process.env.npm_package_nameAlias ||
+                        JSON.parse(local._fs.readFileSync('package.json', 'utf8')).nameAlias ||
+                        JSON.parse(local._fs.readFileSync('package.json', 'utf8')).name;
                 } catch (ignore) {
                 }
                 process.env.npm_config_mode_coverage = process.env.npm_config_mode_coverage ||
-                    process.env.npm_package_name || 'all';
+                    process.env.npm_package_nameAlias ||
+                    'all';
                 // add coverage hook to require
                 local._moduleExtensionsJs = local.module._extensions['.js'];
                 local.module._extensions['.js'] = function (module, file) {
@@ -4687,7 +4679,7 @@ local.templateCoverageBadgeSvg =
 
 /* script-begin /assets.utility2.lib.jslint.js */
 ///usr/bin/env node
-/* !istanbul instrument in package jslint-lite */
+/* istanbul instrument in package jslint */
 /*jslint
     bitwise: true,
     browser: true,
@@ -7728,7 +7720,7 @@ sjcl.misc.scrypt.blockxor = function(S, Si, D, Di, len) {
 
 /* script-begin /assets.utility2.lib.uglifyjs.js */
 ///usr/bin/env node
-/* !istanbul instrument in package uglifyjs-lite */
+/* istanbul instrument in package uglifyjs */
 /*jslint
     bitwise: true,
     browser: true,
@@ -8790,6 +8782,7 @@ instruction\n\
 \n\
 \n\
 \n\
+/* istanbul instrument in package jslint */\n\
 /*jslint\n\
     bitwise: true,\n\
     browser: true,\n\
@@ -8839,6 +8832,39 @@ instruction\n\
 \n\
 \n\
 \n\
+    // post-init\n\
+    /* istanbul ignore next */\n\
+    // run browser js-env code - post-init\n\
+    case \'browser\':\n\
+        local.testRunBrowser = function (event) {\n\
+            return event;\n\
+        };\n\
+        // log stderr and stdout to #outputTextareaStdout1\n\
+        [\'error\', \'log\'].forEach(function (key) {\n\
+            console[\'_\' + key] = console[key];\n\
+            console[key] = function () {\n\
+                console[\'_\' + key].apply(console, arguments);\n\
+                (document.querySelector(\'#outputTextareaStdout1\') || { value: \'\' }).value +=\n\
+                    Array.from(arguments).map(function (arg) {\n\
+                        return typeof arg === \'string\'\n\
+                            ? arg\n\
+                            : JSON.stringify(arg, null, 4);\n\
+                    }).join(\' \') + \'\\n\';\n\
+            };\n\
+        });\n\
+        // init event-handling\n\
+        [\'change\', \'click\', \'keyup\'].forEach(function (event) {\n\
+            Array.from(document.querySelectorAll(\'.on\' + event)).forEach(function (element) {\n\
+                element.addEventListener(event, local.testRunBrowser);\n\
+            });\n\
+        });\n\
+        // run tests\n\
+        local.testRunBrowser({ currentTarget: { id: \'default\' } });\n\
+        break;\n\
+\n\
+\n\
+\n\
+    /* istanbul ignore next */\n\
     // run node js-env code - post-init\n\
     case \'node\':\n\
         // export local\n\
@@ -8952,8 +8978,10 @@ local.assetsDict['/assets.index.template.html'].replace((/\n/g), '\\n\\\n') +
     },\n\
     "scripts": {\n\
         "build-ci": "utility2 shRun shReadmeBuild",\n\
+        "env": "env",\n\
         "heroku-postbuild": "npm install \'kaizhu256/node-utility2#alpha\' && utility2 shRun shDeployHeroku",\n\
         "postinstall": "if [ -f lib.jslint.npm-scripts.sh ]; then ./lib.jslint.npm-scripts.sh postinstall; fi",\n\
+        "publish-alias": "VERSION=$(npm info $npm_package_name version); for ALIAS in undefined; do utility2 shRun shNpmPublish $ALIAS $VERSION; utility2 shRun shNpmTestPublished $ALIAS || exit $?; done",\n\
         "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",\n\
         "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"\n\
     },\n\
@@ -8982,14 +9010,18 @@ shBuild() {(set -e\n\
     # cleanup github-gh-pages dir\n\
     # export BUILD_GITHUB_UPLOAD_PRE_SH="rm -fr build"\n\
     # init github-gh-pages commit-limit\n\
-    export COMMIT_LIMIT=16\n\
-    # if branch is alpha, beta, or master, then run default build\n\
-    if [ "$CI_BRANCH" = alpha ] ||\n\
-        [ "$CI_BRANCH" = beta ] ||\n\
-        [ "$CI_BRANCH" = master ]\n\
-    then\n\
+    export COMMIT_LIMIT=20\n\
+    case "$CI_BRANCH" in\n\
+    alpha)\n\
         shBuildCiDefault\n\
-    fi\n\
+        ;;\n\
+    beta)\n\
+        shBuildCiDefault\n\
+        ;;\n\
+    master)\n\
+        shBuildCiDefault\n\
+        ;;\n\
+    esac\n\
 )}\n\
 \n\
 shBuildCiTestPost() {(set -e\n\
@@ -10846,6 +10878,10 @@ return Utf8ArrayToStr(bff);
                     options.packageJson.name
                 );
                 template = template.replace(
+                    '/* istanbul instrument in package jslint */',
+                    '/* istanbul instrument in package ' + options.packageJson.nameAlias + ' */'
+                );
+                template = template.replace(
                     (/h1-jslint/g),
                     'h1-' + options.packageJson.nameAlias.replace((/_/g), '-')
                 );
@@ -10867,17 +10903,14 @@ return Utf8ArrayToStr(bff);
                 options.packageJson = JSON.parse(match1);
                 options.packageJson.description = options.readmeFrom.split('\n')[2];
                 local.objectSetDefault(options.packageJson, {
-                    nameAlias: options.packageJson.name
+                    nameAlias: options.packageJson.name,
+                    nameOriginal: options.packageJson.name
                 });
                 options.githubRepo = options.packageJson.repository.url.split('/').slice(-2);
                 options.githubRepo[1] = options.githubRepo[1].replace((/\.git$/), '');
-                local.objectSetDefault(
-                    options.packageJson,
-                    JSON.parse(templateRender(
-                        options.rgx.exec(local.assetsDict['/assets.readme.template.md'])[1]
-                    )),
-                    2
-                );
+                local.objectSetDefault(options.packageJson, JSON.parse(templateRender(
+                    options.rgx.exec(local.assetsDict['/assets.readme.template.md'])[1]
+                )), 2);
                 // avoid npm-installing self
                 delete options.packageJson.devDependencies[options.packageJson.name];
                 // save package.json
@@ -10906,16 +10939,15 @@ return Utf8ArrayToStr(bff);
                 // customize quickstart-header
                 (/\n```javascript\n\/\*\nexample\.js\n\n[^`]*?\n/),
                 (/\n {8}\$ npm install [^`]*? &&/),
-                (/\n\n\n\n[^`]*?^\/\*jslint\n/m),
-                (/\n {12}: global;\n[^`]*?\n {8}local.global.local = local;\n/),
-                new RegExp('\\n {8}local.global.local = local;\\n[^`]*?' +
-                    '\\n {4}\\/\\/ run node js-env code - post-init\\n'),
+                (/\n {12}: global;\n[^`]*?\n {8}local\.global\.local = local;\n/),
+                (/\n {8}local\.global\.local = local;\n[^`]*?\n {4}\/\/ post-init\n/),
+                (/\n {8}local\.testRunBrowser = function \(event\) \{\n[^`]*?\n {8}\};\n/),
                 // customize quickstart-html-style
                 (/\n<\/style>\\n\\\n<style>\\n\\\n[^`]*?\\n\\\n<\/style>\\n\\\n/),
                 // customize quickstart-html-body
                 (/\nutility2-comment -->\\n\\\n\\n\\\n[^`]*?^<!-- utility2-comment\\n\\\n/m),
                 // customize build-script
-                (/\n# internal build-script\n[\S\s]*?^- build.sh\n/m)
+                (/\n# internal build-script\n[\S\s]*?^- build\.sh\n/m)
             ].forEach(function (rgx) {
                 options.readmeFrom.replace(rgx, function (match0) {
                     options.readmeTo = options.readmeTo.replace(rgx, match0);
@@ -12298,6 +12330,10 @@ vendor\\)\\(\\b\\|[_s]\\)\
                     "require('" + local.env.npm_package_name + "')",
                     'global.utility2_moduleExports'
                 )
+                .replace(
+                    "require('" + local.env.npm_package_nameOriginal + "')",
+                    'global.utility2_moduleExports'
+                )
                 // uncomment utility2-comment
                 .replace((/<!-- utility2-comment\b([\S\s]+?)\butility2-comment -->/g), '$1');
             // jslint script
@@ -12313,6 +12349,7 @@ vendor\\)\\(\\b\\|[_s]\\)\
             module.exports[local.env.npm_package_nameAlias] = global.utility2_moduleExports;
             // init assets
             local.objectSetOverride(local.assetsDict, module.exports.assetsDict);
+            module.exports.assetsDict = local.assetsDict;
             local.assetsDict['/assets.' + local.env.npm_package_nameAlias + '.js'] =
                 local.istanbulInstrumentInPackage(
                     local.fs.readFileSync(fileMain, 'utf8').replace((/^#!/), '//'),
@@ -13611,9 +13648,7 @@ instruction\n\
             'lib.swgg.js',
             'lib.uglifyjs.js',
             'lib.utility2.js',
-            'lib.utility2.sh',
-            '/assets.apiDoc.template.html',
-            '/assets.testReport.template.html'
+            'lib.utility2.sh'
         ].forEach(function (key) {
             switch (key) {
             case 'lib.db.js':
@@ -13621,68 +13656,58 @@ instruction\n\
             case 'lib.istanbul.js':
             case 'lib.jslint.js':
             case 'lib.sjcl.js':
-            case 'lib.swgg.js':
             case 'lib.uglifyjs.js':
-                local.assetsDict['/assets.utility2.' + key] = local.istanbulInstrumentInPackage(
+                local.assetsDict['/assets.utility2.' + key] =
                     local.tryCatchReadFile(__dirname + '/' + key, 'utf8')
-                        .replace((/^#!/), '//')
-                        .replace(
-                            (/(\bistanbul instrument in package .*-lite\b)/),
-                            '!$1'
-                        ),
-                    __dirname + '/' + key
-                );
+                        .replace((/^#!/), '//');
                 break;
+            case 'lib.swgg.js':
             case 'lib.utility2.js':
-                local.assetsDict['/assets.utility2.js'] = local.istanbulInstrumentInPackage(
-                    local.tryCatchReadFile(__dirname + '/' + key, 'utf8')
-                        .replace((/^#!/), '//'),
-                    __dirname + '/' + key
-                );
+                key = key.replace('lib.', '');
+                local.assetsDict['/assets.' + key] =
+                    local.tryCatchReadFile(__dirname + '/lib.' + key, 'utf8')
+                        .replace((/^#!/), '//');
                 break;
             case 'lib.utility2.sh':
                 local.jslintAndPrintConditional(
                     local.tryCatchReadFile(__dirname + '/' + key, 'utf8')
-                        .replace((/^#!/), '//'),
-                    __dirname + '/' + key
+                        .replace((/^ *?#!! .*$/gm), ''),
+                    __dirname + '/' + key + '.html'
                 );
-                break;
-            case '/assets.apiDoc.template.html':
-            case '/assets.testReport.template.html':
-                local.jslintAndPrintConditional(local.assetsDict[key], key);
                 break;
             }
         });
         local.assetsDict['/assets.utility2.rollup.js'] = [
             '/assets.utility2.rollup.begin.js',
-            '/assets.utility2.lib.db.js',
-            '/assets.utility2.lib.github_crud.js',
-            '/assets.utility2.lib.istanbul.js',
-            '/assets.utility2.lib.jslint.js',
-            '/assets.utility2.lib.sjcl.js',
-            '/assets.utility2.lib.uglifyjs.js',
-            '/assets.utility2.js',
-            '/assets.swgg.js',
+            'lib.db.js',
+            'lib.github_crud.js',
+            'lib.istanbul.js',
+            'lib.jslint.js',
+            'lib.sjcl.js',
+            'lib.uglifyjs.js',
+            'lib.utility2.js',
+            'lib.swgg.js',
             '/assets.utility2.rollup.end.js'
         ].map(function (key) {
             var script;
             switch (key) {
-            case '/assets.swgg.js':
-                script = local.tryCatchReadFile(local.__dirname + '/lib.swgg.js', 'utf8');
-                return '/* script-begin ' + key + ' */\n' +
-                    script.trim() +
-                    '\n/* script-end ' + key + ' */\n';
-            }
-            switch (local.path.extname(key)) {
-            case '.js':
+            case '/assets.utility2.rollup.begin.js':
+            case '/assets.utility2.rollup.end.js':
                 script = local.assetsDict[key];
                 break;
-            default:
-                script = local.assetsDict['/assets.utility2.rollup.content.js'].replace(
-                    '/* utility2.rollup.js content */',
-                    'local.assetsDict[' + JSON.stringify(key) + '] = ' +
-                        JSON.stringify(local.assetsDict[key])
-                );
+            case 'lib.db.js':
+            case 'lib.github_crud.js':
+            case 'lib.istanbul.js':
+            case 'lib.jslint.js':
+            case 'lib.sjcl.js':
+            case 'lib.uglifyjs.js':
+                key = '/assets.utility2.' + key;
+                script = local.assetsDict[key];
+                break;
+            case 'lib.swgg.js':
+            case 'lib.utility2.js':
+                key = '/assets.' + key.replace('lib.', '');
+                script = local.assetsDict[key];
                 break;
             }
             return '/* script-begin ' + key + ' */\n' +
@@ -13775,7 +13800,7 @@ instruction\n\
     if (typeof global === 'object' &&
             global.utility2_rollup &&
             global.process &&
-            global.process.env.npm_package_name === 'swgg') {
+            global.process.env.npm_package_nameAlias === 'swgg') {
         return;
     }
 
@@ -18019,7 +18044,7 @@ local.templateUiResponseAjax = '\
         global.utility2_rollup;
     local.local = local;
 /* jslint-ignore-begin */
-local._stateInit({"utility2":{"assetsDict":{"/assets.index.template.html":"<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>{{env.npm_package_nameAlias}} v{{env.npm_package_version}}</title>\n<style>\n/*csslint\n    box-sizing: false,\n    universal-selector: false\n*/\n* {\n    box-sizing: border-box;\n}\nbody {\n    background: #fff;\n    font-family: Arial, Helvetica, sans-serif;\n    margin: 2rem;\n}\nbody > * {\n    margin-bottom: 1rem;\n}\n</style>\n<style>\n/*csslint\n    adjoining-classes: false,\n    box-model: false,\n    box-sizing: false,\n    universal-selector: false\n*/\n/* example.js */\nbody > button {\n    width: 15rem;\n}\n.zeroPixel {\n    border: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    width: 0;\n}\n\n\n\n/* animate */\n.swggAnimateFade {\n    transition: opacity 250ms;\n}\n@keyframes swggAnimateShake {\n    100% {\n        transform: translateX(0);\n    }\n    0%, 20%, 60% {\n        transform: translateX(1rem);\n    }\n    40%, 80% {\n        transform: translateX(-1rem);\n    }\n}\n.swggAnimateShake {\n    animation-duration: 500ms;\n    animation-name: swggAnimateShake;\n}\n.swggAnimateSlide {\n    overflow-y: hidden;\n    transition: max-height 500ms;\n}\n\n\n\n/* general */\n.swggUiContainer,\n.swggUiContainer * {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}\n.swggUiContainer {\n    font-family: Arial, Helvetica, sans-serif;\n    margin-left: auto;\n    margin-right: auto;\n    max-width: 1024px;\n}\n.swggUiContainer > * {\n    margin-top: 1rem;\n}\n.swggUiContainer a {\n    text-decoration: none;\n}\n.swggUiContainer a:hover {\n    color: black;\n}\n.swggUiContainer a,\n.swggUiContainer input,\n.swggUiContainer span {\n    min-height: 1.5rem;\n}\n.swggUiContainer button {\n    padding: 0.5rem;\n}\n.swggUiContainer .color777 {\n    color: #777;\n}\n.swggUiContainer button,\n.swggUiContainer .cursorPointer,\n.swggUiContainer .cursorPointer input {\n    cursor: pointer;\n}\n.swggUiContainer .flex1 {\n    flex: 1;\n}\n.swggUiContainer .fontLineThrough {\n    text-decoration: line-through;\n}\n.swggUiContainer .fontWeightBold {\n    font-weight: bold;\n}\n.swggUiContainer input {\n    height: 1.5rem;\n    padding-left: 0.25rem;\n    padding-right: 0.25rem;\n}\n.swggUiContainer .marginTop05 {\n    margin-top: 0.5rem;\n}\n.swggUiContainer .marginTop10 {\n    margin-top: 1rem;\n}\n.swggUiContainer pre,\n.swggUiContainer textarea {\n    font-family: Menlo, Monaco, Consolas, Courier New, monospace;\n    font-size: small;\n    line-height: 1.25rem;\n    max-height: 20rem;\n    overflow: auto;\n    padding: 0.25rem;\n    white-space: pre;\n}\n.swggUiContainer .tr {\n    display: flex;\n}\n.swggUiContainer .tr > * {\n    margin-left: 1rem;\n    overflow: auto;\n    padding-top: 0.1rem;\n    word-wrap: break-word;\n}\n.swggUiContainer .tr > *:first-child {\n    margin-left: 0;\n}\n.swggUiContainer .tr > * > * {\n    width: 100%;\n}\n\n\n\n/* border */\n/* border-bottom-bold */\n.swggUiContainer .borderBottom {\n    border-bottom: 1px solid #bbb;\n    margin-bottom: 0.5rem;\n    padding-bottom: 0.5rem;\n}\n.swggUiContainer .borderBottomBold {\n    border-bottom: 1px solid #777;\n    margin-bottom: 0.5rem;\n    padding-bottom: 0.5rem;\n}\n/* border-top */\n.swggUiContainer .borderTop {\n    border-top: 1px solid #bbb;\n    margin-top: 0.5rem;\n    padding-top: 0.5rem;\n}\n/* border-top-bold */\n.swggUiContainer .borderTopBold,\n.swggUiContainer .resource:first-child {\n    border-top: 1px solid #777;\n    margin-top: 0.5rem;\n    padding-top: 0.5rem;\n}\n/* border-error*/\n.swggUiContainer .error {\n    border: 5px solid #b00;\n}\n\n\n\n/* datatable color */\n.swggUiContainer .datatable tbody > tr > td {\n    background: #efe;\n}\n.swggUiContainer .datatable tbody > tr > td:nth-child(odd) {\n    background: #dfd;\n}\n.swggUiContainer .datatable tbody > tr:nth-child(odd) > td {\n    background: #cfc;\n}\n.swggUiContainer .datatable tbody > tr:nth-child(odd) > td:nth-child(odd) {\n    background: #beb;\n}\n.swggUiContainer .datatable tbody > tr:hover > td {\n    background: #aea;\n}\n.swggUiContainer .datatable tbody > tr:hover > td:nth-child(odd) {\n    background: #9e9;\n}\n.swggUiContainer .datatable tbody > tr > td:hover,\n.swggUiContainer .datatable tbody > tr > td:hover:nth-child(odd),\n.swggUiContainer .datatable tbody > tr:nth-child(odd) > td:hover,\n.swggUiContainer .datatable tbody > tr:nth-child(odd) > td:hover:nth-child(odd),\n.swggUiContainer .datatable th:hover {\n    background: #7d7;\n}\n.swggUiContainer .datatable tbody > tr.selected > td {\n    background: #fee;\n}\n.swggUiContainer .datatable tbody > tr.selected > td:nth-child(odd) {\n    background: #fdd;\n}\n.swggUiContainer .datatable tbody > tr.selected:nth-child(odd) > td {\n    background: #ecc;\n}\n.swggUiContainer .datatable tbody > tr.selected:nth-child(odd) > td:nth-child(odd) {\n    background: #ebb;\n}\n.swggUiContainer .datatable th {\n    background: #9e9;\n}\n\n\n\n/* section */\n.swggUiContainer .datatable {\n    background: #fff;\n    background: rgba(255,255,255,0.875);\n    margin: 2rem;\n    overflow: auto;\n    padding: 1rem;\n}\n.swggUiContainer .datatable input[type=checkbox] {\n    width: 1.5rem;\n}\n.swggUiContainer .datatable .sortAsc,\n.swggUiContainer .datatable .sortDsc {\n    display: none;\n}\n.swggUiContainer .datatable td,\n.swggUiContainer .datatable th {\n    max-width: 10rem;\n    overflow: auto;\n    padding: 0.5rem;\n}\n.swggUiContainer .datatable th:first-child {\n    padding-right: 2rem;\n}\n.swggUiContainer > .header {\n    background: #8c0;\n    padding: 0.5rem;\n}\n.swggUiContainer > .header > .td1 {\n    font-size: x-large;\n    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqRJREFUeNrEVz1s00AUfnGXii5maMXoEUEHVwIpEkPNgkBdMnQoU5ytiKHJwpp2Q2JIO8DCUDOxIJFIVOoWZyJSh3pp1Q2PVVlcCVBH3ufeVZZ9Zye1Ay86nXV+ue/9fO/lheg/Se02X1rvksmbnTiKvuxQMBNgBnN4a/LCbmnUAP6JV58NCUsBC8CuAJxGPF47OgNqBaA93tolUhnx6jC4NxGwyOEwlccyAs+3kwdzKq0HDn2vEBTi8J2XpyMaywNDE157BhXUE3zJhlq8GKq+Zd2zaWHepPA8oN9XkfLmRdOiJV4XUUg/IyWncLjCYY/SHndV2u7zHr3bPKZtdxgboJOnthvrfGj/oMf3G0r7JVmNlLfKklmrt2MvvcNO7LFOhoFHfuAJI5o6ta10jpt5CQLgwXhXG2YIwvu+34qf78ybOjWTnWwkgR36d7JqJOrW0hHmNrKg9xhiS4+1jFmrxymh03B0w+6kURIAu3yHtOD5oaUNojMnGgbcctNvwdAnyxvxRR+/vaJnjzbpzcZX+nN1SdGv85i9eH8w3qPO+mdm/y4dnQ1iI8Fq6Nf4cxL6GWSjiFDSs0VRnxC5g0xSB2cgHpaseTxfqOv5uoHkNQ6Ha/N1Yz9mNMppEkEkYKj79q6uCq4bCHcSX3fJ0Vk/k9siASjCm1N6gZH6Ec9IXt2WkFES2K/ixoIyktJPAu/ptOA1SgO5zqtr6KASJPF0nMV8dgMsRhRPOcMwqQAOoi0VAIMLAEWJ6YYC1c8ibj1GP51RqwzYwZVMHQuvOzMCBUtb2tGHx5NAdLKqp5AX7Ng4d+Zi8AGDI9z1ijx9yaCH04y3GCP2S+QcvaGl+pcxyUBvinFlawoDQjHSelX8hQEoIrAq8p/mgC88HOS1YCl/BRgAmiD/1gn6Nu8AAAAASUVORK5CYII=) no-repeat left center;\n    padding-left: 2.5rem;\n    color: white;\n}\n.swggUiContainer > .header > .td2 {\n    font-size: medium;\n    height: 2rem;\n}\n.swggUiContainer > .header > .td3 {\nborder: 0;\n    color: #fff;\n    padding: 6px 8px;\n    background-color: #580;\n}\n.swggUiContainer > .info > * {\n    margin-top: 1rem;\n}\n.swggUiContainer > .info a {\n    color: #370;\n    text-decoration: underline;\n}\n.swggUiContainer > .info > .fontWeightBold {\n    font-size: x-large;\n}\n.swggUiContainer > .info > ul {\n    margin-left: 2rem;\n}\n.swggUiContainer > .modal {\n    background: black;\n    background: rgba(0,0,0,0.5);\n    display: flex;\n    height: 100%;\n    left: 0;\n    margin: 0;\n    margin-top: 4px;\n    padding: 0;\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 1;\n}\n.swggUiContainer .operation {\n    background: #dfd;\n    font-size: smaller;\n}\n.swggUiContainer .operation > .content {\n    padding: 1rem;\n}\n.swggUiContainer .operation > .content .label {\n    color: #0b0;\n}\n.swggUiContainer .operation > .content pre {\n    border: 1px solid #bbb;\n    background: #ffd;\n}\n.swggUiContainer .operation > .content .tr {\n    margin-left: 0.5rem;\n}\n.swggUiContainer .operation > .header:hover {\n    background: #bfb;\n}\n.swggUiContainer .operation > .header > span {\n    padding: 2px 0 2px 0;\n}\n.swggUiContainer .operation > .header > span:first-child {\n    margin-left: 0;\n}\n.swggUiContainer .operation > .header > .td1 {\n    background: #777;\n    color: white;\n    padding-top: 5px;\n    height: 1.5rem;\n    text-align: center;\n    width: 5rem;\n}\n.swggUiContainer .operation > .header > .td2 {\n    flex: 3;\n}\n.swggUiContainer .operation > .header > .td3 {\n    color: #777;\n    flex: 2;\n    text-decoration: none;\n}\n.swggUiContainer .operation > .header > .td4 {\n    flex: 2;\n    padding-right: 1rem;\n}\n.swggUiContainer .operation .paramDef pre,\n.swggUiContainer .operation .paramDef textarea {\n    height: 10rem;\n}\n.swggUiContainer .operation .paramDef > .td1 {\n    flex: 2;\n}\n.swggUiContainer .operation .paramDef > .td2 {\n    flex: 1;\n}\n.swggUiContainer .operation .paramDef > .td3 {\n    flex: 4;\n}\n.swggUiContainer .operation .paramDef > .td4 {\n    flex: 3;\n}\n.swggUiContainer .operation .responseList > .td1 {\n    flex: 1;\n}\n.swggUiContainer .operation .responseList > .td2 {\n    flex: 4;\n}\n.swggUiContainer .resource > .header > .td1 {\n    font-size: large;\n}\n.swggUiContainer .resource > .header > .td2,\n.swggUiContainer .resource > .header > .td3 {\n    border-right: 1px solid #777;\n    padding-right: 1rem;\n}\n\n\n\n/* method */\n.swggUiContainer .operation.DELETE > .header > .td1 {\n    background: #b00;\n}\n.swggUiContainer .operation.GET > .header > .td1 {\n    background: #093;\n}\n.swggUiContainer .operation.HEAD > .header > .td1 {\n    background: #f30;\n}\n.swggUiContainer .operation.PATCH > .header > .td1 {\n    background: #b0b;\n}\n.swggUiContainer .operation.POST > .header > .td1 {\n    background: #07b;\n}\n.swggUiContainer .operation.PUT > .header > .td1 {\n    background: #70b;\n}\n/*csslint\n*/\n</style>\n</head>\n<body>\n\n    <div id=\"ajaxProgressDiv1\" style=\"background: #d00; height: 2px; left: 0; margin: 0; padding: 0; position: fixed; top: 0; transition: background 0.5s, width 1.5s; width: 25%;\"></div>\n\n    <h1>\n\n        <a\n            {{#if env.npm_package_homepage}}\n            href=\"{{env.npm_package_homepage}}\"\n            {{/if env.npm_package_homepage}}\n            target=\"_blank\"\n        >\n\n            {{env.npm_package_nameAlias}} v{{env.npm_package_version}}\n\n        </a>\n\n    </h1>\n    <h3>{{env.npm_package_description}}</h3>\n\n    <h4><a download href=\"assets.app.js\">download standalone app</a></h4>\n    <button class=\"onclick\" id=\"testRunButton1\">run internal test</button><br>\n    <div id=\"testReportDiv1\" style=\"display: none;\"></div>\n\n\n    <button class=\"onclick\" id=\"dbResetButton1\">reset database</button><br>\n    <button class=\"onclick\" id=\"dbExportButton1\">export database -&gt; file</button><br>\n    <a download=\"db.persistence.json\" href=\"\" id=\"dbExportA1\"></a>\n    <button class=\"onclick\" id=\"dbImportButton1\">import database &lt;- file</button><br>\n    <input class=\"onchange zeroPixel\" type=\"file\" id=\"dbImportInput1\">\n    <div class=\"swggUiContainer\">\n<form2 class=\"header tr\">\n    <a class=\"td1\" href=\"http://swagger.io\" target=\"_blank\">swagger</a>\n    <input\n        class=\"flex1 td2\"\n        type=\"text\"\n        value=\"{{env.npm_config_swagger_basePath}}/swagger.json\"\n    >\n    <button class=\"td3\">Explore</button>\n</form2>\n    </div>\n\n    {{#if isRollup}}\n    <script src=\"assets.app.js\"></script>\n    {{#unless isRollup}}\n\n    <script src=\"assets.swgg.rollup.js\"></script>\n    <script src=\"assets.swgg.js\"></script>\n    <script src=\"jsonp.utility2._stateInit?callback=window.utility2._stateInit\"></script>\n    <script>window.utility2.onResetBefore.counter += 1;</script>\n    <script src=\"assets.example.js\"></script>\n    <script src=\"assets.test.js\"></script>\n    <script>window.utility2.onResetBefore();</script>\n\n    {{/if isRollup}}\n\n</body>\n</html>\n"},"env":{"NODE_ENV":"production","npm_package_description":"this zero-dependency package will run a virtual swagger-ui server with persistent-storage in the browser, that your webapp can use (in-place of a real backend)","npm_package_homepage":"https://github.com/kaizhu256/node-swgg","npm_package_nameAlias":"swgg","npm_package_version":"2017.2.17"}}});
+local._stateInit({"utility2":{"assetsDict":{"/assets.index.template.html":"<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>{{env.npm_package_nameAlias}} v{{env.npm_package_version}}</title>\n<style>\n/*csslint\n    box-sizing: false,\n    universal-selector: false\n*/\n* {\n    box-sizing: border-box;\n}\nbody {\n    background: #fff;\n    font-family: Arial, Helvetica, sans-serif;\n    margin: 2rem;\n}\nbody > * {\n    margin-bottom: 1rem;\n}\n</style>\n<style>\n/*csslint\n    adjoining-classes: false,\n    box-model: false,\n    box-sizing: false,\n    universal-selector: false\n*/\n/* example.js */\nbody > button {\n    width: 15rem;\n}\n.zeroPixel {\n    border: 0;\n    height: 0;\n    margin: 0;\n    padding: 0;\n    width: 0;\n}\n\n\n\n/* animate */\n.swggAnimateFade {\n    transition: opacity 250ms;\n}\n@keyframes swggAnimateShake {\n    100% {\n        transform: translateX(0);\n    }\n    0%, 20%, 60% {\n        transform: translateX(1rem);\n    }\n    40%, 80% {\n        transform: translateX(-1rem);\n    }\n}\n.swggAnimateShake {\n    animation-duration: 500ms;\n    animation-name: swggAnimateShake;\n}\n.swggAnimateSlide {\n    overflow-y: hidden;\n    transition: max-height 500ms;\n}\n\n\n\n/* general */\n.swggUiContainer,\n.swggUiContainer * {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}\n.swggUiContainer {\n    font-family: Arial, Helvetica, sans-serif;\n    margin-left: auto;\n    margin-right: auto;\n    max-width: 1024px;\n}\n.swggUiContainer > * {\n    margin-top: 1rem;\n}\n.swggUiContainer a {\n    text-decoration: none;\n}\n.swggUiContainer a:hover {\n    color: black;\n}\n.swggUiContainer a,\n.swggUiContainer input,\n.swggUiContainer span {\n    min-height: 1.5rem;\n}\n.swggUiContainer button {\n    padding: 0.5rem;\n}\n.swggUiContainer .color777 {\n    color: #777;\n}\n.swggUiContainer button,\n.swggUiContainer .cursorPointer,\n.swggUiContainer .cursorPointer input {\n    cursor: pointer;\n}\n.swggUiContainer .flex1 {\n    flex: 1;\n}\n.swggUiContainer .fontLineThrough {\n    text-decoration: line-through;\n}\n.swggUiContainer .fontWeightBold {\n    font-weight: bold;\n}\n.swggUiContainer input {\n    height: 1.5rem;\n    padding-left: 0.25rem;\n    padding-right: 0.25rem;\n}\n.swggUiContainer .marginTop05 {\n    margin-top: 0.5rem;\n}\n.swggUiContainer .marginTop10 {\n    margin-top: 1rem;\n}\n.swggUiContainer pre,\n.swggUiContainer textarea {\n    font-family: Menlo, Monaco, Consolas, Courier New, monospace;\n    font-size: small;\n    line-height: 1.25rem;\n    max-height: 20rem;\n    overflow: auto;\n    padding: 0.25rem;\n    white-space: pre;\n}\n.swggUiContainer .tr {\n    display: flex;\n}\n.swggUiContainer .tr > * {\n    margin-left: 1rem;\n    overflow: auto;\n    padding-top: 0.1rem;\n    word-wrap: break-word;\n}\n.swggUiContainer .tr > *:first-child {\n    margin-left: 0;\n}\n.swggUiContainer .tr > * > * {\n    width: 100%;\n}\n\n\n\n/* border */\n/* border-bottom-bold */\n.swggUiContainer .borderBottom {\n    border-bottom: 1px solid #bbb;\n    margin-bottom: 0.5rem;\n    padding-bottom: 0.5rem;\n}\n.swggUiContainer .borderBottomBold {\n    border-bottom: 1px solid #777;\n    margin-bottom: 0.5rem;\n    padding-bottom: 0.5rem;\n}\n/* border-top */\n.swggUiContainer .borderTop {\n    border-top: 1px solid #bbb;\n    margin-top: 0.5rem;\n    padding-top: 0.5rem;\n}\n/* border-top-bold */\n.swggUiContainer .borderTopBold,\n.swggUiContainer .resource:first-child {\n    border-top: 1px solid #777;\n    margin-top: 0.5rem;\n    padding-top: 0.5rem;\n}\n/* border-error*/\n.swggUiContainer .error {\n    border: 5px solid #b00;\n}\n\n\n\n/* datatable color */\n.swggUiContainer .datatable tbody > tr > td {\n    background: #efe;\n}\n.swggUiContainer .datatable tbody > tr > td:nth-child(odd) {\n    background: #dfd;\n}\n.swggUiContainer .datatable tbody > tr:nth-child(odd) > td {\n    background: #cfc;\n}\n.swggUiContainer .datatable tbody > tr:nth-child(odd) > td:nth-child(odd) {\n    background: #beb;\n}\n.swggUiContainer .datatable tbody > tr:hover > td {\n    background: #aea;\n}\n.swggUiContainer .datatable tbody > tr:hover > td:nth-child(odd) {\n    background: #9e9;\n}\n.swggUiContainer .datatable tbody > tr > td:hover,\n.swggUiContainer .datatable tbody > tr > td:hover:nth-child(odd),\n.swggUiContainer .datatable tbody > tr:nth-child(odd) > td:hover,\n.swggUiContainer .datatable tbody > tr:nth-child(odd) > td:hover:nth-child(odd),\n.swggUiContainer .datatable th:hover {\n    background: #7d7;\n}\n.swggUiContainer .datatable tbody > tr.selected > td {\n    background: #fee;\n}\n.swggUiContainer .datatable tbody > tr.selected > td:nth-child(odd) {\n    background: #fdd;\n}\n.swggUiContainer .datatable tbody > tr.selected:nth-child(odd) > td {\n    background: #ecc;\n}\n.swggUiContainer .datatable tbody > tr.selected:nth-child(odd) > td:nth-child(odd) {\n    background: #ebb;\n}\n.swggUiContainer .datatable th {\n    background: #9e9;\n}\n\n\n\n/* section */\n.swggUiContainer .datatable {\n    background: #fff;\n    background: rgba(255,255,255,0.875);\n    margin: 2rem;\n    overflow: auto;\n    padding: 1rem;\n}\n.swggUiContainer .datatable input[type=checkbox] {\n    width: 1.5rem;\n}\n.swggUiContainer .datatable .sortAsc,\n.swggUiContainer .datatable .sortDsc {\n    display: none;\n}\n.swggUiContainer .datatable td,\n.swggUiContainer .datatable th {\n    max-width: 10rem;\n    overflow: auto;\n    padding: 0.5rem;\n}\n.swggUiContainer .datatable th:first-child {\n    padding-right: 2rem;\n}\n.swggUiContainer > .header {\n    background: #8c0;\n    padding: 0.5rem;\n}\n.swggUiContainer > .header > .td1 {\n    font-size: x-large;\n    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqRJREFUeNrEVz1s00AUfnGXii5maMXoEUEHVwIpEkPNgkBdMnQoU5ytiKHJwpp2Q2JIO8DCUDOxIJFIVOoWZyJSh3pp1Q2PVVlcCVBH3ufeVZZ9Zye1Ay86nXV+ue/9fO/lheg/Se02X1rvksmbnTiKvuxQMBNgBnN4a/LCbmnUAP6JV58NCUsBC8CuAJxGPF47OgNqBaA93tolUhnx6jC4NxGwyOEwlccyAs+3kwdzKq0HDn2vEBTi8J2XpyMaywNDE157BhXUE3zJhlq8GKq+Zd2zaWHepPA8oN9XkfLmRdOiJV4XUUg/IyWncLjCYY/SHndV2u7zHr3bPKZtdxgboJOnthvrfGj/oMf3G0r7JVmNlLfKklmrt2MvvcNO7LFOhoFHfuAJI5o6ta10jpt5CQLgwXhXG2YIwvu+34qf78ybOjWTnWwkgR36d7JqJOrW0hHmNrKg9xhiS4+1jFmrxymh03B0w+6kURIAu3yHtOD5oaUNojMnGgbcctNvwdAnyxvxRR+/vaJnjzbpzcZX+nN1SdGv85i9eH8w3qPO+mdm/y4dnQ1iI8Fq6Nf4cxL6GWSjiFDSs0VRnxC5g0xSB2cgHpaseTxfqOv5uoHkNQ6Ha/N1Yz9mNMppEkEkYKj79q6uCq4bCHcSX3fJ0Vk/k9siASjCm1N6gZH6Ec9IXt2WkFES2K/ixoIyktJPAu/ptOA1SgO5zqtr6KASJPF0nMV8dgMsRhRPOcMwqQAOoi0VAIMLAEWJ6YYC1c8ibj1GP51RqwzYwZVMHQuvOzMCBUtb2tGHx5NAdLKqp5AX7Ng4d+Zi8AGDI9z1ijx9yaCH04y3GCP2S+QcvaGl+pcxyUBvinFlawoDQjHSelX8hQEoIrAq8p/mgC88HOS1YCl/BRgAmiD/1gn6Nu8AAAAASUVORK5CYII=) no-repeat left center;\n    padding-left: 2.5rem;\n    color: white;\n}\n.swggUiContainer > .header > .td2 {\n    font-size: medium;\n    height: 2rem;\n}\n.swggUiContainer > .header > .td3 {\nborder: 0;\n    color: #fff;\n    padding: 6px 8px;\n    background-color: #580;\n}\n.swggUiContainer > .info > * {\n    margin-top: 1rem;\n}\n.swggUiContainer > .info a {\n    color: #370;\n    text-decoration: underline;\n}\n.swggUiContainer > .info > .fontWeightBold {\n    font-size: x-large;\n}\n.swggUiContainer > .info > ul {\n    margin-left: 2rem;\n}\n.swggUiContainer > .modal {\n    background: black;\n    background: rgba(0,0,0,0.5);\n    display: flex;\n    height: 100%;\n    left: 0;\n    margin: 0;\n    margin-top: 4px;\n    padding: 0;\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 1;\n}\n.swggUiContainer .operation {\n    background: #dfd;\n    font-size: smaller;\n}\n.swggUiContainer .operation > .content {\n    padding: 1rem;\n}\n.swggUiContainer .operation > .content .label {\n    color: #0b0;\n}\n.swggUiContainer .operation > .content pre {\n    border: 1px solid #bbb;\n    background: #ffd;\n}\n.swggUiContainer .operation > .content .tr {\n    margin-left: 0.5rem;\n}\n.swggUiContainer .operation > .header:hover {\n    background: #bfb;\n}\n.swggUiContainer .operation > .header > span {\n    padding: 2px 0 2px 0;\n}\n.swggUiContainer .operation > .header > span:first-child {\n    margin-left: 0;\n}\n.swggUiContainer .operation > .header > .td1 {\n    background: #777;\n    color: white;\n    padding-top: 5px;\n    height: 1.5rem;\n    text-align: center;\n    width: 5rem;\n}\n.swggUiContainer .operation > .header > .td2 {\n    flex: 3;\n}\n.swggUiContainer .operation > .header > .td3 {\n    color: #777;\n    flex: 2;\n    text-decoration: none;\n}\n.swggUiContainer .operation > .header > .td4 {\n    flex: 2;\n    padding-right: 1rem;\n}\n.swggUiContainer .operation .paramDef pre,\n.swggUiContainer .operation .paramDef textarea {\n    height: 10rem;\n}\n.swggUiContainer .operation .paramDef > .td1 {\n    flex: 2;\n}\n.swggUiContainer .operation .paramDef > .td2 {\n    flex: 1;\n}\n.swggUiContainer .operation .paramDef > .td3 {\n    flex: 4;\n}\n.swggUiContainer .operation .paramDef > .td4 {\n    flex: 3;\n}\n.swggUiContainer .operation .responseList > .td1 {\n    flex: 1;\n}\n.swggUiContainer .operation .responseList > .td2 {\n    flex: 4;\n}\n.swggUiContainer .resource > .header > .td1 {\n    font-size: large;\n}\n.swggUiContainer .resource > .header > .td2,\n.swggUiContainer .resource > .header > .td3 {\n    border-right: 1px solid #777;\n    padding-right: 1rem;\n}\n\n\n\n/* method */\n.swggUiContainer .operation.DELETE > .header > .td1 {\n    background: #b00;\n}\n.swggUiContainer .operation.GET > .header > .td1 {\n    background: #093;\n}\n.swggUiContainer .operation.HEAD > .header > .td1 {\n    background: #f30;\n}\n.swggUiContainer .operation.PATCH > .header > .td1 {\n    background: #b0b;\n}\n.swggUiContainer .operation.POST > .header > .td1 {\n    background: #07b;\n}\n.swggUiContainer .operation.PUT > .header > .td1 {\n    background: #70b;\n}\n/*csslint\n*/\n</style>\n</head>\n<body>\n\n    <div id=\"ajaxProgressDiv1\" style=\"background: #d00; height: 2px; left: 0; margin: 0; padding: 0; position: fixed; top: 0; transition: background 0.5s, width 1.5s; width: 25%;\"></div>\n\n    <h1>\n\n        <a\n            {{#if env.npm_package_homepage}}\n            href=\"{{env.npm_package_homepage}}\"\n            {{/if env.npm_package_homepage}}\n            target=\"_blank\"\n        >\n\n            {{env.npm_package_nameAlias}} v{{env.npm_package_version}}\n\n        </a>\n\n    </h1>\n    <h3>{{env.npm_package_description}}</h3>\n\n    <h4><a download href=\"assets.app.js\">download standalone app</a></h4>\n    <button class=\"onclick\" id=\"testRunButton1\">run internal test</button><br>\n    <div id=\"testReportDiv1\" style=\"display: none;\"></div>\n\n\n    <button class=\"onclick\" id=\"dbResetButton1\">reset database</button><br>\n    <button class=\"onclick\" id=\"dbExportButton1\">export database -&gt; file</button><br>\n    <a download=\"db.persistence.json\" href=\"\" id=\"dbExportA1\"></a>\n    <button class=\"onclick\" id=\"dbImportButton1\">import database &lt;- file</button><br>\n    <input class=\"onchange zeroPixel\" type=\"file\" id=\"dbImportInput1\">\n    <div class=\"swggUiContainer\">\n<form2 class=\"header tr\">\n    <a class=\"td1\" href=\"http://swagger.io\" target=\"_blank\">swagger</a>\n    <input\n        class=\"flex1 td2\"\n        type=\"text\"\n        value=\"{{env.npm_config_swagger_basePath}}/swagger.json\"\n    >\n    <button class=\"td3\">Explore</button>\n</form2>\n    </div>\n\n    {{#if isRollup}}\n    <script src=\"assets.app.js\"></script>\n    {{#unless isRollup}}\n\n    <script src=\"assets.swgg.rollup.js\"></script>\n    <script src=\"assets.swgg.js\"></script>\n    <script src=\"jsonp.utility2._stateInit?callback=window.utility2._stateInit\"></script>\n    <script>window.utility2.onResetBefore.counter += 1;</script>\n    <script src=\"assets.example.js\"></script>\n    <script src=\"assets.test.js\"></script>\n    <script>window.utility2.onResetBefore();</script>\n\n    {{/if isRollup}}\n\n</body>\n</html>\n"},"env":{"NODE_ENV":"production","npm_package_description":"this zero-dependency package will run a virtual swagger-ui server with persistent-storage in the browser, that your webapp can use (in-place of a real backend)","npm_package_homepage":"https://github.com/kaizhu256/node-swgg","npm_package_nameAlias":"swgg","npm_package_version":"2017.2.20"}}});
 /* jslint-ignore-end */
 }());
 /* script-end local._stateInit */
@@ -18541,12 +18566,13 @@ instruction
 
 
 
+    // post-init
+    /* istanbul ignore next */
     // run browser js-env code - post-init
     case 'browser':
-        /* istanbul ignore next */
-        local.testRun = function (event) {
+        local.testRunBrowser = function (event) {
             var reader, tmp;
-            switch (event && event.currentTarget.id) {
+            switch (event.currentTarget.id) {
             case 'dbExportButton1':
                 tmp = window.URL.createObjectURL(new window.Blob([local.db.dbExport()]));
                 document.querySelector('#dbExportA1').href = tmp;
@@ -18574,6 +18600,13 @@ instruction
             case 'dbResetButton1':
                 local.dbReset();
                 break;
+            case 'default':
+                // init ui
+                local.swgg.uiEventListenerDict['.onEventUiReload']();
+                local.runIfTrue(local.modeTest, function () {
+                    document.querySelector('#testRunButton1').innerText = 'hide internal test';
+                });
+                break;
             case 'testRunButton1':
                 // show tests
                 if (document.querySelector('#testReportDiv1').style.display === 'none') {
@@ -18589,18 +18622,27 @@ instruction
                 break;
             }
         };
+        // log stderr and stdout to #outputTextareaStdout1
+        ['error', 'log'].forEach(function (key) {
+            console['_' + key] = console[key];
+            console[key] = function () {
+                console['_' + key].apply(console, arguments);
+                (document.querySelector('#outputTextareaStdout1') || { value: '' }).value +=
+                    Array.from(arguments).map(function (arg) {
+                        return typeof arg === 'string'
+                            ? arg
+                            : JSON.stringify(arg, null, 4);
+                    }).join(' ') + '\n';
+            };
+        });
         // init event-handling
-        ['change', 'click'].forEach(function (event) {
+        ['change', 'click', 'keyup'].forEach(function (event) {
             Array.from(document.querySelectorAll('.on' + event)).forEach(function (element) {
-                element.addEventListener(event, local.testRun);
+                element.addEventListener(event, local.testRunBrowser);
             });
         });
-        // init ui
-        local.swgg.uiEventListenerDict['.onEventUiReload']();
         // run tests
-        local.runIfTrue(local.modeTest, function () {
-            document.querySelector('#testRunButton1').innerText = 'hide internal test';
-        });
+        local.testRunBrowser({ currentTarget: { id: 'default' } });
         break;
 
 

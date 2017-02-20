@@ -31,7 +31,7 @@ this zero-dependency package will run a virtual swagger-ui server with persisten
 [![api-doc](https://kaizhu256.github.io/node-swgg/build/screen-capture.apiDoc.browser._2Fhome_2Ftravis_2Fbuild_2Fkaizhu256_2Fnode-swgg_2Ftmp_2Fbuild_2Fapi-doc.html.png)](https://kaizhu256.github.io/node-swgg/build..beta..travis-ci.org/api-doc.html)
 
 #### todo
-- add loading text
+- npm publish 2017.2.21
 - allow offline-mode
 - add authorization-header hook
 - add phone format string
@@ -45,11 +45,8 @@ this zero-dependency package will run a virtual swagger-ui server with persisten
 - add cached version crudGetManyByQueryCached
 - none
 
-#### change since 91dc0792
-- npm publish 2017.2.20
-- create published-alias oai-client oai-server swagger-client-lite swagger-lite swagger-server-lite
-- rename dom-element #outputTextareaStdout -> #outputTextareaStdout1
-- replace env var npm_package_name with npm_package_nameAlias in istanbul code-coverage
+#### change since aa0bf74f
+- add loading-text when resource is loading
 - none
 
 #### this package requires
@@ -1091,8 +1088,6 @@ border: 0;\n\
 .swggUiContainer .operation.PUT > .header > .td1 {\n\
     background: #70b;\n\
 }\n\
-/*csslint\n\
-*/\n\
 </style>\n\
 </head>\n\
 <body>\n\
@@ -1127,7 +1122,7 @@ utility2-comment -->\n\
     <input class="onchange zeroPixel" type="file" id="dbImportInput1">\n\
     <div class="swggUiContainer">\n\
 <form2 class="header tr">\n\
-    <a class="td1" href="http://swagger.io" target="_blank">swagger</a>\n\
+    <a class="td1" href="https://github.com/kaizhu256/node-swgg" target="_blank">swgg</a>\n\
     <input\n\
         class="flex1 td2"\n\
         type="text"\n\
@@ -1136,6 +1131,7 @@ utility2-comment -->\n\
     <button class="td3">Explore</button>\n\
 </form2>\n\
     </div>\n\
+    <div id="ajaxProgressDiv2" style="margin-top: 1rem; text-align: center;">fetching resource list; Please wait.</div>\n\
 <!-- utility2-comment\n\
     {{#if isRollup}}\n\
     <script src="assets.app.js"></script>\n\
@@ -1246,9 +1242,6 @@ utility2-comment -->\n\
         "cms",
         "crud",
         "dashboard",
-        "light",
-        "lightweight",
-        "lite",
         "login",
         "oai",
         "oauth",
@@ -1256,7 +1249,6 @@ utility2-comment -->\n\
         "open-id",
         "openapi",
         "openid",
-        "standalone",
         "swagger",
         "swagger-ui",
         "swgg"
@@ -1283,7 +1275,7 @@ utility2-comment -->\n\
         "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",
         "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"
     },
-    "version": "2017.2.20"
+    "version": "2017.2.21"
 }
 ```
 

@@ -16,9 +16,6 @@
         "cms",
         "crud",
         "dashboard",
-        "light",
-        "lightweight",
-        "lite",
         "login",
         "oai",
         "oauth",
@@ -26,7 +23,6 @@
         "open-id",
         "openapi",
         "openid",
-        "standalone",
         "swagger",
         "swagger-ui",
         "swgg"
@@ -53,5 +49,5 @@
         "start": "export PORT=${PORT:-8080} && export npm_config_mode_auto_restart=1 && utility2 shRun shIstanbulCover test.js",
         "test": "export PORT=$(utility2 shServerPortRandom) && utility2 test test.js"
     },
-    "version": "2017.2.20"
+    "version": "2017.2.21"
 }

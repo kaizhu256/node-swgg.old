@@ -14247,6 +14247,7 @@ border: 0;\n\
     <button class="td3">Explore</button>\n\
 </form2>\n\
     </div>\n\
+    <div id="ajaxProgressDiv2" style="margin-top: 1rem; text-align: center;">fetching resource list; Please wait.</div>\n\
     <script src="assets.swgg.rollup.js"></script>\n\
     <script>window.swgg.uiEventListenerDict[".onEventUiReload"]();</script>\n\
 </body>\n\
@@ -17140,9 +17141,16 @@ local.templateUiResponseAjax = '\
                     document.querySelector('.swggUiContainer > .header > .td2').value
                         .replace((/^\//), '')
                 ).href;
+            // display #ajaxProgressDiv2
+            document.querySelector('#ajaxProgressDiv2').innerText = 'fetching resource list: ' +
+                document.querySelector('.swggUiContainer > .header > .td2').value +
+                '; Please wait.';
+            document.querySelector('#ajaxProgressDiv2').style.display = 'block';
             local.ajax({
                 url: document.querySelector('.swggUiContainer > .header > .td2').value
             }, function (error, xhr) {
+                // hide #ajaxProgressDiv2
+                document.querySelector('#ajaxProgressDiv2').style.display = 'none';
                 // validate no error occurred
                 local.assert(!error, error);
                 // reset state

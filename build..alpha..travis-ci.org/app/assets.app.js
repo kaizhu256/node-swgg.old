@@ -8839,12 +8839,12 @@ instruction\n\
         local.testRunBrowser = function (event) {\n\
             return event;\n\
         };\n\
-        // log stderr and stdout to #outputTextareaStdout\n\
+        // log stderr and stdout to #outputTextareaStdout1\n\
         [\'error\', \'log\'].forEach(function (key) {\n\
             console[\'_\' + key] = console[key];\n\
             console[key] = function () {\n\
                 console[\'_\' + key].apply(console, arguments);\n\
-                (document.querySelector(\'#outputTextareaStdout\') || { value: \'\' }).value +=\n\
+                (document.querySelector(\'#outputTextareaStdout1\') || { value: \'\' }).value +=\n\
                     Array.from(arguments).map(function (arg) {\n\
                         return typeof arg === \'string\'\n\
                             ? arg\n\
@@ -18619,12 +18619,12 @@ instruction
                 break;
             }
         };
-        // log stderr and stdout to #outputTextareaStdout
+        // log stderr and stdout to #outputTextareaStdout1
         ['error', 'log'].forEach(function (key) {
             console['_' + key] = console[key];
             console[key] = function () {
                 console['_' + key].apply(console, arguments);
-                (document.querySelector('#outputTextareaStdout') || { value: '' }).value +=
+                (document.querySelector('#outputTextareaStdout1') || { value: '' }).value +=
                     Array.from(arguments).map(function (arg) {
                         return typeof arg === 'string'
                             ? arg

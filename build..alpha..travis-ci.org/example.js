@@ -88,8 +88,6 @@
 
 
 
-
-
 /*
 example.js
 
@@ -652,12 +650,12 @@ instruction
                 break;
             }
         };
-        // log stderr and stdout to #outputTextareaStdout
+        // log stderr and stdout to #outputTextareaStdout1
         ['error', 'log'].forEach(function (key) {
             console['_' + key] = console[key];
             console[key] = function () {
                 console['_' + key].apply(console, arguments);
-                (document.querySelector('#outputTextareaStdout') || { value: '' }).value +=
+                (document.querySelector('#outputTextareaStdout1') || { value: '' }).value +=
                     Array.from(arguments).map(function (arg) {
                         return typeof arg === 'string'
                             ? arg

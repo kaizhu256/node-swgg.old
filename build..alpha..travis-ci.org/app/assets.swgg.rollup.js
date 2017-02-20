@@ -8823,12 +8823,12 @@ instruction\n\
         local.testRunBrowser = function (event) {\n\
             return event;\n\
         };\n\
-        // log stderr and stdout to #outputTextareaStdout\n\
+        // log stderr and stdout to #outputTextareaStdout1\n\
         [\'error\', \'log\'].forEach(function (key) {\n\
             console[\'_\' + key] = console[key];\n\
             console[key] = function () {\n\
                 console[\'_\' + key].apply(console, arguments);\n\
-                (document.querySelector(\'#outputTextareaStdout\') || { value: \'\' }).value +=\n\
+                (document.querySelector(\'#outputTextareaStdout1\') || { value: \'\' }).value +=\n\
                     Array.from(arguments).map(function (arg) {\n\
                         return typeof arg === \'string\'\n\
                             ? arg\n\

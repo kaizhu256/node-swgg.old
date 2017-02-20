@@ -8836,6 +8836,9 @@ instruction\n\
     /* istanbul ignore next */\n\
     // run browser js-env code - post-init\n\
     case \'browser\':\n\
+        local.testRunBrowser = function (event) {\n\
+            return event;\n\
+        };\n\
         // log stderr and stdout to #outputTextareaStdout\n\
         [\'error\', \'log\'].forEach(function (key) {\n\
             console[\'_\' + key] = console[key];\n\
@@ -8856,10 +8859,7 @@ instruction\n\
             });\n\
         });\n\
         // run tests\n\
-        local.testRunBrowser = function (event) {\n\
-            return event;\n\
-        };\n\
-        local.testRunBrowser();\n\
+        local.testRunBrowser({ currentTarget: { id: \'default\' } });\n\
         break;\n\
 \n\
 \n\
@@ -10939,7 +10939,6 @@ return Utf8ArrayToStr(bff);
                 (/\n {12}: global;\n[^`]*?\n {8}local\.global\.local = local;\n/),
                 (/\n {8}local\.global\.local = local;\n[^`]*?\n {4}\/\/ post-init\n/),
                 (/\n {8}local\.testRunBrowser = function \(event\) \{\n[^`]*?\n {8}\};\n/),
-                (/\n {8}local\.testRunBrowser\(\);\n[^`]*?^ {8}break;\n/m),
                 // customize quickstart-html-style
                 (/\n<\/style>\\n\\\n<style>\\n\\\n[^`]*?\\n\\\n<\/style>\\n\\\n/),
                 // customize quickstart-html-body
@@ -12347,6 +12346,7 @@ vendor\\)\\(\\b\\|[_s]\\)\
             module.exports[local.env.npm_package_nameAlias] = global.utility2_moduleExports;
             // init assets
             local.objectSetOverride(local.assetsDict, module.exports.assetsDict);
+            module.exports.assetsDict = local.assetsDict;
             local.assetsDict['/assets.' + local.env.npm_package_nameAlias + '.js'] =
                 local.istanbulInstrumentInPackage(
                     local.fs.readFileSync(fileMain, 'utf8').replace((/^#!/), '//'),
@@ -18567,29 +18567,9 @@ instruction
     /* istanbul ignore next */
     // run browser js-env code - post-init
     case 'browser':
-        // log stderr and stdout to #outputTextareaStdout
-        ['error', 'log'].forEach(function (key) {
-            console['_' + key] = console[key];
-            console[key] = function () {
-                console['_' + key].apply(console, arguments);
-                (document.querySelector('#outputTextareaStdout') || { value: '' }).value +=
-                    Array.from(arguments).map(function (arg) {
-                        return typeof arg === 'string'
-                            ? arg
-                            : JSON.stringify(arg, null, 4);
-                    }).join(' ') + '\n';
-            };
-        });
-        // init event-handling
-        ['change', 'click', 'keyup'].forEach(function (event) {
-            Array.from(document.querySelectorAll('.on' + event)).forEach(function (element) {
-                element.addEventListener(event, local.testRunBrowser);
-            });
-        });
-        // run tests
         local.testRunBrowser = function (event) {
             var reader, tmp;
-            switch (event && event.currentTarget.id) {
+            switch (event.currentTarget.id) {
             case 'dbExportButton1':
                 tmp = window.URL.createObjectURL(new window.Blob([local.db.dbExport()]));
                 document.querySelector('#dbExportA1').href = tmp;
@@ -18617,6 +18597,13 @@ instruction
             case 'dbResetButton1':
                 local.dbReset();
                 break;
+            case 'default':
+                // init ui
+                local.swgg.uiEventListenerDict['.onEventUiReload']();
+                local.runIfTrue(local.modeTest, function () {
+                    document.querySelector('#testRunButton1').innerText = 'hide internal test';
+                });
+                break;
             case 'testRunButton1':
                 // show tests
                 if (document.querySelector('#testReportDiv1').style.display === 'none') {
@@ -18632,12 +18619,27 @@ instruction
                 break;
             }
         };
-        local.testRunBrowser();
-        // init ui
-        local.swgg.uiEventListenerDict['.onEventUiReload']();
-        local.runIfTrue(local.modeTest, function () {
-            document.querySelector('#testRunButton1').innerText = 'hide internal test';
+        // log stderr and stdout to #outputTextareaStdout
+        ['error', 'log'].forEach(function (key) {
+            console['_' + key] = console[key];
+            console[key] = function () {
+                console['_' + key].apply(console, arguments);
+                (document.querySelector('#outputTextareaStdout') || { value: '' }).value +=
+                    Array.from(arguments).map(function (arg) {
+                        return typeof arg === 'string'
+                            ? arg
+                            : JSON.stringify(arg, null, 4);
+                    }).join(' ') + '\n';
+            };
         });
+        // init event-handling
+        ['change', 'click', 'keyup'].forEach(function (event) {
+            Array.from(document.querySelectorAll('.on' + event)).forEach(function (element) {
+                element.addEventListener(event, local.testRunBrowser);
+            });
+        });
+        // run tests
+        local.testRunBrowser({ currentTarget: { id: 'default' } });
         break;
 
 

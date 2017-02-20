@@ -8820,6 +8820,9 @@ instruction\n\
     /* istanbul ignore next */\n\
     // run browser js-env code - post-init\n\
     case \'browser\':\n\
+        local.testRunBrowser = function (event) {\n\
+            return event;\n\
+        };\n\
         // log stderr and stdout to #outputTextareaStdout\n\
         [\'error\', \'log\'].forEach(function (key) {\n\
             console[\'_\' + key] = console[key];\n\
@@ -8840,10 +8843,7 @@ instruction\n\
             });\n\
         });\n\
         // run tests\n\
-        local.testRunBrowser = function (event) {\n\
-            return event;\n\
-        };\n\
-        local.testRunBrowser();\n\
+        local.testRunBrowser({ currentTarget: { id: \'default\' } });\n\
         break;\n\
 \n\
 \n\
@@ -10923,7 +10923,6 @@ return Utf8ArrayToStr(bff);
                 (/\n {12}: global;\n[^`]*?\n {8}local\.global\.local = local;\n/),
                 (/\n {8}local\.global\.local = local;\n[^`]*?\n {4}\/\/ post-init\n/),
                 (/\n {8}local\.testRunBrowser = function \(event\) \{\n[^`]*?\n {8}\};\n/),
-                (/\n {8}local\.testRunBrowser\(\);\n[^`]*?^ {8}break;\n/m),
                 // customize quickstart-html-style
                 (/\n<\/style>\\n\\\n<style>\\n\\\n[^`]*?\\n\\\n<\/style>\\n\\\n/),
                 // customize quickstart-html-body
@@ -12331,6 +12330,7 @@ vendor\\)\\(\\b\\|[_s]\\)\
             module.exports[local.env.npm_package_nameAlias] = global.utility2_moduleExports;
             // init assets
             local.objectSetOverride(local.assetsDict, module.exports.assetsDict);
+            module.exports.assetsDict = local.assetsDict;
             local.assetsDict['/assets.' + local.env.npm_package_nameAlias + '.js'] =
                 local.istanbulInstrumentInPackage(
                     local.fs.readFileSync(fileMain, 'utf8').replace((/^#!/), '//'),

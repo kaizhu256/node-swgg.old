@@ -2,7 +2,7 @@
 <rect height="4430" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
-<tspan x="10" y="42">[MODE_BUILD=npmTestPublished] - 2017-02-20T06:51:02Z - npm-testing published-package swgg</tspan>
+<tspan x="10" y="42">[MODE_BUILD=npmTestPublished] - 2017-02-20T08:16:12Z - npm-testing published-package swgg</tspan>
 <tspan x="10" y="58"></tspan>
 <tspan x="10" y="74"></tspan>
 <tspan x="10" y="90">&gt; swgg@2017.2.17 postinstall /tmp/app/node_modules/swgg</tspan>
@@ -31,29 +31,29 @@
 <tspan x="10" y="458">swgg@2017.2.17 /tmp/app/node_modules/swgg</tspan>
 <tspan x="10" y="474">├── electron-lite@2017.2.1  (git://github.com/kaizhu256/node-electron-lite.git#1e402f90ae131124d\</tspan>
 <tspan x="10" y="490">c7634a78fc6e10f72d3069d)</tspan>
-<tspan x="10" y="506">└── utility2@2017.2.19  (git://github.com/kaizhu256/node-utility2.git#bead28ea24d253578ed114a508\</tspan>
-<tspan x="10" y="522">619fa2dcd58618)</tspan>
+<tspan x="10" y="506">└── utility2@2017.2.19  (git://github.com/kaizhu256/node-utility2.git#7befa629d8e10555967b7e30c7\</tspan>
+<tspan x="10" y="522">e29a077d89d826)</tspan>
 <tspan x="10" y="538"></tspan>
 <tspan x="10" y="554"></tspan>
 <tspan x="10" y="570">&gt; swgg@2017.2.17 test /tmp/app/node_modules/swgg</tspan>
 <tspan x="10" y="586">&gt; export PORT=$(utility2 shServerPortRandom) &amp;&amp; utility2 test test.js</tspan>
 <tspan x="10" y="602"></tspan>
 <tspan x="10" y="618"></tspan>
-<tspan x="10" y="634">[MODE_BUILD=npmTestPublished] - 2017-02-20T06:51:07Z - npm-testing /tmp/app/node_modules/swgg</tspan>
+<tspan x="10" y="634">[MODE_BUILD=npmTestPublished] - 2017-02-20T08:16:17Z - npm-testing /tmp/app/node_modules/swgg</tspan>
 <tspan x="10" y="650"></tspan>
 <tspan x="10" y="666"></tspan>
 <tspan x="10" y="682">covering $ /home/travis/.nvm/versions/node/v7.5.0/bin/node /tmp/app/node_modules/swgg/test.js</tspan>
-<tspan x="10" y="698">&gt; server listening on http-port 55424</tspan>
+<tspan x="10" y="698">&gt; server listening on http-port 58455</tspan>
 <tspan x="10" y="714">db seeding ...</tspan>
 <tspan x="10" y="730">db loaded from tmp/storage.test</tspan>
 <tspan x="10" y="746">created api-doc file:///tmp/app/node_modules/swgg/tmp/build/api-doc.html</tspan>
 <tspan x="10" y="762"></tspan>
 <tspan x="10" y="778"></tspan>
-<tspan x="10" y="794">browserTest - created electron entry-page /tmp/app/node_modules/swgg/tmp/electron.15a5a49cbcf0.9\</tspan>
-<tspan x="10" y="810">93f5c440eed7.html</tspan>
+<tspan x="10" y="794">browserTest - created electron entry-page /tmp/app/node_modules/swgg/tmp/electron.15a5a97c5050.3\</tspan>
+<tspan x="10" y="810">b9692cf65657.html</tspan>
 <tspan x="10" y="826"></tspan>
 <tspan x="10" y="842">[node test-case 1 of 32 passed] - testCase_buildReadme_default</tspan>
-<tspan x="10" y="858">[2548:0220/065110:ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox! See https:/\</tspan>
+<tspan x="10" y="858">[2549:0220/081620:ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox! See https:/\</tspan>
 <tspan x="10" y="874">/chromium.googlesource.com/chromium/src/+/master/docs/linux_suid_sandbox_development.md for more\</tspan>
 <tspan x="10" y="890"> information on developing with the sandbox on.</tspan>
 <tspan x="10" y="906">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
@@ -62,148 +62,148 @@
 <tspan x="10" y="954">[node test-case 4 of 32 passed] - testCase_validateBySchema_error</tspan>
 <tspan x="10" y="970">[node test-case 5 of 32 passed] - testCase_validateBySwagger_default</tspan>
 <tspan x="10" y="986"></tspan>
-<tspan x="10" y="1002">browserTest - created electron entry-page /tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6\</tspan>
-<tspan x="10" y="1018">b79a5b6b3ebc.html</tspan>
+<tspan x="10" y="1002">browserTest - created electron entry-page /tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5\</tspan>
+<tspan x="10" y="1018">365631672d06.html</tspan>
 <tspan x="10" y="1034"></tspan>
-<tspan x="10" y="1050">server listening on http-port 42704</tspan>
-<tspan x="10" y="1066">[2569:0220/065110:ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox! See https:/\</tspan>
+<tspan x="10" y="1050">server listening on http-port 59565</tspan>
+<tspan x="10" y="1066">[2569:0220/081620:ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox! See https:/\</tspan>
 <tspan x="10" y="1082">/chromium.googlesource.com/chromium/src/+/master/docs/linux_suid_sandbox_development.md for more\</tspan>
 <tspan x="10" y="1098"> information on developing with the sandbox on.</tspan>
 <tspan x="10" y="1114">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="1130">[2548:0220/065110:ERROR:bus.cc(432)] Failed to connect to the bus: Failed to connect to socket /\</tspan>
+<tspan x="10" y="1130">[2549:0220/081620:ERROR:bus.cc(432)] Failed to connect to the bus: Failed to connect to socket /\</tspan>
 <tspan x="10" y="1146">var/run/dbus/system_bus_socket: Connection refused</tspan>
 <tspan x="10" y="1162">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="1178">[2548:0220/065110:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="1194">[2548:0220/065110:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="1210">[2585:0220/065110:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="1178">[2549:0220/081620:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="1194">[2549:0220/081620:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="1210">[2585:0220/081620:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
 <tspan x="10" y="1226">in process gpu-process. </tspan>
-<tspan x="10" y="1242">&gt; [2548:0220/065110:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="1242">&gt; [2549:0220/081620:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
 <tspan x="10" y="1258">db loaded from tmp/storage.undefined</tspan>
-<tspan x="10" y="1274"></tspan>
-<tspan x="10" y="1290">browserTest - opened url file:///tmp/app/node_modules/swgg/tmp/build/api-doc.html</tspan>
-<tspan x="10" y="1306"></tspan>
-<tspan x="10" y="1322">[node test-case 6 of 32 passed] - testCase_crudErrorXxx_default</tspan>
-<tspan x="10" y="1338">[node test-case 7 of 32 passed] - testCase_crudNullXxx_default</tspan>
-<tspan x="10" y="1354">[node test-case 8 of 32 passed] - testCase_onErrorJsonapi_default</tspan>
-<tspan x="10" y="1370">[node test-case 9 of 32 passed] - testCase_onErrorJsonapi_emptyArray</tspan>
-<tspan x="10" y="1386">[node test-case 10 of 32 passed] - testCase_onErrorJsonapi_error</tspan>
-<tspan x="10" y="1402">[node test-case 11 of 32 passed] - testCase_validateByParamDefList_default</tspan>
-<tspan x="10" y="1418">[node test-case 12 of 32 passed] - testCase_validateByParamDefList_formData</tspan>
-<tspan x="10" y="1434">[node test-case 13 of 32 passed] - testCase_crudCountManyByQuery_default</tspan>
-<tspan x="10" y="1450">[node test-case 14 of 32 passed] - testCase_crudGetManyByQuery_default</tspan>
-<tspan x="10" y="1466">[node test-case 15 of 32 passed] - testCase_crudGetOneById_default</tspan>
-<tspan x="10" y="1482">[node test-case 16 of 32 passed] - testCase_crudGetOneByQuery_default</tspan>
-<tspan x="10" y="1498">[2569:0220/065110:WARNING:host_discardable_shared_memory_manager.cc(132)] Less than 64MB of free\</tspan>
-<tspan x="10" y="1514"> space in temporary directory for shared memory files: 53</tspan>
-<tspan x="10" y="1530">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="1546">[2569:0220/065110:ERROR:bus.cc(432)] Failed to connect to the bus: Failed to connect to socket /\</tspan>
-<tspan x="10" y="1562">var/run/dbus/system_bus_socket: Connection refused</tspan>
-<tspan x="10" y="1578">[2569:0220/065110:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="1594">[2569:0220/065110:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="1610">[node test-case 17 of 32 passed] - testCase_fileUploadManyByForm_nullCase</tspan>
-<tspan x="10" y="1626">[node test-case 18 of 32 passed] - testCase_petstoreStoreGetInventory_default</tspan>
-<tspan x="10" y="1642">[node test-case 19 of 32 passed] - testCase_ajax_error</tspan>
-<tspan x="10" y="1658">[2640:0220/065111:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="1274">[node test-case 6 of 32 passed] - testCase_crudErrorXxx_default</tspan>
+<tspan x="10" y="1290">[node test-case 7 of 32 passed] - testCase_crudNullXxx_default</tspan>
+<tspan x="10" y="1306">[node test-case 8 of 32 passed] - testCase_onErrorJsonapi_default</tspan>
+<tspan x="10" y="1322">[node test-case 9 of 32 passed] - testCase_onErrorJsonapi_emptyArray</tspan>
+<tspan x="10" y="1338">[node test-case 10 of 32 passed] - testCase_onErrorJsonapi_error</tspan>
+<tspan x="10" y="1354">[node test-case 11 of 32 passed] - testCase_validateByParamDefList_default</tspan>
+<tspan x="10" y="1370">[node test-case 12 of 32 passed] - testCase_validateByParamDefList_formData</tspan>
+<tspan x="10" y="1386">[node test-case 13 of 32 passed] - testCase_crudCountManyByQuery_default</tspan>
+<tspan x="10" y="1402">[node test-case 14 of 32 passed] - testCase_crudGetManyByQuery_default</tspan>
+<tspan x="10" y="1418">[node test-case 15 of 32 passed] - testCase_crudGetOneById_default</tspan>
+<tspan x="10" y="1434">[node test-case 16 of 32 passed] - testCase_crudGetOneByQuery_default</tspan>
+<tspan x="10" y="1450">[2569:0220/081620:WARNING:host_discardable_shared_memory_manager.cc(132)] Less than 64MB of free\</tspan>
+<tspan x="10" y="1466"> space in temporary directory for shared memory files: 59</tspan>
+<tspan x="10" y="1482">[2569:0220/081620:ERROR:bus.cc(432)] Failed to connect to the bus: Failed to connect to socket /\</tspan>
+<tspan x="10" y="1498">var/run/dbus/system_bus_socket: Connection refused</tspan>
+<tspan x="10" y="1514">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="1530">[2569:0220/081620:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="1546">[2569:0220/081620:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="1562">[node test-case 17 of 32 passed] - testCase_fileUploadManyByForm_nullCase</tspan>
+<tspan x="10" y="1578">[node test-case 18 of 32 passed] - testCase_petstoreStoreGetInventory_default</tspan>
+<tspan x="10" y="1594">[node test-case 19 of 32 passed] - testCase_ajax_error</tspan>
+<tspan x="10" y="1610"></tspan>
+<tspan x="10" y="1626">browserTest - opened url file:///tmp/app/node_modules/swgg/tmp/build/api-doc.html</tspan>
+<tspan x="10" y="1642"></tspan>
+<tspan x="10" y="1658">[2629:0220/081621:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
 <tspan x="10" y="1674">in process gpu-process. </tspan>
 <tspan x="10" y="1690">[node test-case 20 of 32 passed] - testCase_crudSetManyById_default</tspan>
 <tspan x="10" y="1706">[node test-case 21 of 32 passed] - testCase_crudSetOneById_default</tspan>
 <tspan x="10" y="1722">[node test-case 22 of 32 passed] - testCase_fileGetOneById_default</tspan>
-<tspan x="10" y="1738">[node test-case 23 of 32 passed] - testCase_crudRemoveManyByQuery_default</tspan>
-<tspan x="10" y="1754">[node test-case 24 of 32 passed] - testCase_crudRemoveOneById_default</tspan>
-<tspan x="10" y="1770">[2569:0220/065111:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="1738">[2569:0220/081621:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="1754">[node test-case 23 of 32 passed] - testCase_crudRemoveManyByQuery_default</tspan>
+<tspan x="10" y="1770">[node test-case 24 of 32 passed] - testCase_crudRemoveOneById_default</tspan>
 <tspan x="10" y="1786">[node test-case 25 of 32 passed] - testCase_crudUpdateOneById_default</tspan>
 <tspan x="10" y="1802">[node test-case 26 of 32 passed] - testCase_fileUploadManyByForm_default</tspan>
-<tspan x="10" y="1818">[node test-case 27 of 32 passed] - testCase_userLoginXxx_default</tspan>
-<tspan x="10" y="1834">[node test-case 28 of 32 passed] - testCase_crudCreateReplaceUpdateRemoveMany_default</tspan>
+<tspan x="10" y="1818">[node test-case 27 of 32 passed] - testCase_crudCreateReplaceUpdateRemoveMany_default</tspan>
+<tspan x="10" y="1834">[node test-case 28 of 32 passed] - testCase_userLoginXxx_default</tspan>
 <tspan x="10" y="1850">[node test-case 29 of 32 passed] - testCase_crudCreateReplaceUpdateRemoveOne_default</tspan>
 <tspan x="10" y="1866"></tspan>
-<tspan x="10" y="1882">browserTest - opened url http://127.0.0.1:55424/?modeTest=1#!/swgg_id_pet/swgg_id_addPet</tspan>
+<tspan x="10" y="1882">browserTest - opened url http://127.0.0.1:58455/?modeTest=1#!/swgg_id_pet/swgg_id_addPet</tspan>
 <tspan x="10" y="1898"></tspan>
-<tspan x="10" y="1914">[2569:0220/065111:INFO:CONSOLE(199)] "server listening on http-port undefined", source: file:///\</tspan>
-<tspan x="10" y="1930">tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="1946">[2569:0220/065113:INFO:CONSOLE(199)] "db seeding ...", source: file:///tmp/app/node_modules/swgg\</tspan>
-<tspan x="10" y="1962">/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="1978">[2569:0220/065113:INFO:CONSOLE(199)] "db loaded from tmp/storage.undefined", source: file:///tmp\</tspan>
-<tspan x="10" y="1994">/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="2010">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 1 of 33 passed] - testCase_uiScrollTo",\</tspan>
-<tspan x="10" y="2026"> source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="2042">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 2 of 33 passed] - testCase_ui_fileMedia\</tspan>
-<tspan x="10" y="2058">", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="2074">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 3 of 33 passed] - testCase_validateByPa\</tspan>
-<tspan x="10" y="2090">ramDefList_error", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b\</tspan>
-<tspan x="10" y="2106">3ebc.html (199)</tspan>
-<tspan x="10" y="2122">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 4 of 33 passed] - testCase_validateBySc\</tspan>
-<tspan x="10" y="2138">hema_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc\</tspan>
+<tspan x="10" y="1914">[2569:0220/081621:INFO:CONSOLE(199)] "server listening on http-port undefined", source: file:///\</tspan>
+<tspan x="10" y="1930">tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="1946">[2569:0220/081622:INFO:CONSOLE(199)] "db seeding ...", source: file:///tmp/app/node_modules/swgg\</tspan>
+<tspan x="10" y="1962">/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="1978">[2569:0220/081623:INFO:CONSOLE(199)] "db loaded from tmp/storage.undefined", source: file:///tmp\</tspan>
+<tspan x="10" y="1994">/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="2010">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 1 of 33 passed] - testCase_uiScrollTo",\</tspan>
+<tspan x="10" y="2026"> source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="2042">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 2 of 33 passed] - testCase_ui_fileMedia\</tspan>
+<tspan x="10" y="2058">", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="2074">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 3 of 33 passed] - testCase_validateByPa\</tspan>
+<tspan x="10" y="2090">ramDefList_error", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.536563167\</tspan>
+<tspan x="10" y="2106">2d06.html (199)</tspan>
+<tspan x="10" y="2122">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 4 of 33 passed] - testCase_validateBySc\</tspan>
+<tspan x="10" y="2138">hema_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06\</tspan>
 <tspan x="10" y="2154">.html (199)</tspan>
-<tspan x="10" y="2170">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 5 of 33 passed] - testCase_validateBySc\</tspan>
-<tspan x="10" y="2186">hema_error", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.h\</tspan>
+<tspan x="10" y="2170">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 5 of 33 passed] - testCase_validateBySc\</tspan>
+<tspan x="10" y="2186">hema_error", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.h\</tspan>
 <tspan x="10" y="2202">tml (199)</tspan>
-<tspan x="10" y="2218">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 6 of 33 passed] - testCase_validateBySw\</tspan>
-<tspan x="10" y="2234">agger_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3eb\</tspan>
-<tspan x="10" y="2250">c.html (199)</tspan>
-<tspan x="10" y="2266">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 7 of 33 passed] - testCase_ajax_error",\</tspan>
-<tspan x="10" y="2282"> source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="2298">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 8 of 33 passed] - testCase_crudErrorXxx\</tspan>
-<tspan x="10" y="2314">_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.htm\</tspan>
+<tspan x="10" y="2218">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 6 of 33 passed] - testCase_validateBySw\</tspan>
+<tspan x="10" y="2234">agger_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d0\</tspan>
+<tspan x="10" y="2250">6.html (199)</tspan>
+<tspan x="10" y="2266">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 7 of 33 passed] - testCase_ajax_error",\</tspan>
+<tspan x="10" y="2282"> source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="2298">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 8 of 33 passed] - testCase_crudErrorXxx\</tspan>
+<tspan x="10" y="2314">_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.htm\</tspan>
 <tspan x="10" y="2330">l (199)</tspan>
-<tspan x="10" y="2346">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 9 of 33 passed] - testCase_crudNullXxx_\</tspan>
-<tspan x="10" y="2362">default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html\</tspan>
+<tspan x="10" y="2346">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 9 of 33 passed] - testCase_crudNullXxx_\</tspan>
+<tspan x="10" y="2362">default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html\</tspan>
 <tspan x="10" y="2378"> (199)</tspan>
-<tspan x="10" y="2394">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 10 of 33 passed] - testCase_onErrorJson\</tspan>
-<tspan x="10" y="2410">api_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.\</tspan>
+<tspan x="10" y="2394">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 10 of 33 passed] - testCase_onErrorJson\</tspan>
+<tspan x="10" y="2410">api_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.\</tspan>
 <tspan x="10" y="2426">html (199)</tspan>
-<tspan x="10" y="2442">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 11 of 33 passed] - testCase_onErrorJson\</tspan>
-<tspan x="10" y="2458">api_emptyArray", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3e\</tspan>
-<tspan x="10" y="2474">bc.html (199)</tspan>
-<tspan x="10" y="2490">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 12 of 33 passed] - testCase_onErrorJson\</tspan>
-<tspan x="10" y="2506">api_error", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.ht\</tspan>
+<tspan x="10" y="2442">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 11 of 33 passed] - testCase_onErrorJson\</tspan>
+<tspan x="10" y="2458">api_emptyArray", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d\</tspan>
+<tspan x="10" y="2474">06.html (199)</tspan>
+<tspan x="10" y="2490">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 12 of 33 passed] - testCase_onErrorJson\</tspan>
+<tspan x="10" y="2506">api_error", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.ht\</tspan>
 <tspan x="10" y="2522">ml (199)</tspan>
-<tspan x="10" y="2538">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 13 of 33 passed] - testCase_validateByP\</tspan>
-<tspan x="10" y="2554">aramDefList_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5\</tspan>
-<tspan x="10" y="2570">b6b3ebc.html (199)</tspan>
-<tspan x="10" y="2586">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 14 of 33 passed] - testCase_validateByP\</tspan>
-<tspan x="10" y="2602">aramDefList_formData", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a\</tspan>
-<tspan x="10" y="2618">5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="2634">[2569:0220/065113:INFO:CONSOLE(199)] "[browser test-case 15 of 33 passed] - testCase_crudCountMa\</tspan>
-<tspan x="10" y="2650">nyByQuery_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6\</tspan>
-<tspan x="10" y="2666">b3ebc.html (199)</tspan>
-<tspan x="10" y="2682">[2569:0220/065114:INFO:CONSOLE(199)] "[browser test-case 16 of 33 passed] - testCase_crudGetMany\</tspan>
-<tspan x="10" y="2698">ByQuery_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3\</tspan>
-<tspan x="10" y="2714">ebc.html (199)</tspan>
-<tspan x="10" y="2730">[2569:0220/065114:INFO:CONSOLE(199)] "[browser test-case 17 of 33 passed] - testCase_crudGetOneB\</tspan>
-<tspan x="10" y="2746">yId_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.\</tspan>
+<tspan x="10" y="2538">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 13 of 33 passed] - testCase_validateByP\</tspan>
+<tspan x="10" y="2554">aramDefList_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.536563\</tspan>
+<tspan x="10" y="2570">1672d06.html (199)</tspan>
+<tspan x="10" y="2586">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 14 of 33 passed] - testCase_validateByP\</tspan>
+<tspan x="10" y="2602">aramDefList_formData", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.53656\</tspan>
+<tspan x="10" y="2618">31672d06.html (199)</tspan>
+<tspan x="10" y="2634">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 15 of 33 passed] - testCase_crudCountMa\</tspan>
+<tspan x="10" y="2650">nyByQuery_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.53656316\</tspan>
+<tspan x="10" y="2666">72d06.html (199)</tspan>
+<tspan x="10" y="2682">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 16 of 33 passed] - testCase_crudGetMany\</tspan>
+<tspan x="10" y="2698">ByQuery_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672\</tspan>
+<tspan x="10" y="2714">d06.html (199)</tspan>
+<tspan x="10" y="2730">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 17 of 33 passed] - testCase_crudGetOneB\</tspan>
+<tspan x="10" y="2746">yId_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.\</tspan>
 <tspan x="10" y="2762">html (199)</tspan>
-<tspan x="10" y="2778">[2569:0220/065114:INFO:CONSOLE(199)] "[browser test-case 18 of 33 passed] - testCase_crudGetOneB\</tspan>
-<tspan x="10" y="2794">yQuery_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3e\</tspan>
-<tspan x="10" y="2810">bc.html (199)</tspan>
-<tspan x="10" y="2826">[2569:0220/065114:INFO:CONSOLE(199)] "[browser test-case 19 of 33 passed] - testCase_fileUploadM\</tspan>
-<tspan x="10" y="2842">anyByForm_nullCase", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b\</tspan>
-<tspan x="10" y="2858">6b3ebc.html (199)</tspan>
-<tspan x="10" y="2874">[2569:0220/065114:INFO:CONSOLE(199)] "[browser test-case 20 of 33 passed] - testCase_petstoreSto\</tspan>
-<tspan x="10" y="2890">reGetInventory_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b7\</tspan>
-<tspan x="10" y="2906">9a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="2922">[2569:0220/065114:INFO:CONSOLE(199)] "[browser test-case 21 of 33 passed] - testCase_ui_datable"\</tspan>
-<tspan x="10" y="2938">, source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="2954">[2670:0220/065114:WARNING:webmediaplayer_impl.cc(346)] Using MultibufferDataSource</tspan>
-<tspan x="10" y="2970">[2670:0220/065114:ERROR:render_media_log.cc(23)] MediaEvent: PIPELINE_ERROR demuxer: could not o\</tspan>
+<tspan x="10" y="2778">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 18 of 33 passed] - testCase_crudGetOneB\</tspan>
+<tspan x="10" y="2794">yQuery_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d\</tspan>
+<tspan x="10" y="2810">06.html (199)</tspan>
+<tspan x="10" y="2826">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 19 of 33 passed] - testCase_fileUploadM\</tspan>
+<tspan x="10" y="2842">anyByForm_nullCase", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631\</tspan>
+<tspan x="10" y="2858">672d06.html (199)</tspan>
+<tspan x="10" y="2874">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 20 of 33 passed] - testCase_petstoreSto\</tspan>
+<tspan x="10" y="2890">reGetInventory_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.536\</tspan>
+<tspan x="10" y="2906">5631672d06.html (199)</tspan>
+<tspan x="10" y="2922">[2569:0220/081623:INFO:CONSOLE(199)] "[browser test-case 21 of 33 passed] - testCase_ui_datable"\</tspan>
+<tspan x="10" y="2938">, source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="2954">[2669:0220/081624:WARNING:webmediaplayer_impl.cc(346)] Using MultibufferDataSource</tspan>
+<tspan x="10" y="2970">[2669:0220/081624:ERROR:render_media_log.cc(23)] MediaEvent: PIPELINE_ERROR demuxer: could not o\</tspan>
 <tspan x="10" y="2986">pen</tspan>
 <tspan x="10" y="3002">[node test-case 30 of 32 passed] - testCase_buildApp_default</tspan>
-<tspan x="10" y="3018">[2569:0220/065115:INFO:CONSOLE(199)] "[browser test-case 22 of 33 passed] - testCase_domAnimateS\</tspan>
-<tspan x="10" y="3034">hake_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc\</tspan>
+<tspan x="10" y="3018">[2569:0220/081625:INFO:CONSOLE(199)] "[browser test-case 22 of 33 passed] - testCase_domAnimateS\</tspan>
+<tspan x="10" y="3034">hake_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06\</tspan>
 <tspan x="10" y="3050">.html (199)</tspan>
-<tspan x="10" y="3066">[2569:0220/065116:INFO:CONSOLE(199)] "[browser test-case 23 of 33 passed] - testCase_crudSetMany\</tspan>
-<tspan x="10" y="3082">ById_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc\</tspan>
+<tspan x="10" y="3066">[2569:0220/081625:INFO:CONSOLE(199)] "[browser test-case 23 of 33 passed] - testCase_crudSetMany\</tspan>
+<tspan x="10" y="3082">ById_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06\</tspan>
 <tspan x="10" y="3098">.html (199)</tspan>
-<tspan x="10" y="3114">[2569:0220/065116:INFO:CONSOLE(199)] "[browser test-case 24 of 33 passed] - testCase_crudSetOneB\</tspan>
-<tspan x="10" y="3130">yId_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.\</tspan>
+<tspan x="10" y="3114">[2569:0220/081625:INFO:CONSOLE(199)] "[browser test-case 24 of 33 passed] - testCase_crudSetOneB\</tspan>
+<tspan x="10" y="3130">yId_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.\</tspan>
 <tspan x="10" y="3146">html (199)</tspan>
-<tspan x="10" y="3162"></tspan>
-<tspan x="10" y="3178">browserTest - created screen-capture file:///tmp/app/node_modules/swgg/tmp/build/screen-capture.\</tspan>
-<tspan x="10" y="3194">npmTestPublished.browser._2Ftmp_2Fapp_2Fnode_modules_2Fswgg_2Ftmp_2Fbuild_2Fapi-doc.html.png</tspan>
+<tspan x="10" y="3162">[2569:0220/081625:INFO:CONSOLE(199)] "[browser test-case 25 of 33 passed] - testCase_fileGetOneB\</tspan>
+<tspan x="10" y="3178">yId_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.\</tspan>
+<tspan x="10" y="3194">html (199)</tspan>
 <tspan x="10" y="3210"></tspan>
-<tspan x="10" y="3226">[2569:0220/065116:INFO:CONSOLE(199)] "[browser test-case 25 of 33 passed] - testCase_fileGetOneB\</tspan>
-<tspan x="10" y="3242">yId_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.\</tspan>
-<tspan x="10" y="3258">html (199)</tspan>
+<tspan x="10" y="3226">browserTest - created screen-capture file:///tmp/app/node_modules/swgg/tmp/build/screen-capture.\</tspan>
+<tspan x="10" y="3242">npmTestPublished.browser._2Ftmp_2Fapp_2Fnode_modules_2Fswgg_2Ftmp_2Fbuild_2Fapi-doc.html.png</tspan>
+<tspan x="10" y="3258"></tspan>
 <tspan x="10" y="3274"></tspan>
 <tspan x="10" y="3290">browserTest - exit-code 0 - file:///tmp/app/node_modules/swgg/tmp/build/api-doc.html</tspan>
 <tspan x="10" y="3306"></tspan>
@@ -212,33 +212,33 @@
 <tspan x="10" y="3354">browserTest - created screen-capture file:///tmp/app/node_modules/swgg/tmp/build/screen-capture.\</tspan>
 <tspan x="10" y="3370">npmTestPublished.browser..png</tspan>
 <tspan x="10" y="3386"></tspan>
-<tspan x="10" y="3402">[2569:0220/065117:INFO:CONSOLE(199)] "[browser test-case 26 of 33 passed] - testCase_crudRemoveM\</tspan>
-<tspan x="10" y="3418">anyByQuery_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b\</tspan>
-<tspan x="10" y="3434">6b3ebc.html (199)</tspan>
-<tspan x="10" y="3450">[2569:0220/065117:INFO:CONSOLE(199)] "[browser test-case 27 of 33 passed] - testCase_crudRemoveO\</tspan>
-<tspan x="10" y="3466">neById_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3e\</tspan>
-<tspan x="10" y="3482">bc.html (199)</tspan>
-<tspan x="10" y="3498">[2569:0220/065117:INFO:CONSOLE(199)] "[browser test-case 28 of 33 passed] - testCase_ui_default"\</tspan>
-<tspan x="10" y="3514">, source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="3530">[2569:0220/065117:INFO:CONSOLE(199)] "[browser test-case 29 of 33 passed] - testCase_crudUpdateO\</tspan>
-<tspan x="10" y="3546">neById_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3e\</tspan>
-<tspan x="10" y="3562">bc.html (199)</tspan>
-<tspan x="10" y="3578">[2569:0220/065117:INFO:CONSOLE(199)] "[browser test-case 30 of 33 passed] - testCase_fileUploadM\</tspan>
-<tspan x="10" y="3594">anyByForm_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6\</tspan>
-<tspan x="10" y="3610">b3ebc.html (199)</tspan>
-<tspan x="10" y="3626">[2569:0220/065117:INFO:CONSOLE(199)] "[browser test-case 31 of 33 passed] - testCase_userLoginXx\</tspan>
-<tspan x="10" y="3642">x_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.ht\</tspan>
+<tspan x="10" y="3402">[2569:0220/081626:INFO:CONSOLE(199)] "[browser test-case 26 of 33 passed] - testCase_crudRemoveM\</tspan>
+<tspan x="10" y="3418">anyByQuery_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631\</tspan>
+<tspan x="10" y="3434">672d06.html (199)</tspan>
+<tspan x="10" y="3450">[2569:0220/081626:INFO:CONSOLE(199)] "[browser test-case 27 of 33 passed] - testCase_crudRemoveO\</tspan>
+<tspan x="10" y="3466">neById_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d\</tspan>
+<tspan x="10" y="3482">06.html (199)</tspan>
+<tspan x="10" y="3498">[2569:0220/081626:INFO:CONSOLE(199)] "[browser test-case 28 of 33 passed] - testCase_ui_default"\</tspan>
+<tspan x="10" y="3514">, source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="3530">[2569:0220/081626:INFO:CONSOLE(199)] "[browser test-case 29 of 33 passed] - testCase_crudUpdateO\</tspan>
+<tspan x="10" y="3546">neById_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d\</tspan>
+<tspan x="10" y="3562">06.html (199)</tspan>
+<tspan x="10" y="3578">[2569:0220/081627:INFO:CONSOLE(199)] "[browser test-case 30 of 33 passed] - testCase_fileUploadM\</tspan>
+<tspan x="10" y="3594">anyByForm_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.53656316\</tspan>
+<tspan x="10" y="3610">72d06.html (199)</tspan>
+<tspan x="10" y="3626">[2569:0220/081627:INFO:CONSOLE(199)] "[browser test-case 31 of 33 passed] - testCase_userLoginXx\</tspan>
+<tspan x="10" y="3642">x_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.ht\</tspan>
 <tspan x="10" y="3658">ml (199)</tspan>
-<tspan x="10" y="3674">[2569:0220/065117:INFO:CONSOLE(199)] "[browser test-case 32 of 33 passed] - testCase_crudCreateR\</tspan>
-<tspan x="10" y="3690">eplaceUpdateRemoveMany_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49c\</tspan>
-<tspan x="10" y="3706">ced0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="3722">[2569:0220/065117:INFO:CONSOLE(199)] "[browser test-case 33 of 33 passed] - testCase_crudCreateR\</tspan>
-<tspan x="10" y="3738">eplaceUpdateRemoveOne_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cc\</tspan>
-<tspan x="10" y="3754">ed0.6b79a5b6b3ebc.html (199)</tspan>
-<tspan x="10" y="3770">[2569:0220/065118:INFO:CONSOLE(199)] "created coverage file:///tmp/build/coverage.html/index.htm\</tspan>
-<tspan x="10" y="3786">l", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a49cced0.6b79a5b6b3ebc.html (199)</tspan>
+<tspan x="10" y="3674">[2569:0220/081627:INFO:CONSOLE(199)] "[browser test-case 32 of 33 passed] - testCase_crudCreateR\</tspan>
+<tspan x="10" y="3690">eplaceUpdateRemoveMany_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c\</tspan>
+<tspan x="10" y="3706">60a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="3722">[2569:0220/081627:INFO:CONSOLE(199)] "[browser test-case 33 of 33 passed] - testCase_crudCreateR\</tspan>
+<tspan x="10" y="3738">eplaceUpdateRemoveOne_default", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c6\</tspan>
+<tspan x="10" y="3754">0a0.5365631672d06.html (199)</tspan>
+<tspan x="10" y="3770">[2569:0220/081628:INFO:CONSOLE(199)] "created coverage file:///tmp/build/coverage.html/index.htm\</tspan>
+<tspan x="10" y="3786">l", source: file:///tmp/app/node_modules/swgg/tmp/electron.15a5a97c60a0.5365631672d06.html (199)</tspan>
 <tspan x="10" y="3802"></tspan>
-<tspan x="10" y="3818">browserTest - exit-code 0 - http://127.0.0.1:55424/?modeTest=1#!/swgg_id_pet/swgg_id_addPet</tspan>
+<tspan x="10" y="3818">browserTest - exit-code 0 - http://127.0.0.1:58455/?modeTest=1#!/swgg_id_pet/swgg_id_addPet</tspan>
 <tspan x="10" y="3834"></tspan>
 <tspan x="10" y="3850"></tspan>
 <tspan x="10" y="3866">browserTest - merged coverage from /tmp/app/node_modules/swgg/tmp/coverage.npmTestPublished.brow\</tspan>
@@ -264,12 +264,12 @@
 <tspan x="10" y="4186"></tspan>
 <tspan x="10" y="4202">-------------------------------------------------------</tspan>
 <tspan x="10" y="4218">| test-report - npmTestPublished - browser - / - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537\</tspan>
-<tspan x="10" y="4234">.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Electron/1.3.13 Safari/537.36 - 2017-02-20T06:51:11.\</tspan>
-<tspan x="10" y="4250">722Z</tspan>
-<tspan x="10" y="4266">|    4133 ms            0 failed       33 passed      |</tspan>
+<tspan x="10" y="4234">.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Electron/1.3.13 Safari/537.36 - 2017-02-20T08:16:21.\</tspan>
+<tspan x="10" y="4250">640Z</tspan>
+<tspan x="10" y="4266">|    4164 ms            0 failed       33 passed      |</tspan>
 <tspan x="10" y="4282">-------------------------------------------------------</tspan>
-<tspan x="10" y="4298">| test-report - npmTestPublished - node - linux v7.5.0 - 2017-02-20T06:51:07.451Z</tspan>
-<tspan x="10" y="4314">|    9300 ms            0 failed       32 passed      |</tspan>
+<tspan x="10" y="4298">| test-report - npmTestPublished - node - linux v7.5.0 - 2017-02-20T08:16:17.528Z</tspan>
+<tspan x="10" y="4314">|    8995 ms            0 failed       32 passed      |</tspan>
 <tspan x="10" y="4330">-------------------------------------------------------</tspan>
 <tspan x="10" y="4346"></tspan>
 <tspan x="10" y="4362">created test-report file:///tmp/app/node_modules/swgg/tmp/build/test-report.html</tspan>

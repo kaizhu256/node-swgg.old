@@ -1,8 +1,8 @@
-<svg height="2270" width="720" xmlns="http://www.w3.org/2000/svg">
-<rect height="2270" fill="#555" width="720"></rect>
+<svg height="2382" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="2382" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
-<tspan x="10" y="42">[MODE_BUILD=testExampleJs] - 2017-02-20T18:34:55Z - testing example.js</tspan>
+<tspan x="10" y="42">[MODE_BUILD=testExampleJs] - 2017-02-20T18:44:06Z - testing example.js</tspan>
 <tspan x="10" y="58"></tspan>
 <tspan x="10" y="74">npm install swgg &amp;&amp; PORT=8081 node example.js</tspan>
 <tspan x="10" y="90"></tspan>
@@ -21,125 +21,132 @@
 <tspan x="10" y="298">server listening on http-port 8081</tspan>
 <tspan x="10" y="314">db loaded from tmp/storage.undefined</tspan>
 <tspan x="10" y="330"></tspan>
-<tspan x="10" y="346">[MODE_BUILD=testExampleJs] - 2017-02-20T18:35:10Z - electron.screenCapture - http://127.0.0.1:80\</tspan>
+<tspan x="10" y="346">[MODE_BUILD=testExampleJs] - 2017-02-20T18:44:21Z - electron.screenCapture - http://127.0.0.1:80\</tspan>
 <tspan x="10" y="362">81</tspan>
 <tspan x="10" y="378"></tspan>
 <tspan x="10" y="394"></tspan>
 <tspan x="10" y="410">browserTest - created electron entry-page /home/travis/build/kaizhu256/node-swgg/tmp/electron.15\</tspan>
-<tspan x="10" y="426">a5cce574e0.f5501998b5cf6.html</tspan>
+<tspan x="10" y="426">a5cd6bf610.c87b19e239885.html</tspan>
 <tspan x="10" y="442"></tspan>
-<tspan x="10" y="458">[2186:0220/183511:ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox! See https:/\</tspan>
+<tspan x="10" y="458">[2186:0220/184422:ERROR:browser_main_loop.cc(231)] Running without the SUID sandbox! See https:/\</tspan>
 <tspan x="10" y="474">/chromium.googlesource.com/chromium/src/+/master/docs/linux_suid_sandbox_development.md for more\</tspan>
 <tspan x="10" y="490"> information on developing with the sandbox on.</tspan>
 <tspan x="10" y="506">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="522">[2186:0220/183511:WARNING:host_discardable_shared_memory_manager.cc(132)] Less than 64MB of free\</tspan>
-<tspan x="10" y="538"> space in temporary directory for shared memory files: 54</tspan>
-<tspan x="10" y="554">[2186:0220/183511:ERROR:bus.cc(432)] Failed to connect to the bus: Failed to connect to socket /\</tspan>
-<tspan x="10" y="570">var/run/dbus/system_bus_socket: Connection refused</tspan>
-<tspan x="10" y="586">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
-<tspan x="10" y="602">[2186:0220/183511:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="618">[2186:0220/183511:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
-<tspan x="10" y="634">[2258:0220/183511:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
-<tspan x="10" y="650">in process gpu-process. </tspan>
-<tspan x="10" y="666">[2186:0220/183511:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
-<tspan x="10" y="682">404 GET /assets.swgg.js</tspan>
-<tspan x="10" y="698">Error: 404 Not Found</tspan>
-<tspan x="10" y="714">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
-<tspan x="10" y="730">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:13281:27</tspan>
-<tspan x="10" y="746">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11646:21</tspan>
-<tspan x="10" y="762">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
-<tspan x="10" y="778">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
-<tspan x="10" y="794">    at Array.local.middlewareCrudEnd (/tmp/app/node_modules/swgg/lib.swgg.js:2314:13)</tspan>
-<tspan x="10" y="810">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11638:62</tspan>
-<tspan x="10" y="826">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
-<tspan x="10" y="842">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
-<tspan x="10" y="858">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
+<tspan x="10" y="522">[2186:0220/184422:ERROR:bus.cc(432)] Failed to connect to the bus: Failed to connect to socket /\</tspan>
+<tspan x="10" y="538">var/run/dbus/system_bus_socket: Connection refused</tspan>
+<tspan x="10" y="554">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="570">[2186:0220/184422:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="586">[2186:0220/184422:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="602">[2250:0220/184422:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="618">in process gpu-process. </tspan>
+<tspan x="10" y="634">[2186:0220/184422:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="650">404 GET /assets.swgg.js</tspan>
+<tspan x="10" y="666">Error: 404 Not Found</tspan>
+<tspan x="10" y="682">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
+<tspan x="10" y="698">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:13281:27</tspan>
+<tspan x="10" y="714">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11646:21</tspan>
+<tspan x="10" y="730">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
+<tspan x="10" y="746">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
+<tspan x="10" y="762">    at Array.local.middlewareCrudEnd (/tmp/app/node_modules/swgg/lib.swgg.js:2314:13)</tspan>
+<tspan x="10" y="778">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11638:62</tspan>
+<tspan x="10" y="794">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
+<tspan x="10" y="810">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
+<tspan x="10" y="826">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
+<tspan x="10" y="842"></tspan>
+<tspan x="10" y="858">browserTest - opened url http://127.0.0.1:8081</tspan>
 <tspan x="10" y="874"></tspan>
-<tspan x="10" y="890">browserTest - opened url http://127.0.0.1:8081</tspan>
-<tspan x="10" y="906"></tspan>
-<tspan x="10" y="922">404 GET /assets.swgg.js</tspan>
-<tspan x="10" y="938">Error: 404 Not Found</tspan>
-<tspan x="10" y="954">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
-<tspan x="10" y="970">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:13281:27</tspan>
-<tspan x="10" y="986">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11646:21</tspan>
-<tspan x="10" y="1002">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
-<tspan x="10" y="1018">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
-<tspan x="10" y="1034">    at Array.local.middlewareCrudEnd (/tmp/app/node_modules/swgg/lib.swgg.js:2314:13)</tspan>
-<tspan x="10" y="1050">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11638:62</tspan>
-<tspan x="10" y="1066">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
-<tspan x="10" y="1082">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
-<tspan x="10" y="1098">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
-<tspan x="10" y="1114">[2186:0220/183511:WARNING:backend_impl.cc(1803)] Destroying invalid entry.</tspan>
-<tspan x="10" y="1130">[2186:0220/183511:WARNING:backend_impl.cc(1803)] Destroying invalid entry.</tspan>
-<tspan x="10" y="1146">[2186:0220/183511:WARNING:backend_impl.cc(1564)] Messed up entry found.</tspan>
-<tspan x="10" y="1162">[2186:0220/183511:ERROR:backend_impl.cc(1032)] Critical error found -8</tspan>
-<tspan x="10" y="1178">[2186:0220/183511:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1194">[2186:0220/183511:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1210">[2186:0220/183511:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1226">[2186:0220/183511:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1242">[2186:0220/183511:ERROR:entry_impl.cc(1035)] No file for a101000e</tspan>
-<tspan x="10" y="1258">[2186:0220/183511:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
-<tspan x="10" y="1274">404 GET /assets.swgg.js</tspan>
-<tspan x="10" y="1290">Error: 404 Not Found</tspan>
-<tspan x="10" y="1306">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
-<tspan x="10" y="1322">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:13281:27</tspan>
-<tspan x="10" y="1338">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11646:21</tspan>
-<tspan x="10" y="1354">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
-<tspan x="10" y="1370">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
-<tspan x="10" y="1386">    at Array.local.middlewareCrudEnd (/tmp/app/node_modules/swgg/lib.swgg.js:2314:13)</tspan>
-<tspan x="10" y="1402">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11638:62</tspan>
-<tspan x="10" y="1418">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
-<tspan x="10" y="1434">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
-<tspan x="10" y="1450">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
-<tspan x="10" y="1466">404 GET /assets.swgg.js</tspan>
-<tspan x="10" y="1482">Error: 404 Not Found</tspan>
-<tspan x="10" y="1498">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
-<tspan x="10" y="1514">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:13281:27</tspan>
-<tspan x="10" y="1530">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11646:21</tspan>
-<tspan x="10" y="1546">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
-<tspan x="10" y="1562">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
-<tspan x="10" y="1578">    at Array.local.middlewareCrudEnd (/tmp/app/node_modules/swgg/lib.swgg.js:2314:13)</tspan>
-<tspan x="10" y="1594">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11638:62</tspan>
-<tspan x="10" y="1610">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
-<tspan x="10" y="1626">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
-<tspan x="10" y="1642">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
-<tspan x="10" y="1658">[2186:0220/183512:INFO:CONSOLE(199)] "server listening on http-port undefined", source: file:///\</tspan>
-<tspan x="10" y="1674">home/travis/build/kaizhu256/node-swgg/tmp/electron.15a5cce574e0.f5501998b5cf6.html (199)</tspan>
-<tspan x="10" y="1690">[2186:0220/183513:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
-<tspan x="10" y="1706">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
-<tspan x="10" y="1722">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
-<tspan x="10" y="1738">thodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="1754">[2186:0220/183513:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
-<tspan x="10" y="1770">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
-<tspan x="10" y="1786">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="1802">[2186:0220/183513:INFO:CONSOLE(199)] "[object Event]", source: file:///home/travis/build/kaizhu2\</tspan>
-<tspan x="10" y="1818">56/node-swgg/tmp/electron.15a5cce574e0.f5501998b5cf6.html (199)</tspan>
-<tspan x="10" y="1834">[2186:0220/183514:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
-<tspan x="10" y="1850">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
-<tspan x="10" y="1866">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
-<tspan x="10" y="1882">thodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="1898">[2186:0220/183514:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
-<tspan x="10" y="1914">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
-<tspan x="10" y="1930">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="1946">[2186:0220/183515:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
+<tspan x="10" y="890">[2186:0220/184422:WARNING:backend_impl.cc(1803)] Destroying invalid entry.</tspan>
+<tspan x="10" y="906">[2186:0220/184422:WARNING:backend_impl.cc(1803)] Destroying invalid entry.</tspan>
+<tspan x="10" y="922">[2186:0220/184422:ERROR:backend_impl.cc(1032)] Critical error found -8</tspan>
+<tspan x="10" y="938">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="954">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="970">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="986">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1002">[2186:0220/184422:ERROR:entry_impl.cc(1035)] No file for a101000a</tspan>
+<tspan x="10" y="1018">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1034">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1050">[2186:0220/184422:ERROR:entry_impl.cc(1035)] No file for a101000c</tspan>
+<tspan x="10" y="1066">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1082">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1098">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1114">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1130">[2186:0220/184422:ERROR:entry_impl.cc(1035)] No file for a101000e</tspan>
+<tspan x="10" y="1146">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1162">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1178">[2186:0220/184422:WARNING:storage_block-inl.h(131)] Failed data load.</tspan>
+<tspan x="10" y="1194">404 GET /assets.swgg.js</tspan>
+<tspan x="10" y="1210">Error: 404 Not Found</tspan>
+<tspan x="10" y="1226">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
+<tspan x="10" y="1242">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:13281:27</tspan>
+<tspan x="10" y="1258">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11646:21</tspan>
+<tspan x="10" y="1274">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
+<tspan x="10" y="1290">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
+<tspan x="10" y="1306">    at Array.local.middlewareCrudEnd (/tmp/app/node_modules/swgg/lib.swgg.js:2314:13)</tspan>
+<tspan x="10" y="1322">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11638:62</tspan>
+<tspan x="10" y="1338">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
+<tspan x="10" y="1354">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
+<tspan x="10" y="1370">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
+<tspan x="10" y="1386">404 GET /assets.swgg.js</tspan>
+<tspan x="10" y="1402">Error: 404 Not Found</tspan>
+<tspan x="10" y="1418">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
+<tspan x="10" y="1434">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:13281:27</tspan>
+<tspan x="10" y="1450">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11646:21</tspan>
+<tspan x="10" y="1466">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
+<tspan x="10" y="1482">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
+<tspan x="10" y="1498">    at Array.local.middlewareCrudEnd (/tmp/app/node_modules/swgg/lib.swgg.js:2314:13)</tspan>
+<tspan x="10" y="1514">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11638:62</tspan>
+<tspan x="10" y="1530">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
+<tspan x="10" y="1546">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
+<tspan x="10" y="1562">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
+<tspan x="10" y="1578">404 GET /assets.swgg.js</tspan>
+<tspan x="10" y="1594">Error: 404 Not Found</tspan>
+<tspan x="10" y="1610">    at Object.local.utility2._middlewareError (/tmp/app/node_modules/swgg/lib.swgg.js:3699:25)</tspan>
+<tspan x="10" y="1626">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:13281:27</tspan>
+<tspan x="10" y="1642">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11646:21</tspan>
+<tspan x="10" y="1658">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
+<tspan x="10" y="1674">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
+<tspan x="10" y="1690">    at Array.local.middlewareCrudEnd (/tmp/app/node_modules/swgg/lib.swgg.js:2314:13)</tspan>
+<tspan x="10" y="1706">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11638:62</tspan>
+<tspan x="10" y="1722">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11907:21</tspan>
+<tspan x="10" y="1738">    at /tmp/app/node_modules/swgg/assets.swgg.rollup.js:11874:17</tspan>
+<tspan x="10" y="1754">    at /tmp/app/node_modules/swgg/lib.swgg.js:2297:21</tspan>
+<tspan x="10" y="1770">[2186:0220/184423:INFO:CONSOLE(199)] "server listening on http-port undefined", source: file:///\</tspan>
+<tspan x="10" y="1786">home/travis/build/kaizhu256/node-swgg/tmp/electron.15a5cd6bf610.c87b19e239885.html (199)</tspan>
+<tspan x="10" y="1802">[2186:0220/184424:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
+<tspan x="10" y="1818">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
+<tspan x="10" y="1834">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
+<tspan x="10" y="1850">thodBFE: 15::LockFile::1)</tspan>
+<tspan x="10" y="1866">[2186:0220/184424:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
+<tspan x="10" y="1882">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
+<tspan x="10" y="1898">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
+<tspan x="10" y="1914">[2186:0220/184424:INFO:CONSOLE(199)] "[object Event]", source: file:///home/travis/build/kaizhu2\</tspan>
+<tspan x="10" y="1930">56/node-swgg/tmp/electron.15a5cd6bf610.c87b19e239885.html (199)</tspan>
+<tspan x="10" y="1946">[2186:0220/184425:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
 <tspan x="10" y="1962">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
 <tspan x="10" y="1978">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
 <tspan x="10" y="1994">thodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="2010">[2186:0220/183515:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
+<tspan x="10" y="2010">[2186:0220/184425:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
 <tspan x="10" y="2026">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
 <tspan x="10" y="2042">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="2058">[2186:0220/183516:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
+<tspan x="10" y="2058">[2186:0220/184426:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
 <tspan x="10" y="2074">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
 <tspan x="10" y="2090">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
 <tspan x="10" y="2106">thodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="2122">[2186:0220/183516:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
+<tspan x="10" y="2122">[2186:0220/184426:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
 <tspan x="10" y="2138">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
 <tspan x="10" y="2154">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
-<tspan x="10" y="2170"></tspan>
-<tspan x="10" y="2186">browserTest - created screen-capture file:///home/travis/build/kaizhu256/node-swgg/tmp/build/scr\</tspan>
-<tspan x="10" y="2202">een-capture.testExampleJs.browser..png</tspan>
-<tspan x="10" y="2218"></tspan>
-<tspan x="10" y="2234"></tspan>
-<tspan x="10" y="2250">browserTest - exit-code 0 - http://127.0.0.1:8081</tspan>
+<tspan x="10" y="2170">[2186:0220/184427:ERROR:leveldb_database.cc(306)] Failed to open LevelDB database from /home/tra\</tspan>
+<tspan x="10" y="2186">vis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb,IO error: /home/travis/.con\</tspan>
+<tspan x="10" y="2202">fig/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb.leveldb/LOCK: No further details. (ChromeMe\</tspan>
+<tspan x="10" y="2218">thodBFE: 15::LockFile::1)</tspan>
+<tspan x="10" y="2234">[2186:0220/184427:ERROR:indexed_db_backing_store.cc(1058)] Unable to open backing store, not try\</tspan>
+<tspan x="10" y="2250">ing to recover - IO error: /home/travis/.config/Electron/IndexedDB/http_127.0.0.1_8081.indexeddb\</tspan>
+<tspan x="10" y="2266">.leveldb/LOCK: No further details. (ChromeMethodBFE: 15::LockFile::1)</tspan>
+<tspan x="10" y="2282"></tspan>
+<tspan x="10" y="2298">browserTest - created screen-capture file:///home/travis/build/kaizhu256/node-swgg/tmp/build/scr\</tspan>
+<tspan x="10" y="2314">een-capture.testExampleJs.browser..png</tspan>
+<tspan x="10" y="2330"></tspan>
+<tspan x="10" y="2346"></tspan>
+<tspan x="10" y="2362">browserTest - exit-code 0 - http://127.0.0.1:8081</tspan>
 </text>
 </svg>
